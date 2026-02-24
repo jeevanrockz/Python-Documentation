@@ -1,0 +1,101 @@
+Startup Program Analyzer Documentation
+Overview
+The Startup Program Analyzer is a Python utility that scans applications configured to run at system startup. It identifies programs from multiple sources (Windows registry, startup folders, scheduled tasks) and classifies them as essential, unnecessary, harmful, or unknown. The tool provides actionable recommendations to improve system performance and startup speed.
+
+Features
+Multi-source scanning: Collects startup programs from registry, startup folders, and scheduled tasks.
+
+Program classification: Categorizes apps into essential, unnecessary, harmful, or unknown.
+
+Risk assessment: Flags harmful programs (e.g., toolbars, hijackers, adware) and unnecessary apps that slow startup.
+
+Optimization recommendations: Suggests disabling or removing programs to improve boot time.
+
+Detailed reporting: Saves analysis results to JSON for record-keeping.
+
+User guidance: Provides step-by-step instructions for disabling startup programs via Task Manager or msconfig.
+
+Architecture
+The script is organized around the StartupProgramAnalyzer class, which encapsulates scanning, classification, and reporting:
+
+Data Collection:
+
+get_registry_startup_programs() → Reads startup entries from Windows registry.
+
+get_startup_folder_programs() → Scans startup folders for executable files.
+
+get_scheduled_tasks_startup() → Retrieves startup-related scheduled tasks.
+
+Classification:
+
+classify_program() → Categorizes each program as essential, unnecessary, harmful, or unknown.
+
+Analysis & Display:
+
+scan_startup_programs() → Runs full scan and classification.
+
+display_results() → Shows summary of essential, unnecessary, and harmful programs.
+
+_display_harmful_programs() → Lists harmful programs with risk details.
+
+_display_unnecessary_programs() → Lists unnecessary programs with reasons.
+
+_display_all_programs() → Displays all programs with classification status.
+
+Recommendations & Reporting:
+
+get_optimization_recommendations() → Provides actionable steps to improve startup performance.
+
+save_report() → Saves analysis results to JSON file.
+
+Usage
+Requirements
+Python 3.7+
+
+Windows OS (registry and startup folder scanning depend on Windows APIs)
+
+Run the Script:-
+python startup_program_analyzer.py
+Interactive Options
+When executed, the script prompts:
+
+Code
+Startup Program Analyzer - Choose option:
+1. Analyze startup programs
+2. Show optimization recommendations
+3. Full analysis and report
+4. Exit
+Example Output (Scan Results)
+Code
+================================================================================
+                                 SCAN RESULTS
+================================================================================
+
+Total Programs: 15
+Essential Programs: 5
+Unnecessary Programs: 7
+Harmful Programs: 3
+
+🔴 HARMFUL STARTUP PROGRAMS (Remove Immediately):
+
+1. Babylon Toolbar
+   Risk: CRITICAL
+   Reason: Malware/search hijacker
+   Location: Registry: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+
+🟡 UNNECESSARY STARTUP PROGRAMS (Can be Disabled):
+
+1. Skype
+   Impact: MEDIUM
+   Reason: Can disable at startup, launch manually
+   Location: Startup Folder
+
+================================================================================
+Notes
+Works best on Windows, where registry and startup folder scanning are supported.
+
+Classification is keyword-based; programs are flagged if their names match entries in the essential, unnecessary, or harmful lists.
+
+Harmful programs should be removed immediately, while unnecessary programs can be disabled to improve startup speed.
+
+Reports are saved in startup_analysis_report.json for later review.
