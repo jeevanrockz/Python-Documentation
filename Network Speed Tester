@@ -1,0 +1,112 @@
+Network Speed Tester Documentation
+Overview
+The Network Speed Tester is a Python utility that measures download speed, upload speed, and latency (ping) while logging results over time. It provides detailed diagnostics, historical tracking, and statistical summaries to help users monitor their internet performance.
+
+Features
+Internet connectivity check: Verifies if the system is online.
+
+Local IP detection: Retrieves the machine’s local IP address.
+
+Download speed test: Measures speed by downloading test files from reliable servers.
+
+Upload speed test: Simulates upload performance using local loopback threading.
+
+Latency test: Measures ping time to a host (default: Google DNS).
+
+Logging: Saves results to CSV and JSON for historical analysis.
+
+Statistics: Provides averages, medians, max/min, and standard deviation for speeds and latency.
+
+Continuous testing: Runs tests at regular intervals for long-term monitoring.
+
+Quality indicators: Rates download, upload, and latency results as Excellent, Good, Fair, or Poor.
+
+Architecture
+The script is organized around the NetworkSpeedTester class, which encapsulates testing, logging, and reporting:
+
+Initialization: Loads historical data from CSV.
+
+Testing Methods:
+
+check_internet_connection() → Confirms connectivity.
+
+get_local_ip() → Retrieves local IP.
+
+test_download_speed() → Measures download speed.
+
+test_upload_speed() → Simulates upload speed.
+
+test_ping() → Measures latency.
+
+perform_speed_test() → Runs full test suite.
+
+Logging & History:
+
+log_results() → Appends results to CSV.
+
+load_history() → Loads past results.
+
+Display Methods:
+
+display_current_results() → Shows latest test results.
+
+display_speed_history() → Displays last N results.
+
+display_statistics() → Summarizes performance metrics.
+
+Continuous Monitoring:
+
+start_continuous_testing() → Runs tests at set intervals.
+
+Reporting:
+
+save_report() → Saves full report to JSON.
+
+Usage
+Requirements
+Python 3.7+
+
+Libraries: psutil (optional), socket, urllib
+
+Run the Script:-
+python network_speed_tester.py
+Interactive Options
+When executed, the script prompts:
+
+Code
+Network Speed Tester - Choose option:
+1. Run speed test now
+2. View current results
+3. View speed history
+4. View statistics
+5. Start continuous testing
+6. Save report
+7. Exit
+Example Output (Current Results)
+Code
+================================================================================
+                        NETWORK SPEED TEST RESULTS
+================================================================================
+
+Timestamp: 2026-02-24 12:20:00
+Internet Connection: ✓ Connected
+Local IP: 192.168.1.45
+
+Download Speed:    85.32 Mbps 🟢 Very Good
+Upload Speed:      22.15 Mbps 🟢 Very Good
+Latency (Ping):    34.50 ms   🟢 Very Good
+================================================================================
+Notes
+Download test uses public CDN files for accuracy.
+
+Upload test is simulated locally; actual upload speed may differ.
+
+Latency test uses TCP connection timing, not ICMP ping.
+
+Logs:
+
+CSV → network_speed_logs.csv
+
+JSON report → speed_report.json
+
+Continuous testing is useful for long-term monitoring and trend analysis.
