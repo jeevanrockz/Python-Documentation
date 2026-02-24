@@ -1,0 +1,97 @@
+Customer Support Chatbot Documentation
+Overview
+This project implements a customer support chatbot designed to handle common queries, track orders, and escalate unresolved issues to human agents. It demonstrates real-world use cases such as:
+
+Knowledge base lookups
+
+Order tracking via simulated API
+
+Password reset assistance
+
+Intelligent escalation to human agents
+
+Conversation memory and issue classification
+
+Features
+Knowledge Base: Provides instant answers to FAQs (e.g., return policy, shipping, payment).
+
+Order Tracking: Retrieves order status using order ID or customer email.
+
+Password Reset: Initiates password reset flow with email verification.
+
+Issue Classification: Automatically categorizes queries into types (billing, technical, general, etc.).
+
+Escalation: Connects customers to human agents after repeated unresolved queries.
+
+Conversation Memory: Stores dialogue history for context-aware responses.
+
+Architecture
+1. IssueType Enum
+Defines categories of support requests:
+
+ORDER_TRACKING
+
+PASSWORD_RESET
+
+RETURN_POLICY
+
+BILLING
+
+TECHNICAL
+
+GENERAL
+
+2. OrderStatus Enum
+Represents simulated order states:
+
+PENDING, SHIPPED, IN_TRANSIT, DELIVERED, CANCELLED
+
+3. KnowledgeBase Class
+Stores FAQs with regex-based matching.
+
+Provides quick answers to common queries.
+
+4. OrderDatabase Class
+Simulates customer orders.
+
+Supports lookup by order ID or email.
+
+5. CustomerSupportChatbot Class
+Core chatbot logic:
+
+Preprocesses input
+
+Classifies issues
+
+Routes queries to appropriate handlers
+
+Escalates unresolved issues
+
+Maintains conversation memory
+
+Key Methods
+Method	Description
+preprocess	Normalizes user input text.
+classify_issue	Determines issue type using regex.
+extract_order_id	Extracts order ID from text.
+extract_email	Extracts email address from text.
+handle_order_tracking	Provides order status details.
+handle_password_reset	Initiates password reset flow.
+respond	Main response logic with routing and escalation.
+_escalate_to_human	Connects customer to human agent.
+chat	Interactive chat loop for CLI use.
+
+Type exit or quit to leave.
+
+Run in Single Query Mode:-
+python3 chatbot.py "Where is my order ORD-001?"
+Processes a single query and returns a response.
+
+Example Interaction
+Code
+You: Where is my order ORD-003?
+🤖 Bot: 📦 Order ORD-003:
+  Status: In Transit
+  Items: Laptop Stand
+  Tracking: 1Z999BB20234567895
+  📍 Ship Date: 2026-02-23
