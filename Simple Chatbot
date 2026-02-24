@@ -1,0 +1,119 @@
+Documentation: Simple Rule-Based CLI Chatbot
+Overview
+This project implements a simple rule-based chatbot in Python. The chatbot runs in the terminal (CLI) and responds to user input based on predefined patterns. It demonstrates basic natural language processing (NLP) techniques such as text preprocessing, pattern matching with regular expressions, and random response selection.
+
+Features
+Responds to greetings, farewells, and common conversational phrases.
+
+Handles simple queries like asking for the bot’s name or how it is doing.
+
+Provides fallback responses when no pattern matches.
+
+Supports single-query mode (command-line arguments) and interactive chat mode.
+
+Maintains a memory log of user and bot exchanges.
+
+File Structure
+chatbot.py: Main Python script containing the chatbot implementation.
+
+Classes and Methods
+class SimpleChatbot
+The main chatbot class that defines behavior and responses.
+
+Attributes
+memory: Stores conversation history as a list of (speaker, message) tuples.
+
+patterns: A list of (regex pattern, responses) pairs used for matching user input.
+
+fallbacks: A list of default responses when no pattern matches.
+
+Methods
+preprocess(text: str) -> str
+
+Converts input text to lowercase.
+
+Removes punctuation and special characters (except alphanumeric, spaces, and apostrophes).
+
+Returns cleaned text for pattern matching.
+
+respond(text: str) -> str
+
+Preprocesses user input.
+
+Iterates through patterns and checks for regex matches.
+
+If a match is found:
+
+Selects a random response from the matched pattern.
+
+Formats the response if the regex captured groups (e.g., "I like cats").
+
+If no match is found:
+
+Returns a random fallback response.
+
+chat()
+
+Runs an interactive chat loop in the terminal.
+
+Accepts user input until "exit" or "quit" is entered.
+
+Stores conversation history in memory.
+
+Prints bot responses.
+
+main(argv)
+Entry point of the program.
+
+If command-line arguments are provided:
+
+Runs in single-query mode (responds once and exits).
+
+If no arguments are provided:
+
+Runs in interactive chat mode.
+
+Usage
+Run Interactive Chat
+bash
+python chatbot.py
+Example:
+
+Code
+Simple Chatbot. Type 'exit' or 'quit' to leave.
+You: hi
+Bot: Hi there! What would you like to talk about?
+You: I like pizza
+Bot: Nice! I also like pizza (in a manner of speaking).
+You: bye
+Bot: Goodbye — have a great day!
+Run Single-Query Mode
+bash
+python chatbot.py "hello"
+Output:
+
+Code
+Hello! How can I help you today?
+Example Patterns
+Greetings: "hi", "hello", "hey"
+
+Farewell: "bye", "goodbye", "see you"
+
+Bot identity: "what is your name", "who are you"
+
+Expressions of liking: "I like cats", "I love music"
+
+Limitations
+No real-time capabilities (cannot fetch current time/date).
+
+Limited to predefined patterns; cannot learn new responses.
+
+Regex-based matching may miss variations in phrasing.
+
+Possible Improvements
+Add more conversational patterns.
+Integrate with external APIs for real-time data (e.g., weather, time).
+
+Implement machine learning or NLP libraries for smarter responses.
+
+Save memory logs to a file for persistent conversation history.
