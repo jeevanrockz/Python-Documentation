@@ -1,0 +1,107 @@
+📖 Disk Cleanup Utility Documentation
+Overview
+The Disk Cleanup Utility is a Python tool that scans directories to identify large files, duplicate files, and unused temporary files. It provides safe cleanup recommendations, detailed analysis, and optional deletion functionality. This utility helps users reclaim disk space and maintain system efficiency.
+
+Features
+Large file detection: Finds files larger than a user-defined threshold (default: 100 MB).
+
+Duplicate file detection: Identifies duplicate files using size and MD5 hash comparison.
+
+Temporary file detection: Scans common temp/cache directories for unused files older than a specified age.
+
+Cleanup recommendations: Provides categorized suggestions (safe deletions, recommended deletions, manual review).
+
+Reporting: Saves analysis results to JSON for record-keeping.
+
+Dry-run deletion: Shows what would be deleted without actually removing files.
+
+Cross-platform support: Works on Windows, Linux, and macOS with platform-specific temp locations.
+
+Architecture
+The script is organized around the DiskCleanupUtility class, which encapsulates scanning, analysis, and cleanup:
+
+Initialization: Sets root path (default: user home directory).
+
+Scanning Methods:
+
+scan_large_files() → Finds large files above a threshold.
+
+scan_duplicate_files() → Detects duplicates by size or hash.
+
+scan_temporary_files() → Identifies old temp/cache files.
+
+Display Methods:
+
+display_large_files() → Shows top large files.
+
+display_duplicate_files() → Displays duplicate groups and potential savings.
+
+display_temporary_files() → Lists temp files with age and size.
+
+display_cleanup_recommendations() → Summarizes findings and provides recommendations.
+
+Reporting & Cleanup:
+
+save_report() → Saves analysis results to JSON.
+
+cleanup_confirmed() → Deletes files (or simulates deletion in dry-run mode).
+
+Usage
+Requirements
+Python 3.7+
+
+Standard libraries (os, sys, hashlib, json, pathlib, datetime)
+
+Run the Script:-
+python disk_cleanup_utility.py
+Interactive Options
+When executed, the script prompts:
+
+Code
+Disk Cleanup Utility - Choose option:
+1. Full disk analysis
+2. Scan for large files only
+3. Scan for duplicates only
+4. Scan for temporary files only
+5. View cleanup recommendations
+6. Exit
+Example Output (Cleanup Recommendations)
+Code
+====================================================================================================
+                                CLEANUP RECOMMENDATIONS
+====================================================================================================
+
+DISK SPACE ANALYSIS:
+  Large files (>100MB): 12.5 GB
+  Duplicate files: 4.2 GB
+  Temporary files: 3.8 GB
+  Total potential savings: 8.0 GB
+
+RECOMMENDATIONS:
+
+1. 🔵 DELETE TEMPORARY FILES (Safe)
+   Potential savings: 3.8 GB
+   Files: 120
+   Risk: Very Low - These are cache/temp files
+   Action: Safe to delete immediately
+
+2. 🟡 DELETE DUPLICATE FILES (Recommended)
+   Potential savings: 4.2 GB
+   Duplicate groups: 15
+   Risk: Medium - Keep one copy of each file
+   Action: Review before deleting
+
+3. 🟠 REVIEW LARGE FILES (Manual Review)
+   Files larger than 100MB: 30
+   Risk: High - These may be important
+   Action: Manually review and delete if unnecessary
+Notes
+Large files: Useful for identifying media, backups, or unused installers.
+
+Duplicate detection: Hash-based comparison ensures accuracy but may be slower.
+
+Temporary files: Safe to delete, but the utility recommends reviewing duplicates and large files manually.
+
+Dry-run mode: Prevents accidental deletion by showing what would be removed before execution.
+
+Reports: Saved in disk_cleanup_report.json for later review.
