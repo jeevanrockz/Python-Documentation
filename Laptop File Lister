@@ -1,0 +1,95 @@
+File Lister Documentation
+Overview
+The File Lister is a Python utility that scans directories or entire systems to list files along with their metadata. It provides details such as file size, type, and modification date, and can output results either to the console or in JSON format. It’s designed for system administrators, developers, and power users who need quick insights into file structures and storage usage.
+
+Features
+Recursive Directory Scanning: Traverse directories up to a specified depth.
+
+File Metadata Extraction: Collects file size, extension, and last modified timestamp.
+
+Human-readable Sizes: Converts bytes into KB, MB, GB, etc.
+
+Hidden File Handling: Optionally include or exclude hidden files.
+
+System Drive Detection: Identifies available drives (Windows/Linux).
+
+Flexible Output: Results can be displayed in console or saved as JSON.
+
+File Type Statistics: Summarizes counts and sizes by file extension.
+
+Architecture
+The script is organized around the FileLister class, which encapsulates scanning, data collection, and result display.
+
+Initialization: Configures hidden file visibility and output format.
+
+Scanning Methods:
+
+scan_directory() → Recursively scans a given path.
+
+scan_system() → Scans all drives.
+
+scan_user_directory() → Scans the user’s home directory.
+
+scan_specific_path() → Scans a user-defined path.
+
+Result Display:
+
+display_console_results() → Prints results in tabular format.
+
+save_json_results() → Saves results to file_list.json.
+
+Statistics:
+
+get_file_type_stats() → Aggregates counts and sizes by extension.
+
+display_statistics() → Prints file type summary.
+
+Usage
+Requirements
+Python 3.7+
+
+Standard libraries (os, sys, pathlib, datetime, json)
+
+Run the Script:-
+python file_lister.py
+Interactive Options
+When executed, the script prompts:
+
+Code
+File Lister - Choose scan option:
+1. Scan user directory
+2. Scan entire system
+3. Scan specific path
+4. Exit
+Option 1 → Scans the user’s home directory (default depth: 5).
+
+Option 2 → Scans the entire system (default depth: 3, outputs JSON).
+
+Option 3 → Scans a specific directory path (default depth: 5).
+
+Option 4 → Exits the program.
+
+Example Output (Console Mode)
+Code
+================================================================================
+                                   RESULTS
+================================================================================
+
+File Name                               Size            Type            Modified
+------------------------------------------------------------------------------------------
+notes.txt                               2.00 KB         .txt            2026-02-23 14:32:10
+report.pdf                              1.25 MB         .pdf            2026-02-20 09:15:45
+image.png                               3.50 MB         .png            2026-02-19 18:22:30
+
+================================================================================
+Total Files: 3
+Total Size: 4.77 MB
+================================================================================
+Notes
+Depth Control: Prevents excessive recursion in large file systems.
+
+Hidden Files: Can be toggled via show_hidden parameter.
+
+Cross-platform: Works on Windows (drive detection) and Linux/macOS (root /).
+
+JSON Output: Useful for integration with other tools or logging pipelines.
