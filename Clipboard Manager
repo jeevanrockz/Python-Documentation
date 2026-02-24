@@ -1,0 +1,96 @@
+Clipboard Manager (MySQL Version) Documentation
+Overview
+The Clipboard Manager is a Python application that continuously monitors the system clipboard, saves copied content into a MySQL database, and provides tools to search, restore, and manage clipboard history. It ensures persistence of clipboard data beyond system restarts and allows advanced querying and statistics.
+
+Features
+Clipboard monitoring: Detects new clipboard content and saves it automatically.
+
+Duplicate detection: Uses SHA256 hashing to avoid storing duplicates.
+
+History retrieval: Fetches recent clipboard entries with metadata.
+
+Search functionality: Allows keyword-based search across saved entries.
+
+Restore content: Copies a past entry back into the clipboard.
+
+Data management: Delete individual items or clear the entire history.
+
+Statistics: Provides insights like total items, total size, and most accessed entry.
+
+Database Schema
+The script automatically creates the database and table if they don’t exist.
+
+Table: clipboard_history
+
+Column	Type	Description
+id	INT (PK)	Auto-increment primary key
+content	TEXT	Clipboard content
+content_hash	VARCHAR(64)	SHA256 hash for duplicate detection
+timestamp	TIMESTAMP	Time when entry was saved
+accessed_count	INT	Number of times entry was reused
+last_accessed	TIMESTAMP	Last time entry was restored
+length	INT	Character length of content
+content_type	VARCHAR(20)	Defaults to 'text'
+Indexes:
+
+idx_timestamp → speeds up queries by time.
+
+idx_content_hash → ensures fast duplicate detection.
+
+Class: ClipboardManager
+Initialization
+python
+cm = ClipboardManager(user="root", password="your_password", database="clipboard_db")
+Connects to MySQL.
+
+Creates database and table if missing.
+
+Methods
+monitor_clipboard(interval=1)  
+Continuously checks clipboard every interval seconds and saves new content.
+
+save_to_clipboard_history(content)  
+Saves content if new; updates usage if duplicate.
+
+get_history(limit=20, offset=0)  
+Retrieves recent entries with metadata.
+
+search_history(query, limit=20)  
+Searches clipboard entries by keyword.
+
+restore_from_history(item_id)  
+Restores a saved entry back into the clipboard.
+
+delete_history_item(item_id)  
+Deletes a specific entry.
+
+clear_history()  
+Clears all clipboard entries.
+
+get_statistics()  
+Returns summary statistics (total items, size, max access count).
+
+Usage Example
+python
+if __name__ == "__main__":
+    cm = ClipboardManager(user="", password="", database="clipboard_db")
+    cm.monitor_clipboard(interval=2)
+Run the script:
+
+bash
+python clipboard_manager.py
+Copy some text, and you’ll see:
+
+Code
+[14:10:05] Saved to history: Hello World...
+Check saved entries in MySQL:
+
+sql
+USE clipboard_db;
+SELECT * FROM clipboard_history;
+Notes
+Requires MySQL server running locally or remotely.
+
+Requires Python packages: pyperclip, mysql-connector-python.
+
+On Linux, install xclip or xsel for pyperclip to work.
