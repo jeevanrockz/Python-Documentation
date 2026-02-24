@@ -1,0 +1,115 @@
+Process Resource Tracker Documentation
+Overview
+The Process Resource Tracker is a Python utility that continuously monitors CPU and memory usage of specific processes. It alerts users when thresholds are exceeded, logs resource usage data, and provides system-wide overviews. This tool is useful for developers, system administrators, and power users who want to track resource-heavy applications and optimize system performance.
+
+Features
+Process monitoring: Track CPU and memory usage of selected processes in real time.
+
+Threshold alerts: Generate alerts when CPU or memory usage exceeds defined limits.
+
+Sound notifications: Optional audible alerts when thresholds are breached.
+
+Logging: Save resource usage data to CSV and alerts to JSON for historical analysis.
+
+System overview: Display CPU, memory, and disk usage for the entire system.
+
+Process listing: Show all running processes sorted by CPU usage.
+
+Configuration management: View current monitoring setup including thresholds.
+
+Monitoring summary: Save a summary report after monitoring ends.
+
+Architecture
+The script is organized around the ProcessResourceTracker class, which encapsulates monitoring, alerting, and reporting:
+
+Initialization: Sets up log files and monitored process dictionary.
+
+Process Management:
+
+find_processes_by_name() → Finds processes by name.
+
+add_process_to_monitor() → Adds processes to monitoring with thresholds.
+
+Resource Tracking:
+
+get_process_resources() → Retrieves CPU and memory usage for a process.
+
+check_thresholds() → Compares usage against thresholds and generates alerts.
+
+Alerts & Notifications:
+
+sound_alert() → Produces audible alerts.
+
+log_alert() → Saves alerts to JSON.
+
+Logging:
+
+log_resource_data() → Logs usage data to CSV.
+
+save_summary() → Saves monitoring summary to JSON.
+
+Display Methods:
+
+display_process_details() → Shows detailed resource usage with visual bars.
+
+display_system_overview() → Displays system-wide CPU, memory, and disk usage.
+
+show_all_processes() → Lists all running processes.
+
+show_configuration() → Displays monitoring configuration.
+
+Continuous Monitoring:
+
+start_monitoring() → Runs monitoring loop with periodic updates.
+
+Usage
+Requirements
+Python 3.7+
+
+Library: psutil
+
+Run the Script:-
+python process_resource_tracker.py
+Interactive Options
+When executed, the script prompts:
+
+Code
+Process Resource Tracker - Setup and Monitor
+
+Main Menu:
+1. Add process to monitor
+2. View all running processes
+3. View current configuration
+4. Start monitoring
+5. System overview
+6. Exit
+Example Output (Monitoring)
+Code
+====================================================================================================
+                                   PROCESS RESOURCE TRACKER
+====================================================================================================
+Monitoring 1 process(es)
+====================================================================================================
+
+[2026-02-24 11:45:00] Monitoring active...
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Process: chrome.exe (PID: 4521)
+  CPU: ███████░░░░░░░░░░░░  35.2% (threshold: 80%) ✓ OK
+  Memory: ██████░░░░░░░░░░░░  28.5% (512.3 MB) (threshold: 80%) ✓ OK
+  Status: running
+  Last Updated: 2026-02-24 11:45:00
+Notes
+Thresholds: Default CPU and memory thresholds are 80%.
+
+Alerts: Alerts are logged once per minute per process to avoid spamming.
+
+Cross-platform: Works on Windows, Linux, and macOS.
+
+Logs:
+
+Resource usage → process_logs.csv
+
+Alerts → process_alerts.json
+
+Monitoring summary → monitoring_summary.json
