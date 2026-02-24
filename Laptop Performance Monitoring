@@ -1,0 +1,86 @@
+Real-time Laptop Performance Monitor Documentation
+Overview
+This Python script provides a real-time dashboard for monitoring system performance. It displays key metrics such as CPU usage, memory consumption, disk utilization, network I/O, and top processes. The tool is designed for developers, system administrators, and power users who want quick visibility into their laptop’s health without installing heavy monitoring software.
+
+Features
+CPU Monitoring: Tracks usage percentage, core count, and frequency.
+
+Memory Monitoring: Shows RAM usage, available memory, and swap statistics.
+
+Disk Usage: Reports usage per partition, including free and used space.
+
+Network I/O: Displays bytes sent/received, packets, and error counts.
+
+Process Monitoring: Lists top 5 processes by CPU usage with memory footprint.
+
+System Info: Provides hostname, boot time, and uptime.
+
+Interactive Dashboard: Refreshes every few seconds with a clean console view.
+
+Architecture
+The script is built around the PerformanceMonitor class, which organizes functionality into modular methods:
+
+Initialization: Sets refresh interval and start time.
+
+Data Collection: Uses psutil to gather CPU, memory, disk, network, and process info.
+
+Display: Clears the console and prints a formatted dashboard.
+
+Loop: Continuously updates the dashboard until interrupted.
+
+Key Methods
+Method	Purpose
+get_cpu_info	Returns CPU usage %, core count, and frequency.
+get_memory_info	Provides RAM and swap usage details.
+get_disk_info	Reports disk usage for all partitions.
+get_network_info	Displays network traffic and errors.
+get_process_info	Lists top N processes by CPU usage.
+get_system_info	Shows hostname, boot time, and uptime.
+display_dashboard	Prints all collected data in a formatted dashboard.
+start	Runs the monitoring loop until interrupted.
+Usage
+Requirements
+Python 3.7+
+
+psutil library (pip install psutil)
+
+Run the Script
+bash
+python performance_monitor.py
+Output Example
+Code
+================================================================================
+                          SYSTEM PERFORMANCE MONITOR
+================================================================================
+Time: 2026-02-24 10:15:00 | Hostname: MyLaptop | Uptime: 5.2 hours
+================================================================================
+
+CPU USAGE.................................   12.5%
+Cores.....................................   8
+Frequency................................ 2400 MHz
+
+MEMORY USAGE..............................   45.3%
+Used / Total.............................. 7.25 / 16.00 GB
+Available................................. 8.75 GB
+Swap Usage................................    0.0%
+Swap (Used/Total)......................... 0.00 / 2.00 GB
+
+DISK USAGE:
+  C:\.....................................   65.2% (325.0/500.0 GB)
+
+NETWORK I/O:
+  Bytes Sent.............................. 0.25 GB
+  Bytes Received.......................... 1.75 GB
+  Errors (In/Out)......................... 0 / 0
+
+TOP 5 PROCESSES (by CPU):
+  PID      Name                      CPU%     Memory%
+  --------------------------------------------------
+  1234     chrome.exe                15.2     5.3
+  5678     python.exe                12.1     2.1
+Notes
+Press Ctrl+C to stop monitoring.
+
+Refresh interval can be adjusted in main() (default: 2 seconds).
+
+Works cross-platform (Windows, macOS, Linux).
