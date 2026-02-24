@@ -1,0 +1,83 @@
+Enhanced App Scanner Documentation
+Overview
+The Enhanced App Scanner is a Python utility that scans installed applications on a system and flags potentially harmful, suspicious, or unnecessary (bloatware) software. It supports Windows, Linux, and macOS, uses a dynamic threat database, and provides results in both rich console output and exportable reports.
+
+Features
+Cross-platform scanning: Works on Windows (registry + Program Files), Linux (dpkg), and macOS (brew).
+
+Dynamic threat database: Loads harmful app definitions from an external JSON file for easy updates.
+
+Hash verification: Computes SHA256 hashes of executables for deeper inspection.
+
+Parallel scanning: Uses multithreading to speed up directory and registry scans.
+
+Rich console output: Displays results in colorful tables using the rich library.
+
+Export formats: Saves reports in JSON and CSV for sharing or integration.
+
+Risk categorization: Flags apps as Critical, High, Medium, or Low risk with descriptions.
+
+Architecture
+The script is organized around the AppScanner class, which encapsulates scanning, detection, and reporting:
+
+Initialization: Loads the threat database from JSON.
+
+App Collection:
+
+get_windows_apps() → Reads installed apps from registry.
+
+get_program_files_apps() → Scans Program Files directories.
+
+get_linux_apps() → Lists packages via dpkg.
+
+get_macos_apps() → Lists apps via brew.
+
+Detection:
+
+check_app_safety() → Compares app names against harmful database.
+
+get_file_hash() → Computes SHA256 hashes for executables.
+
+Reporting:
+
+display_results_rich() → Shows results in a rich table.
+
+save_csv_report() → Exports results to CSV.
+
+save_report() → Exports results to JSON.
+
+Usage
+Requirements
+Python 3.7+
+
+Libraries: rich, hashlib, csv, json
+
+On Linux/macOS: dpkg or brew installed for package listing
+
+Run the Script:-
+python app_scanner.py
+
+Example Output (Console Mode)
+Code
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                   Application Scan Results                           ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Name                 │ Version       │ Risk                          │
+│──────────────────────│───────────────│───────────────────────────────│
+│ Chrome               │ 123.0.0       │ Safe                          │
+│ Babylon Toolbar      │ Unknown       │ HIGH                          │
+│ Conficker Worm       │ Unknown       │ CRITICAL                      │
+└───────────────────────────────────────────────────────────────────────┘
+Export Reports
+JSON: app_scan_report.json
+
+CSV: app_scan_report.csv
+
+Notes
+Detection is name-based: Apps are flagged if their names match entries in the threat database.
+
+Database updates: Keep the JSON file current to improve detection accuracy.
+
+Hash verification: Can be extended to compare against known malware signature lists.
+
+Cross-platform limitations: Registry scanning works only on Windows; Linux/macOS rely on package managers.
