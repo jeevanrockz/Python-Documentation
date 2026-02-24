@@ -1,0 +1,109 @@
+Battery Health Monitor Documentation
+Overview
+The Battery Health Monitor is a Python utility that tracks a laptop’s battery percentage, charging status, estimated health, and charge cycles. It provides real-time monitoring, historical logging, and health estimation based on usage patterns. The tool is especially useful for users who want to understand battery performance over time and anticipate when a replacement may be needed.
+
+Features
+Real-time monitoring: Displays current battery percentage, charging status, and estimated time left.
+
+Health estimation: Calculates battery health based on charge cycles and usage history.
+
+Historical logging: Logs battery data into CSV and JSON files for long-term tracking.
+
+Dashboard view: Provides a full overview with battery bar visualization, health status, and statistics.
+
+Continuous monitoring: Runs in the background, updating logs at user-defined intervals.
+
+Battery history: Displays the last N logged entries for quick review.
+
+Windows battery report: Generates a detailed HTML report using powercfg.
+
+Architecture
+The script is organized around the BatteryHealthMonitor class, which encapsulates monitoring, logging, and reporting:
+
+Initialization: Loads historical data from CSV and sets up JSON/CSV files.
+
+Data Collection:
+
+get_battery_info() → Reads current battery status via psutil.
+
+get_battery_report() → Uses WMI and powercfg for detailed Windows reports.
+
+Health Estimation:
+
+calculate_battery_health() → Estimates health based on charge cycles and usage patterns.
+
+Logging & Saving:
+
+log_battery_data() → Appends battery data to CSV.
+
+save_metrics() → Saves metrics and health estimate to JSON.
+
+Display Methods:
+
+display_current_status() → Shows current battery info.
+
+display_health_estimate() → Prints health summary.
+
+display_dashboard() → Full dashboard with visualization and statistics.
+
+show_history() → Displays last N log entries.
+
+Continuous Monitoring:
+
+start_continuous_monitoring() → Runs monitoring loop at set intervals.
+
+Usage
+Requirements
+Python 3.7+
+
+Libraries: psutil, wmi (Windows only), csv, json
+
+Run the Script:-
+python battery_health_monitor.py
+Interactive Options
+When executed, the script prompts:
+
+Code
+Battery Health Monitor - Choose option:
+1. Current battery status
+2. Battery health estimate
+3. Full dashboard view
+4. Start continuous monitoring
+5. Battery history
+6. Generate Windows battery report
+7. Exit
+Example Output (Dashboard)
+Code
+================================================================================
+                           BATTERY HEALTH MONITOR
+================================================================================
+
+CURRENT STATUS:
+  Timestamp: 2026-02-24 11:30:00
+  Battery Level: 78.0% [██████████████░░░░░░]
+  AC Power: On Battery
+  Time Left: 2h 15m
+
+HEALTH ESTIMATE:
+  Estimated Health: 82.5%
+  Status: Excellent
+  Estimated Cycles: ~120
+  Recommendation: Battery is in good condition
+
+STATISTICS (from logged data):
+  Average Battery: 65.4%
+  Max Battery: 100.0%
+  Min Battery: 20.0%
+  Log Entries: 250
+
+================================================================================
+Notes
+Works best on Windows, where psutil and wmi provide detailed battery info.
+
+Health estimation is approximate and based on charge cycle patterns, not manufacturer data.
+
+Continuous monitoring can be configured with custom intervals (default: 300 seconds).
+
+Logs are stored in battery_logs.csv and metrics in battery_data.json.
+
+Windows users can generate a detailed HTML report (battery_report.html) for deeper insights.
