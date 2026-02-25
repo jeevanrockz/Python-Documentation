@@ -1,0 +1,103 @@
+Flask Inventory Management Dashboard (MySQL)
+Overview
+This web application helps manage product inventory for a small business. It allows users to add and delete products, stores data in a MySQL database, and displays interactive charts using Chart.js. 
+The dashboard provides insights into product categories, stock levels, and sales trends.
+
+Features
+Add new products with name, category, stock, sales, and date.
+
+Delete products by ID.
+
+Store product data in MySQL.
+
+Display:
+
+Pie chart for product category distribution.
+
+Bar chart for stock levels.
+
+Line chart for sales trends over time.
+
+Project Structure
+Code
+InventoryDashboard/
+│
+├── app.py                # Main Flask application
+└── templates/
+    └── dashboard.html    # HTML template with Chart.js charts
+Database Setup
+Create MySQL database:
+
+sql
+CREATE DATABASE inventory_db;
+USE inventory_db;
+Create products table:
+
+sql
+CREATE TABLE products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    category VARCHAR(255) NOT NULL,
+    stock INT NOT NULL,
+    sales INT NOT NULL,
+    date DATE NOT NULL
+);
+Flask Configuration
+Update db_config in app.py with your MySQL credentials:
+
+python
+db_config = {
+    "host": "localhost",
+    "user": "root",
+    "password": "your_password",
+    "database": "inventory_db"
+}
+Usage
+Run the Flask app:
+
+bash
+python app.py
+Open your browser at http://127.0.0.1:5000/.
+
+Use the form to add products.
+
+View charts:
+
+Pie chart → Product distribution by category.
+
+Bar chart → Stock levels for each product.
+
+Line chart → Sales trend over time.
+
+Delete products by visiting /delete/<product_id>.
+
+Sample Data Entry
+Use the form to enter:
+
+Name: "HP Laptop"
+
+Category: "Electronics"
+
+Stock: 50
+
+Sales: 20
+
+Date: "2026-02-25"
+
+Limitations
+No authentication — all users share the same dashboard.
+
+No edit/update functionality (only add and delete).
+
+Sales data is manually entered, not auto-calculated.
+
+Future Enhancements
+Add user authentication for private dashboards.
+
+Enable product editing via web form.
+
+Add filters by category, date range, or stock level.
+
+Integrate CSV upload for bulk product entry.
+
+Add alerts for low stock items.
