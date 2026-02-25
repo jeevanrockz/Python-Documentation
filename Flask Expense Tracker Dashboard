@@ -1,0 +1,90 @@
+Flask Expense Tracker Dashboard (MySQL)
+Overview
+The Flask Expense Tracker Dashboard is a web application that helps users manage and visualize their expenses. It allows uploading expense data via CSV, stores it in a MySQL database, and displays interactive charts using Chart.js. The dashboard provides insights into spending patterns by category and over time.
+
+Features
+Upload CSV files containing expenses.
+
+Store expense data in a MySQL database.
+
+Display a pie chart showing expenses by category.
+
+Display a line chart showing spending trends over dates.
+
+Simple and responsive web interface.
+
+Project Structure
+Code
+ExpenseTracker/
+│
+├── app.py                # Main Flask application
+└── templates/
+    └── dashboard.html    # HTML template with Chart.js charts
+Workflow
+CSV Upload: User uploads a CSV file with columns Category, Amount, Date.
+
+Database Storage: Flask inserts the data into the MySQL expenses table.
+
+Data Query: Flask queries aggregated data (sum by category, sum by date).
+
+Template Rendering: Data is passed to the Jinja2 template.
+
+Visualization: Chart.js renders a pie chart and line chart in the browser.
+
+Setup Instructions
+Install dependencies:
+
+bash
+pip install flask mysql-connector-python
+Create MySQL database and table:
+
+sql
+CREATE DATABASE expenses_db;
+USE expenses_db;
+
+CREATE TABLE expenses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    category VARCHAR(255),
+    amount FLOAT,
+    date DATE
+);
+Update credentials in app.py:
+
+python
+db_config = {
+    "host": "localhost",
+    "user": "root",          # your MySQL username
+    "password": "password",  # your MySQL password
+    "database": "expenses_db"
+}
+Run the app:
+
+bash
+python app.py
+Open browser at http://127.0.0.1:5000/.
+
+Upload CSV and view charts.
+
+Sample CSV Format
+csv
+Category,Amount,Date
+Food,250.50,2026-01-05
+Transport,120.00,2026-01-06
+Entertainment,300.00,2026-01-07
+Rent,1500.00,2026-01-01
+Utilities,200.00,2026-01-02
+Limitations
+Requires manual creation of the MySQL table.
+
+Only supports CSV uploads with the exact format (Category, Amount, Date).
+
+No user authentication — all data is shared in one dashboard.
+
+Future Enhancements
+Add user authentication so each user has a private dashboard.
+
+Allow manual entry of expenses via a web form.
+
+Add filters (by month, category).
+
+Show total savings vs. expenses.
