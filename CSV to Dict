@@ -1,0 +1,97 @@
+CSV to Dictionary Script
+Overview
+This Python script reads data from a CSV file and stores it in a dictionary. Each column header in the CSV becomes a key, and the values under that column are stored as a list. This structure makes it easy to perform data analysis and transformations later.
+
+Features
+Reads any CSV file with headers.
+
+Automatically maps each header to a list of values.
+
+Handles multiple rows and columns efficiently.
+
+Uses only Python’s built-in csv module (no external libraries like pandas).
+
+Code Explanation
+Importing the CSV module
+
+python
+import csv
+The built-in csv module is used to parse CSV files.
+
+Function Definition
+
+python
+def read_csv_to_dict(filename):
+    data_dict = {}
+    with open(filename, mode='r', newline='', encoding='utf-8') as file:
+        reader = csv.reader(file)
+        headers = next(reader)  # First row is header
+Opens the file in read mode.
+
+Reads the first row as headers.
+
+Initializes an empty dictionary.
+
+Initialize Dictionary Keys
+
+python
+        for header in headers:
+            data_dict[header] = []
+Each header becomes a dictionary key with an empty list.
+
+Populate Dictionary with Values
+
+python
+        for row in reader:
+            for i, value in enumerate(row):
+                data_dict[headers[i]].append(value)
+Iterates through each row and appends values to the corresponding header list.
+
+Return Dictionary
+
+python
+    return data_dict
+Example Usage
+
+python
+if __name__ == "__main__":
+    filename = r"C:\Users\jeeva\OneDrive\Desktop\Emissions.csv"
+    result = read_csv_to_dict(filename)
+    print("Dictionary created from CSV:\n")
+    for key, values in result.items():
+        print(f"{key}: {values}")
+Defines the file path.
+
+Calls the function.
+
+Prints the dictionary in a readable format.
+
+Example Output
+If the CSV file contains:
+
+Code
+Name,Age,Department
+Alice,30,HR
+Bob,25,IT
+Charlie,28,Finance
+The script produces:
+
+python
+{
+  "Name": ["Alice", "Bob", "Charlie"],
+  "Age": ["30", "25", "28"],
+  "Department": ["HR", "IT", "Finance"]
+}
+Limitations
+All values are stored as strings. Numeric values must be converted to int or float for analysis.
+
+Assumes the first row contains headers.
+
+Next Steps
+You can extend this script to:
+
+Convert values to floats.
+
+Filter rows based on conditions.
+
+Export dictionary back to CSV.
