@@ -1,0 +1,66 @@
+📄 Documentation: Flask Local File Dashboard
+Overview
+The Flask Local File Dashboard is a web application that scans a folder on your computer, categorizes files by type (images, documents, spreadsheets, audio, videos, others), and displays the distribution using a pie chart powered by Chart.js. This project demonstrates how Flask can be used to interact with the local file system and present data visually in a browser.
+
+Features
+Scans a specified folder on your laptop.
+
+Categorizes files into predefined types.
+
+Counts the number of files in each category.
+
+Displays results in a responsive pie chart.
+
+Provides a quick overview of your local file distribution.
+
+Project Structure
+Code
+FlaskFileDashboard/
+│
+├── app.py                # Main Flask application
+└── templates/
+    └── dashboard.html    # HTML template with Chart.js pie chart
+Workflow
+File scanning: The app walks through the specified folder (SCAN_FOLDER) and collects all file names.
+
+Categorization: Each file is matched against known extensions (e.g., .jpg, .pdf, .mp3). If no match is found, it is placed in the “Others” category.
+
+Counting: The number of files in each category is calculated.
+
+Template rendering: Clean lists of categories and counts are passed to the Jinja2 template.
+
+Visualization: Chart.js renders a pie chart showing the distribution of files.
+
+Usage
+Update the SCAN_FOLDER variable in app.py to the folder you want to analyze.
+
+Run the application:
+
+bash
+python app.py
+Open your browser at http://127.0.0.1:5000/.
+
+View the pie chart showing file distribution.
+
+Customization
+Change folder: Modify SCAN_FOLDER in app.py to scan a different directory.
+
+Add file types: Extend the FILE_TYPES dictionary to include more categories.
+
+Adjust chart size: In dashboard.html, set <canvas id="pieChart" width="400" height="400"> or use CSS to control chart dimensions.
+
+Limitations
+Only scans one folder at a time.
+
+Does not display actual file names, only counts.
+
+Large folders may take longer to process.
+
+Future Enhancements
+Add drill-down functionality to show actual file names when clicking on a pie slice.
+
+Allow users to select folders dynamically via the web interface.
+
+Integrate file size analysis to show storage usage per category.
+
+Add multiple chart types (bar chart, doughnut chart) for comparison.
