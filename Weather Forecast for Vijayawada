@@ -1,0 +1,68 @@
+📄 Documentation: Flask Weather Dashboard
+Overview
+The Flask Weather Dashboard is a web application that fetches live weather forecast data from the OpenWeatherMap API and displays it in a browser. It uses Flask for backend logic, Jinja2 for templating, and Chart.js for visualization. The app shows temperature trends for the next several hours in a line chart.
+
+Features
+Fetches real-time weather forecast data from OpenWeatherMap.
+
+Extracts temperature and time slots for the next 24 hours.
+
+Displays the data in a responsive line chart.
+
+Provides a quick visual overview of temperature changes throughout the day.
+
+Project Structure
+Code
+WeatherDashboard/
+│
+├── app.py                # Main Flask application
+└── templates/
+    └── dashboard.html    # HTML template with Chart.js line chart
+Workflow
+API request: Flask sends a request to the OpenWeatherMap forecast endpoint.
+
+Data extraction: The JSON response is parsed to get temperature values and timestamps.
+
+Error handling: If the API key is invalid or the city is not found, the app shows an error message instead of crashing.
+
+Template rendering: Clean lists of temperatures and times are passed to the Jinja2 template.
+
+Visualization: Chart.js renders a line chart showing temperature trends.
+
+Usage
+Get a free API key from OpenWeatherMap signup page.
+
+Replace "your_openweathermap_api_key" in app.py with your actual key.
+
+Update the CITY variable to the location you want to track.
+
+Run the application:
+
+bash
+python app.py
+Open your browser at http://127.0.0.1:5000/.
+
+View the line chart showing temperature trends for the next several hours.
+
+Customization
+Change city: Modify the CITY variable in app.py.
+
+Adjust forecast range: Change the slice [:8] to include more or fewer time slots.
+
+Style chart: Update Chart.js options for colors, labels, or chart type.
+
+Limitations
+Requires a valid OpenWeatherMap API key.
+
+Free API plan has request limits.
+
+Only shows forecast data, not historical weather.
+
+Future Enhancements
+Add multiple cities for comparison.
+
+Show additional weather metrics (humidity, wind speed).
+
+Add dropdowns for user-selected cities.
+
+Integrate geolocation to auto-detect the user’s location.
