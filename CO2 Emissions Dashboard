@@ -1,0 +1,56 @@
+Flask CO₂ Emissions Dashboard
+Overview
+The Flask CO₂ Emissions Dashboard is a lightweight web application that visualizes emission data from a CSV file. It leverages Flask for backend processing, Jinja2 for templating, and Chart.js for rendering interactive charts. The project demonstrates how to transform raw tabular data into meaningful visual insights.
+
+Features
+Reads emission data from a CSV file.
+
+Displays a bar chart of emissions by country for a selected year.
+
+Handles missing or invalid values gracefully.
+
+Provides responsive and interactive visualization with labeled axes and titles.
+
+Project Structure
+Code
+FlaskDashboard/
+│
+├── app.py                # Main Flask application
+├── Emissions.csv         # Dataset file (example input)
+└── templates/
+    └── dashboard.html    # HTML template with Chart.js integration
+Workflow
+Data ingestion: The app reads the CSV file using Python’s csv.DictReader.
+
+Preprocessing: Missing values are replaced with safe defaults ("" for countries, 0 for emissions).
+
+Template rendering: Clean lists of countries and emissions are passed to the Jinja2 template.
+
+Visualization: Chart.js renders the data as a bar chart in the browser.
+
+Usage
+Place your dataset (Emissions.csv) in the project folder.
+
+Run the application:
+
+bash
+python app.py
+Open your browser at http://127.0.0.1:5000/.
+
+Interact with the dashboard to view emissions data.
+
+Limitations
+Currently visualizes only one year (1997).
+
+No filtering or dynamic year selection.
+
+Data is static and requires CSV updates for new values.
+
+Future Enhancements
+Add multiple years as datasets for comparison.
+
+Implement file upload to allow users to load their own CSVs.
+
+Integrate a database (SQLite/MySQL) for persistent storage.
+
+Add filters and dropdowns for interactive exploration.
