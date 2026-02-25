@@ -1,0 +1,81 @@
+Flask Task Manager Application
+Overview
+The Flask Task Manager is a simple to-do list web application built using Flask and Python. It allows users to add, mark as complete, and delete tasks. Tasks are stored in memory for demonstration purposes, making this project ideal for learning Flask fundamentals.
+
+Features
+Add tasks via a web form.
+
+Mark tasks as complete with a single click.
+
+Delete tasks when no longer needed.
+
+Dynamic web interface using Flask templates and Jinja2.
+
+Project Structure
+Code
+FlaskTaskManager/
+│
+├── app.py                # Main Flask application
+└── templates/
+    └── index.html        # HTML template for UI
+Code Explanation
+app.py
+Imports:
+
+python
+from flask import Flask, render_template, request, redirect, url_for
+Provides Flask framework and utilities for rendering templates and handling requests.
+
+App Initialization:
+
+python
+app = Flask(__name__)
+tasks = []
+Creates the Flask app and initializes an empty list for storing tasks.
+
+Routes:
+
+/ → Displays all tasks.
+
+/add → Handles adding new tasks via POST form submission.
+
+/complete/<task_id> → Marks a task as completed.
+
+/delete/<task_id> → Deletes a task.
+
+Run Server:
+
+python
+if __name__ == "__main__":
+    app.run(debug=True)
+Starts the Flask development server.
+
+index.html
+Displays tasks dynamically using Jinja2 templating.
+
+Uses loop.index0 to track task IDs for completion and deletion.
+
+Applies a CSS class (done) to completed tasks for visual distinction.
+
+Example Usage
+Start the app:
+
+bash
+python app.py
+Open browser at http://127.0.0.1:5000/.
+
+Add tasks, mark them complete, and delete them interactively.
+
+Limitations
+Tasks are stored in memory; they disappear when the server restarts.
+
+No user authentication or persistence.
+
+Next Steps
+You can extend the app by:
+
+Adding a SQLite database for persistent storage.
+
+Implementing user login for personalized task lists.
+
+Adding due dates and reminders with email notifications.
