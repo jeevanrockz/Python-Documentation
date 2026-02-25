@@ -1,0 +1,90 @@
+Flask Real‑Time Chat Application
+Overview
+A web‑based chat platform built with Flask, Flask‑SocketIO, and MySQL. It allows users to register, log in, and exchange messages in real time. Messages are broadcast instantly to all connected clients and stored in the database for persistence.
+
+🔑 Features
+User registration with hashed passwords.
+
+Login/logout with session management.
+
+Real‑time messaging using WebSockets.
+
+Message persistence in MySQL.
+
+Broadcasting so all connected users see messages instantly.
+
+Scalable architecture for multiple rooms (future extension).
+
+🧱 Database Schema
+sql
+CREATE DATABASE chat_app;
+USE chat_app;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE messages (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    room VARCHAR(255),
+    user_id INT,
+    content TEXT,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+⚙️ Project Structure
+Code
+ChatApp/
+├── app.py
+└── templates/
+    ├── login.html
+    ├── register.html
+    └── chat.html
+🔎 Workflow
+Register (/register) → User creates an account.
+
+Login (/login) → User authenticates.
+
+Chat (/chat) → User joins the chat room.
+
+Send message → Client emits "message" event.
+
+Server receives → Flask‑SocketIO handles event, saves to DB, broadcasts to all clients.
+
+All clients update → Messages appear instantly in the chat window.
+
+📝 Key Code Highlights
+Broadcasting messages:
+
+python
+send({"user": session.get("username", "Anonymous"), "msg": msg}, broadcast=True)
+Client event handling:
+
+js
+socket.emit("message", msg);
+socket.on("message", function(data){
+    // Update chat window
+});
+Session management ensures only logged‑in users can access /chat.
+
+🚀 Future Enhancements
+Multiple chat rooms (e.g., /chat/general, /chat/tech).
+
+Private messaging between users.
+
+Admin moderation tools (delete messages, ban users).
+
+User presence tracking (who’s online).
+
+Notifications for new messages.
+
+✅ Final Outcome
+Users can register/login.
+
+They join a chat room and send messages in real time.
+
+Messages are broadcast instantly to all connected users.
+
+Messages are stored in MySQL for persistence.
