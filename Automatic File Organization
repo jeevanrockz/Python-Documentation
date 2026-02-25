@@ -1,0 +1,118 @@
+Automatic File Organizer Documentation
+Overview
+The Automatic File Organizer is a Python script that organizes files in a user's Downloads folder (or a custom directory) into subdirectories based on file type. It helps keep the Downloads folder tidy by categorizing files such as documents, images, videos, audio, archives, executables, code, and data.
+
+The script supports:
+
+Automatic detection of file categories by extension.
+
+Creation of category folders if they don’t already exist.
+
+Moving files into their respective folders.
+
+Handling duplicate filenames by renaming them.
+
+A dry-run mode to preview changes without modifying files.
+
+Logging of all operations for transparency.
+
+Features
+✅ Categorizes files by extension into predefined folders.
+
+✅ Skips hidden files and system directories.
+
+✅ Avoids re-organizing files already in the correct folder.
+
+✅ Handles duplicate filenames gracefully (file_1.pdf, file_2.pdf, etc.).
+
+✅ Provides detailed logs (file_organizer.log).
+
+✅ Supports custom target directories.
+
+✅ Safe dry-run mode for testing.
+
+File Categories
+Files are organized into these categories:
+
+Category	Extensions
+Documents	.pdf, .docx, .doc, .txt, .xlsx, .xls, .pptx, .ppt, .odt
+Images	.jpg, .jpeg, .png, .gif, .bmp, .svg, .ico, .tiff, .webp
+Videos	.mp4, .mkv, .avi, .mov, .wmv, .flv, .webm, .m4v
+Audio	.mp3, .wav, .flac, .aac, .wma, .ogg, .m4a, .opus
+Archives	.zip, .rar, .7z, .tar, .gz, .bz2, .iso
+Executables	.exe, .msi, .bat, .cmd, .com, .scr
+Code	.py, .js, .java, .cpp, .c, .h, .html, .css, .json, .xml, .sql, .sh
+Data	.csv, .json, .xml, .sql, .db, .sqlite
+Other	Any file type not listed above
+How It Works
+Identify Downloads Folder
+
+By default, it uses the current user’s ~/Downloads directory.
+
+A custom path can be specified via command-line arguments.
+
+Create Category Folders
+
+Ensures that subfolders for each category exist before organizing.
+
+Scan Files
+
+Iterates through files in the target folder.
+
+Skips hidden files and directories.
+
+Determine Category
+
+Matches file extension against predefined categories.
+
+Defaults to Other if no match is found.
+
+Move Files
+
+Moves files into their category folder.
+
+Renames files if duplicates exist.
+
+Logging
+
+Records all actions in file_organizer.log.
+
+Logs moved, skipped, and renamed files.
+
+Usage
+Command-Line Arguments
+--dry-run  
+Preview actions without moving files.
+
+--path <directory>  
+Specify a custom directory instead of the default Downloads folder.
+
+Examples
+# Organize files in the default Downloads folder
+python file_organizer.py
+
+# Preview organization without moving files
+python file_organizer.py --dry-run
+
+# Organize files in a custom folder
+python file_organizer.py --path "/Users/username/Desktop/TestFolder"
+Logging
+Logs are written to both console and file_organizer.log.
+
+Example log entries:
+
+Code
+2026-02-25 09:00:00 - INFO - Ensured folder exists: /Users/username/Downloads/Documents
+2026-02-25 09:00:01 - INFO - Moved: report.pdf -> Documents/report.pdf
+2026-02-25 09:00:02 - WARNING - File renamed to avoid conflict: photo.jpg -> photo_1.jpg
+Error Handling
+If the target folder does not exist, an error is logged.
+
+Files that cannot be moved (due to permission issues or other errors) are skipped and logged.
+
+Extending the Script
+Add new categories by updating the FILE_CATEGORIES dictionary.
+
+Customize logging format or output location.
+
+Integrate with task schedulers (e.g., cron jobs, Windows Task Scheduler) for automation.
