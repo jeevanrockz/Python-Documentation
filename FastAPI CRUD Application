@@ -1,0 +1,99 @@
+📖 FastAPI CRUD Application Documentation
+
+Overview
+This application is a CRUD API built with FastAPI, SQLAlchemy, and Pydantic.
+It allows you to Create, Read, Update, and Delete items in a database. The app also provides auto‑generated documentation via Swagger UI (/docs) and ReDoc (/redoc).
+
+Requirements
+Install dependencies:
+pip install fastapi uvicorn sqlalchemy pydantic
+
+Project Structure
+Code
+fastapi-crud/
+│
+├── main.py
+├── app/
+│   ├── database.py
+│   ├── models.py
+│   ├── schemas.py
+│   └── routes.py
+Endpoints
+Operation	Method	Path	Description
+Create Item	POST	/items/	Add a new item with name and price.
+Read Item	GET	/items/{item_id}	Retrieve an item by its ID.
+Update Item	PUT	/items/{item_id}	Modify an existing item’s name and price.
+Delete Item	DELETE	/items/{item_id}	Remove an item from the database.
+Homepage	GET	/	Displays all items in a styled HTML table.
+Request & Response Examples
+Create Item
+POST /items/
+
+json
+{
+  "name": "Laptop",
+  "price": 75000
+}
+Response:
+
+json
+{
+  "id": 1,
+  "name": "Laptop",
+  "price": 75000
+}
+Read Item
+GET /items/1
+
+json
+{
+  "id": 1,
+  "name": "Laptop",
+  "price": 75000
+}
+Update Item
+PUT /items/1
+
+json
+{
+  "name": "Gaming Laptop",
+  "price": 90000
+}
+Response:
+
+json
+{
+  "id": 1,
+  "name": "Gaming Laptop",
+  "price": 90000
+}
+Delete Item
+DELETE /items/1
+
+json
+{
+  "message": "Item deleted successfully"
+}
+Homepage
+GET /  
+Displays all items in a styled HTML table:
+
+html
+<html>
+  <body>
+    <h1>Items in Database</h1>
+    <table>
+      <tr><th>ID</th><th>Name</th><th>Price</th></tr>
+      <tr><td>1</td><td>Laptop</td><td>75000</td></tr>
+      <tr><td>2</td><td>Phone</td><td>30000</td></tr>
+    </table>
+  </body>
+</html>
+Benefits
+Provides a foundation for real applications (inventory, user management, product catalogs).
+
+Reusable structure: Extendable to multiple models (users, orders, categories).
+
+Integration ready: Can be consumed by frontend apps (React, Angular, mobile).
+
+Production‑ready: Deployable to cloud servers with minimal changes.
