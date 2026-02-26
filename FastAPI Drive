@@ -1,0 +1,174 @@
+📘 FastAPI Drive Project Documentation
+1. Overview
+FastAPI Drive is a file storage application built with FastAPI, SQLAlchemy, and MySQL. It allows users to:
+
+Register accounts
+
+Authenticate with JWT tokens
+
+Upload files
+
+Store metadata in a database
+
+Download and list files
+
+Serve uploaded files statically
+
+Render templates with Jinja2
+
+2. Project Structure
+Code
+fastapi/
+│
+├── main.py              # Entry point of the application
+├── app/
+│   ├── __init__.py      # Package initializer
+│   ├── database.py      # Database connection and session
+│   ├── models.py        # SQLAlchemy models (tables)
+│   ├── schemas.py       # Pydantic schemas (validation)
+│   ├── routes.py        # API routes for files
+│   ├── auth.py          # Authentication and JWT handling
+│   └── templates/       # Jinja2 HTML templates
+└── uploads/             # Directory for uploaded files
+3. Database Setup (app/database.py)
+Database engine: MySQL (via pymysql)
+
+Database name: mydatabase
+
+Tables: users, files
+
+python
+SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:password@localhost:3306/mydatabase"
+engine = create_engine(SQLALCHEMY_DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+4. Models (app/models.py)
+User Table
+python
+class User(Base):
+    __tablename__ = "users"
+    id = Column(Integer, primary_key=True, index=True)
+    username = Column(String(255), unique=True, index=True)
+    email = Column(String(255), unique=True, index=True)
+    password = Column(String(255))
+File Table
+python
+class File(Base):
+    __tablename__ = "files"
+    id = Column(Integer, primary_key=True, index=True)
+    filename = Column(String(255), index=True)
+    filepath = Column(String(255))
+5. Schemas (app/schemas.py)
+Defines validation and response models with Pydantic.
+
+python
+class FileBase(BaseModel):
+    filename: str
+
+class FileCreate(FileBase):
+    filepath: str
+
+class File(FileBase):
+    id: int
+    filepath: str
+    model_config = ConfigDict(from_attributes=True)
+6. Authentication (app/auth.py)
+Uses JWT tokens for authentication.
+
+Passwords hashed with bcrypt.
+
+Provides functions for:
+
+verify_password
+
+get_password_hash
+
+create_access_token
+
+get_current_user
+
+7. Routes (app/routes.py)
+File Upload
+python
+@router.post("/upload/", response_model=schemas.File)
+async def upload_file(file: UploadFile = File(...), db: Session = Depends(database.get_db)):
+    file_path = os.path.join(UPLOAD_DIR, file.filename)
+    with open(file_path, "wb") as f:
+        f.write(await file.read())
+    db_file = models.File(filename=file.filename, filepath=file_path)
+    db.add(db_file)
+    db.commit()
+    db.refresh(db_file)
+    return db_file
+List Files
+python
+@router.get("/files/", response_model=list[schemas.File])
+def list_files(db: Session = Depends(database.get_db)):
+    return db.query(models.File).all()
+Download File
+python
+@router.get("/download/{filename}")
+async def download_file(filename: str, db: Session = Depends(database.get_db)):
+    db_file = db.query(models.File).filter(models.File.filename == filename).first()
+    if not db_file:
+        raise HTTPException(status_code=404, detail="File not found")
+    return FileResponse(path=db_file.filepath, filename=db_file.filename)
+8. Main Application (main.py)
+Creates tables at startup.
+
+Serves Jinja2 templates.
+
+Mounts static files (/uploads).
+
+Includes routes.
+
+python
+app = FastAPI(lifespan=lifespan)
+app.include_router(routes.router)
+app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
+9. Testing
+Swagger UI
+URL: http://127.0.0.1:8000/docs
+
+Endpoints:
+
+POST /users/ → Create user
+
+GET /users/ → List users
+
+POST /upload/ → Upload file
+
+GET /files/ → List files
+
+GET /download/{filename} → Download file
+
+ReDoc
+URL: http://127.0.0.1:8000/redoc
+
+Database Verification
+sql
+USE mydatabase;
+SHOW TABLES;
+SELECT * FROM users;
+SELECT * FROM files;
+10. Workflow Summary
+Startup → Tables created automatically.
+
+User registration → Inserted into users table.
+
+Authentication → JWT tokens issued.
+
+File upload → File saved in uploads/, metadata stored in files table.
+
+File listing → Retrieve all files from DB.
+
+File download → Serve file via FileResponse.
+
+Static serving → Files accessible at /uploads/{filename}.
