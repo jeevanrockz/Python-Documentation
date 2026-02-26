@@ -1,0 +1,151 @@
+Flask Blog API Documentation
+1. Overview
+This API allows users to:
+
+Register and log in with JWT authentication.
+
+Create blog posts.
+
+View all posts.
+
+Update or delete their own posts.
+
+2. Endpoints
+🔑 Authentication
+POST /register  
+Registers a new user.
+Body (JSON):
+
+json
+{
+  "username": "sai",
+  "password": "mypassword"
+}
+Response:
+
+json
+{"msg": "User registered successfully"}
+POST /login  
+Logs in and returns a JWT token.
+Body (JSON):
+
+json
+{
+  "username": "sai",
+  "password": "mypassword"
+}
+Response:
+
+json
+{"access_token": "<JWT_TOKEN>"}
+📝 Posts
+POST /posts  
+Creates a new post (requires JWT).
+Headers:
+
+Code
+Authorization: Bearer <JWT_TOKEN>
+Body (JSON):
+
+json
+{
+  "title": "My First Blog Post",
+  "content": "This is my very first post."
+}
+Response:
+
+json
+{"msg": "Post created"}
+GET /posts  
+Retrieves all posts.
+Response:
+
+json
+[
+  {
+    "id": 1,
+    "user_id": 2,
+    "title": "My First Blog Post",
+    "content": "This is my very first post.",
+    "created_at": "2026-02-26T08:54:00"
+  }
+]
+PUT /posts/<post_id>  
+Updates a post (requires JWT, only owner can update).
+Headers:
+
+Code
+Authorization: Bearer <JWT_TOKEN>
+Body (JSON):
+
+json
+{
+  "title": "Updated Title",
+  "content": "Updated Content"
+}
+Response:
+
+json
+{"msg": "Post updated"}
+DELETE /posts/<post_id>  
+Deletes a post (requires JWT, only owner can delete).
+Headers:
+
+Code
+Authorization: Bearer <JWT_TOKEN>
+Response:
+
+json
+{"msg": "Post deleted"}
+3. Testing Steps
+Start Flask app  
+Run:
+
+bash
+python app.py
+Open http://127.0.0.1:5000/.
+
+Register a user  
+Fill in username/password → click Register.
+
+Login  
+Enter credentials → click Login.
+Token is saved in token variable.
+
+Create a post  
+Enter title/content → click Create Post.
+
+Load posts  
+Click Load Posts → see all posts with IDs.
+
+Update a post
+
+Open browser console (F12 → Console).
+
+Paste:
+
+js
+fetch("/posts/1", {
+    method: "PUT",
+    headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token
+    },
+    body: JSON.stringify({
+        title: "Updated Title",
+        content: "Updated Content"
+    })
+}).then(res => res.json()).then(console.log);
+Delete a post
+
+In console, paste:
+
+js
+fetch("/posts/1", {
+    method: "DELETE",
+    headers: {
+        "Authorization": "Bearer " + token
+    }
+}).then(res => res.json()).then(console.log);
+Verify  
+Click Load Posts again → confirm changes.
