@@ -1,0 +1,173 @@
+=== Functions ===
+__build_class__: __build_class__(func, name, /, *bases, [metaclass], **kwds) -> class
+__import__: Import a module.
+abs: Return the absolute value of the argument.
+aiter: Return an AsyncIterator for an AsyncIterable object.
+all: Return True if bool(x) is True for all values x in the iterable.
+anext: Return the next item from the async iterator.
+any: Return True if bool(x) is True for any x in the iterable.
+ascii: Return an ASCII-only representation of an object.
+bin: Return the binary representation of an integer.
+breakpoint: Call sys.breakpointhook(*args, **kws).  sys.breakpointhook() must accept
+callable: Return whether the object is callable (i.e., some kind of function).
+chr: Return a Unicode string of one character with ordinal i; 0 <= i <= 0x10ffff.
+compile: Compile source into a code object that can be executed by exec() or eval().
+copyright: interactive prompt objects for printing the license text, a list of
+credits: interactive prompt objects for printing the license text, a list of
+delattr: Deletes the named attribute from the given object.
+dir: dir([object]) -> list of strings
+divmod: Return the tuple (x//y, x%y).  Invariant: div*y + mod == x.
+eval: Evaluate the given source in the context of globals and locals.
+exec: Execute the given source in the context of globals and locals.
+exit: No docstring available
+format: Return type(value).__format__(value, format_spec)
+getattr: getattr(object, name[, default]) -> value
+globals: Return the dictionary containing the current scope's global variables.
+hasattr: Return whether the object has an attribute with the given name.
+hash: Return the hash value for the given object.
+help: Define the builtin 'help'.
+hex: Return the hexadecimal representation of an integer.
+id: Return the identity of an object.
+input: Read a string from standard input.  The trailing newline is stripped.
+isinstance: Return whether an object is an instance of a class or of a subclass thereof.
+issubclass: Return whether 'cls' is derived from another class or is the same class.
+iter: iter(iterable) -> iterator
+len: Return the number of items in a container.
+license: interactive prompt objects for printing the license text, a list of
+locals: Return a dictionary containing the current scope's local variables.
+max: max(iterable, *[, default=obj, key=func]) -> value
+min: min(iterable, *[, default=obj, key=func]) -> value
+next: next(iterator[, default])
+oct: Return the octal representation of an integer.
+open: Open file and return a stream.  Raise OSError upon failure.
+ord: Return the ordinal value of a character.
+pow: Equivalent to base**exp with 2 arguments or base**exp % mod with 3 arguments
+print: Prints the values to a stream, or to sys.stdout by default.
+quit: No docstring available
+repr: Return the canonical string representation of the object.
+round: Round a number to a given precision in decimal digits.
+setattr: Sets the named attribute on the given object to the specified value.
+sorted: Return a new list containing all items from the iterable in ascending order.
+sum: Return the sum of a 'start' value (default: 0) plus an iterable of numbers
+vars: vars([object]) -> dictionary
+
+=== Exceptions ===
+ArithmeticError: Base class for arithmetic errors.
+AssertionError: Assertion failed.
+AttributeError: Attribute not found.
+BaseException: Common base class for all exceptions
+BaseExceptionGroup: A combination of multiple unrelated exceptions.
+BlockingIOError: I/O operation would block.
+BrokenPipeError: Broken pipe.
+BufferError: Buffer error.
+ChildProcessError: Child process error.
+ConnectionAbortedError: Connection aborted.
+ConnectionError: Connection error.
+ConnectionRefusedError: Connection refused.
+ConnectionResetError: Connection reset.
+EOFError: Read beyond end of file.
+EnvironmentError: Base class for I/O related errors.
+Exception: Common base class for all non-exit exceptions.
+ExceptionGroup: No docstring available
+FileExistsError: File already exists.
+FileNotFoundError: File not found.
+FloatingPointError: Floating-point operation failed.
+GeneratorExit: Request that a generator exit.
+IOError: Base class for I/O related errors.
+ImportError: Import can't find module, or can't find name in module.
+IndentationError: Improper indentation.
+IndexError: Sequence index out of range.
+InterruptedError: Interrupted by signal.
+IsADirectoryError: Operation doesn't work on directories.
+KeyError: Mapping key not found.
+KeyboardInterrupt: Program interrupted by user.
+LookupError: Base class for lookup errors.
+MemoryError: Out of memory.
+ModuleNotFoundError: Module not found.
+NameError: Name not found globally.
+NotADirectoryError: Operation only works on directories.
+NotImplementedError: Method or function hasn't been implemented yet.
+OSError: Base class for I/O related errors.
+OverflowError: Result too large to be represented.
+PermissionError: Not enough permissions.
+ProcessLookupError: Process not found.
+PythonFinalizationError: Operation blocked during Python finalization.
+RecursionError: Recursion limit exceeded.
+ReferenceError: Weak ref proxy used after referent went away.
+RuntimeError: Unspecified run-time error.
+StopAsyncIteration: Signal the end from iterator.__anext__().
+StopIteration: Signal the end from iterator.__next__().
+SyntaxError: Invalid syntax.
+SystemError: Internal error in the Python interpreter.
+SystemExit: Request to exit from the interpreter.
+TabError: Improper mixture of spaces and tabs.
+TimeoutError: Timeout expired.
+TypeError: Inappropriate argument type.
+UnboundLocalError: Local name referenced but not bound to a value.
+UnicodeDecodeError: Unicode decoding error.
+UnicodeEncodeError: Unicode encoding error.
+UnicodeError: Unicode related error.
+UnicodeTranslateError: Unicode translation error.
+ValueError: Inappropriate argument value (of correct type).
+WindowsError: Base class for I/O related errors.
+ZeroDivisionError: Second argument to a division or modulo operation was zero.
+_IncompleteInputError: incomplete input.
+
+=== Warnings ===
+BytesWarning: Base class for warnings about bytes and buffer related problems, mostly
+DeprecationWarning: Base class for warnings about deprecated features.
+EncodingWarning: Base class for warnings about encodings.
+FutureWarning: Base class for warnings about constructs that will change semantically
+ImportWarning: Base class for warnings about probable mistakes in module imports
+PendingDeprecationWarning: Base class for warnings about features which will be deprecated
+ResourceWarning: Base class for warnings about resource usage.
+RuntimeWarning: Base class for warnings about dubious runtime behavior.
+SyntaxWarning: Base class for warnings about dubious syntax.
+UnicodeWarning: Base class for warnings about Unicode related problems, mostly
+UserWarning: Base class for warnings generated by user code.
+Warning: Base class for warning categories.
+
+=== Constants ===
+Ellipsis: The type of the Ellipsis singleton.
+False: Returns True when the argument is true, False otherwise.
+None: The type of the None singleton.
+NotImplemented: The type of the NotImplemented singleton.
+True: Returns True when the argument is true, False otherwise.
+
+=== Types ===
+__loader__: Meta path import for built-in modules.
+bool: Returns True when the argument is true, False otherwise.
+bytearray: bytearray(iterable_of_ints) -> bytearray
+bytes: bytes(iterable_of_ints) -> bytes
+classmethod: Convert a function to be a class method.
+complex: Create a complex number from a string or numbers.
+dict: dict() -> new empty dictionary
+enumerate: Return an enumerate object.
+filter: Return an iterator yielding those items of iterable for which function(item)
+float: Convert a string or number to a floating-point number, if possible.
+frozenset: Build an immutable unordered collection of unique elements.
+int: int([x]) -> integer
+list: Built-in mutable sequence.
+map: Make an iterator that computes the function using arguments from
+memoryview: Create a new memoryview object which references the given object.
+object: The base class of the class hierarchy.
+property: Property attribute.
+range: range(stop) -> range object
+reversed: Return a reverse iterator over the values of the given sequence.
+set: Build an unordered collection of unique elements.
+slice: slice(stop)
+staticmethod: Convert a function to be a static method.
+str: str(object='') -> str
+super: super() -> same as super(__class__, <first argument>)
+tuple: Built-in immutable sequence.
+type: type(object) -> the object's type
+zip: The zip object yields n-length tuples, where n is the number of iterables
+
+=== Special Attributes ===
+__debug__: Returns True when the argument is true, False otherwise.
+__doc__: str(object='') -> str
+__name__: str(object='') -> str
+__package__: str(object='') -> str
+__spec__: The specification for a module, used for loading.
+
+pandas:-
