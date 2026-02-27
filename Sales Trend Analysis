@@ -1,0 +1,90 @@
+# 📑 Sales Trend Analysis Documentation
+
+## 1. Overview
+This task uses **Pandas** to analyze daily sales data, detect **weekly and monthly trends**, and compare store performance. It introduces **time series resampling, rolling averages, and grouping operations**, forming a strong foundation for forecasting and business intelligence.
+
+---
+
+## 2. Inputs
+- **sales.csv** → Contains daily sales records with columns:
+  - `Date` → Transaction date (YYYY-MM-DD).  
+  - `StoreID` → Identifier for the store.  
+  - `SalesAmount` → Numeric sales value.  
+
+---
+
+## 3. Outputs
+- **weekly_sales.csv** → Total weekly sales across all stores.  
+- **monthly_sales.csv** → Total monthly sales across all stores.  
+- **store_summary.csv** → Average sales per store, ranked.  
+- **Visualizations**:
+  - Weekly sales trend line chart.  
+  - Monthly sales trend line chart.  
+  - Daily sales with 7-day rolling average.  
+
+---
+
+## 4. Dependencies
+- **Pandas** → Data manipulation and resampling.  
+- **Matplotlib** → Visualization.  
+- **Seaborn** → Advanced plotting (optional).  
+
+Install with:
+```bash
+pip install pandas matplotlib seaborn
+```
+
+---
+
+## 5. Process Steps
+1. **Load data** from `sales.csv`.  
+2. **Clean data**:
+   - Parse `Date` column into datetime.  
+   - Fill missing sales values with 0.  
+3. **Resample sales data**:
+   - Weekly totals (`W`).  
+   - Monthly totals (`ME` for month end or `MS` for month start).  
+4. **Rolling average**:
+   - Compute 7-day moving average to smooth daily fluctuations.  
+5. **Store comparison**:
+   - Group by `StoreID` and calculate average sales.  
+   - Rank stores by performance.  
+6. **Export results** to CSV files.  
+7. **Visualize trends** with line charts and rolling averages.  
+
+---
+
+## 6. Usage Instructions
+Run the script:
+```bash
+python sales_trend_analysis.py
+```
+
+Expected output:
+- Confirmation message: `✅ Sales trend analysis completed successfully!`  
+- Three CSV files (`weekly_sales.csv`, `monthly_sales.csv`, `store_summary.csv`).  
+- Line charts showing weekly, monthly, and daily trends.  
+
+---
+
+## 7. Error Handling
+- **Invalid frequency alias** → Use `"ME"` (Month End) or `"MS"` (Month Start) instead of `"M"`.  
+- **Missing Pandas/Matplotlib** → Install with `pip install pandas matplotlib`.  
+- **Empty dataset** → Ensure `sales.csv` has valid rows with dates and sales amounts.  
+
+---
+
+## 8. Applications
+- **Retail & E‑Commerce** → Identify seasonal demand and optimize inventory.  
+- **Finance** → Build cash flow projections and detect anomalies.  
+- **Operations** → Align production and logistics with demand cycles.  
+- **Marketing** → Measure campaign impact and compare store performance.  
+- **Executive Reporting** → Provide dashboards for strategic decision-making.  
+
+---
+
+## 9. Future Enhancements
+- Add **store-level comparison charts** (bar plots).  
+- Integrate **forecasting models** (ARIMA, Prophet).  
+- Automate **weekly/monthly reporting**.  
+- Scale to **large datasets** for enterprise analytics.  
