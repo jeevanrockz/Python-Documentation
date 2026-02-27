@@ -1,0 +1,102 @@
+# 📑 Log Data Analysis & User Behavior Insights Documentation
+
+## 1. Overview
+This project analyzes **application log data** to extract **user behavior patterns, session statistics, system performance metrics, and error trends**. It demonstrates how Pandas can be used to process time‑stamped event logs, group by users and sessions, resample by time intervals, and generate actionable insights.
+
+---
+
+## 2. Inputs
+- **app_logs.csv** → Application events with columns:
+  - `Timestamp` → Event time (YYYY-MM-DD HH:MM:SS).  
+  - `UserID` → Identifier for the user.  
+  - `Action` → Event type (login, view page, purchase, logout, etc.).  
+
+- **error_logs.csv** → Error events with columns:
+  - `Timestamp` → Error occurrence time.  
+  - `UserID` → Identifier for the user.  
+  - `StatusCode` → Error code (e.g., 404, 500, 503).  
+
+---
+
+## 3. Outputs
+- **session_summary.csv** → Per-user session statistics:
+  - Session start and end times.  
+  - Number of actions.  
+  - Session length (minutes).  
+
+- **error_trends.csv** → Hourly error counts.  
+
+- **user_behavior.csv** → Top 10 most common actions.  
+
+- **requests_per_min.csv** → Requests per minute across all users.  
+
+- **Console Output** → Overall error rate percentage.  
+
+---
+
+## 4. Dependencies
+- **Pandas** → Data manipulation, grouping, resampling.  
+- **Matplotlib / Seaborn** (optional) → Visualization of trends.  
+
+Install with:
+```bash
+pip install pandas matplotlib seaborn
+```
+
+---
+
+## 5. Process Steps
+1. **Load data** from CSV files.  
+2. **Clean data**:
+   - Parse timestamps into `datetime`.  
+   - Normalize action names (lowercase, stripped).  
+3. **Session analysis**:
+   - Group by `UserID`.  
+   - Calculate session length (first to last timestamp).  
+   - Count actions per session.  
+4. **Error trend analysis**:
+   - Resample error logs by hour (`"h"`).  
+   - Count frequency of each error code.  
+5. **User behavior insights**:
+   - Identify top actions.  
+   - Calculate average actions per user per day.  
+6. **Performance metrics**:
+   - Requests per minute (`"min"`).  
+   - Overall error rate.  
+7. **Export results** to CSV files.  
+
+---
+
+## 6. Usage Instructions
+Run the script:
+```bash
+python log_analyzer.py
+```
+
+Expected output:
+- Confirmation message: `✅ Log analysis completed successfully!`  
+- Exported CSV files (`session_summary.csv`, `error_trends.csv`, `user_behavior.csv`, `requests_per_min.csv`).  
+- Console output showing overall error rate.  
+
+---
+
+## 7. Error Handling
+- **Invalid frequency alias** → Use lowercase (`"h"` for hourly, `"min"` for minute, `"s"` for second, `"ME"` for month end).  
+- **Missing Pandas** → Install with `pip install pandas`.  
+- **Empty dataset** → Ensure `app_logs.csv` and `error_logs.csv` contain valid rows.  
+
+---
+
+## 8. Applications
+- **Web Analytics** → Track user sessions, clicks, and drop‑offs.  
+- **System Monitoring** → Detect peak error times and performance bottlenecks.  
+- **Security** → Identify suspicious user behavior (e.g., repeated failed logins).  
+- **Product Insights** → See which features/actions are most used.  
+
+---
+
+## 9. Future Enhancements
+- Add **visualizations** (error trend line chart, session length histogram, top actions bar chart).  
+- Integrate with **real-time log streams** (Kafka, ELK stack).  
+- Automate **daily/weekly reporting**.  
+- Scale to **large datasets** (millions of log entries).  
