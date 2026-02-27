@@ -1,0 +1,101 @@
+# 📑 Stock Market Portfolio Risk & Return Analysis Documentation
+
+## 1. Overview
+This project analyzes **historical stock price data** for multiple companies and evaluates portfolio performance. 
+It calculates **daily returns, cumulative portfolio value, volatility, Sharpe ratio, and correlations between stocks**. 
+The workflow demonstrates how Pandas can be used for **financial time series analysis, portfolio theory, and risk management**.
+
+---
+
+## 2. Inputs
+- **stocks.csv** → Daily closing prices:
+  - `Date` → Trading date.  
+  - `Ticker` → Stock symbol (e.g., AAPL, MSFT).  
+  - `ClosePrice` → Closing price for the day.  
+
+- **portfolio.csv** → Portfolio allocation:
+  - `Ticker` → Stock symbol.  
+  - `Weight` → Fraction of portfolio invested in each stock (sums to 1).  
+
+---
+
+## 3. Outputs
+- **stock_returns.csv** → Daily returns per stock.  
+- **portfolio_performance.csv** → Portfolio daily returns and cumulative value.  
+- **risk_metrics.csv** → Portfolio volatility and Sharpe ratio.  
+- **correlation_matrix.csv** → Correlation between stock returns.  
+- **Console Output** → Annualized return, volatility, and Sharpe ratio.  
+
+---
+
+## 4. Dependencies
+- **Pandas** → Data manipulation, pivoting, return calculations.  
+- **NumPy** (optional) → Numerical operations.  
+- **Matplotlib / Seaborn** (optional) → Visualization.  
+
+Install with:
+```bash
+pip install pandas numpy matplotlib seaborn
+```
+
+---
+
+## 5. Process Steps
+1. **Load datasets** (`stocks.csv`, `portfolio.csv`).  
+2. **Clean data**:
+   - Convert `Date` to `datetime`.  
+   - Pivot stock prices into wide format (one column per ticker).  
+   - Forward fill missing values.  
+3. **Return calculation**:
+   - Compute daily percentage change (`pct_change`).  
+   - Drop missing values.  
+4. **Portfolio analysis**:
+   - Multiply stock returns by portfolio weights.  
+   - Sum to get portfolio daily return.  
+   - Compute cumulative portfolio value.  
+5. **Risk metrics**:
+   - Annualized volatility (standard deviation × √252).  
+   - Annualized return (mean × 252).  
+   - Sharpe ratio (return ÷ volatility, assuming risk-free rate = 0).  
+   - Correlation matrix of stock returns.  
+6. **Export results** to CSV files.  
+
+---
+
+## 6. Usage Instructions
+Run the script:
+```bash
+python portfolio_analyzer.py
+```
+
+Expected output:
+- Confirmation message: `✅ Portfolio risk & return analysis completed successfully!`  
+- Exported CSV files (`stock_returns.csv`, `portfolio_performance.csv`, `risk_metrics.csv`, `correlation_matrix.csv`).  
+- Console output showing annualized return, volatility, and Sharpe ratio.  
+
+---
+
+## 7. Error Handling
+- **Invalid date format** → Ensure `Date` column is in `YYYY-MM-DD`.  
+- **Weights not summing to 1** → Normalize weights before analysis.  
+- **Missing values** → Forward fill or drop rows.  
+- **Ticker mismatch** → Ensure tickers in `portfolio.csv` exist in `stocks.csv`.  
+
+---
+
+## 8. Applications
+- **Investment firms** → Portfolio optimization and risk management.  
+- **Financial analysts** → Stock correlation and diversification studies.  
+- **Personal finance** → Track and evaluate investment performance.  
+- **Academia** → Teaching portfolio theory and quantitative finance.  
+
+---
+
+## 9. Future Enhancements
+- Add **visualizations**:
+  - Line chart of cumulative portfolio value.  
+  - Heatmap of correlation matrix.  
+  - Histogram of portfolio returns.  
+- Integrate with **real-time stock APIs** (Yahoo Finance, Alpha Vantage).  
+- Automate **daily portfolio reporting**.  
+- Extend to **optimization models** (Markowitz Efficient Frontier).  
