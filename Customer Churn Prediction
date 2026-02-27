@@ -1,0 +1,116 @@
+📑 Customer Churn Prediction Pipeline Documentation
+1. Overview
+This project builds a data processing pipeline to prepare customer information for churn prediction. It integrates multiple data sources (demographics, transactions, support tickets), cleans and normalizes data, engineers features, and exports a dataset ready for machine learning models.
+
+2. Inputs
+customers.csv  
+Contains customer demographics (ID, name, gender, age, region, join date).
+
+transactions.csv  
+Contains purchase history (transaction ID, customer ID, date, amount).
+
+support_tickets.csv  
+Contains customer complaints (ticket ID, customer ID, date, issue type).
+
+3. Outputs
+churn_ready_dataset.csv  
+A cleaned and feature‑engineered dataset with columns:
+
+CustomerID
+
+Gender, Age, Region
+
+TotalSpend, AvgSpend, PurchaseFrequency
+
+Complaints
+
+DaysSinceLastPurchase
+
+Last3MonthsActivity
+
+Churn (binary label: 1 = churn, 0 = active)
+
+4. Dependencies
+Pandas (data manipulation)
+
+NumPy (numerical operations)
+
+Scikit-learn (ML model training and evaluation)
+
+Install with:
+
+bash
+pip install pandas numpy scikit-learn
+5. Pipeline Steps
+Load data from CSV files.
+
+Clean missing values (fill with median, defaults, or zero).
+
+Normalize categorical features (standardize text values).
+
+Merge datasets into a unified DataFrame.
+
+Engineer features:
+
+TotalSpend
+
+AvgSpend
+
+PurchaseFrequency
+
+Complaints
+
+Create lag variables:
+
+DaysSinceLastPurchase
+
+Last3MonthsActivity
+
+Define churn label (inactive in last 3 months or synthetic churn injection for balance).
+
+Export dataset for ML models.
+
+6. Machine Learning Workflow
+Feature encoding: Convert categorical variables (Gender, Region) into numeric codes.
+
+Train/test split: Separate data for training and evaluation.
+
+Model training: Logistic Regression (baseline), Random Forest (advanced).
+
+Evaluation: Classification report (precision, recall, F1, accuracy).
+
+7. Usage Instructions
+Run the pipeline:
+
+bash
+python pro2.py
+Expected output:
+
+Confirmation message: ✅ Customer churn dataset prepared successfully!
+
+Classification report showing model performance.
+
+8. Error Handling
+Missing Pandas → Install with pip install pandas.
+
+One-class churn error → Synthetic churn cases are injected automatically.
+
+Stratify split error → Ensure at least 2 samples per class; pipeline balances data if needed.
+
+9. Applications
+Telecom: Predicting subscriber cancellations.
+
+Banking: Identifying customers likely to close accounts.
+
+E-commerce: Detecting inactive shoppers.
+
+Subscription services: Reducing cancellations in streaming platforms.
+
+10. Future Enhancements
+Add Random Forest/XGBoost models for better accuracy.
+
+Implement feature importance analysis.
+
+Visualize churn risk scores with Matplotlib/Seaborn.
+
+Scale pipeline to 1000+ customers for realistic training.
