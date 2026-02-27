@@ -1,0 +1,98 @@
+# 📑 City Air Quality & Weather Correlation Analysis Documentation
+
+## 1. Overview
+This project analyzes **daily air quality data** (PM2.5, PM10, AQI) alongside **weather data** (temperature, humidity, wind speed) across multiple cities. 
+The goal is to uncover correlations between pollution levels and weather conditions, identify city‑level air quality trends, and explore seasonal variations. 
+It demonstrates how Pandas can be used for **data merging, grouping, correlation analysis, and exporting results**.
+
+---
+
+## 2. Inputs
+- **air_quality.csv** → Daily air quality readings:
+  - `Date` → Measurement date.  
+  - `City` → City name.  
+  - `PM25`, `PM10` → Pollutant concentrations.  
+  - `AQI` → Air Quality Index.  
+
+- **weather.csv** → Daily weather readings:
+  - `Date` → Measurement date.  
+  - `City` → City name.  
+  - `Temperature` → Daily average temperature (°C).  
+  - `Humidity` → Relative humidity (%).  
+  - `WindSpeed` → Wind speed (km/h).  
+
+---
+
+## 3. Outputs
+- **city_aqi_summary.csv** → Average AQI per city.  
+- **correlation_matrix.csv** → Correlation values between AQI and weather variables.  
+- **seasonal_trends.csv** → Monthly AQI averages across all cities.  
+- **Console Output** → Confirmation message of successful analysis.  
+
+---
+
+## 4. Dependencies
+- **Pandas** → Data manipulation, merging, correlation analysis.  
+- **Matplotlib / Seaborn** (optional) → Visualization of trends.  
+
+Install with:
+```bash
+pip install pandas matplotlib seaborn
+```
+
+---
+
+## 5. Process Steps
+1. **Load datasets** (`air_quality.csv`, `weather.csv`).  
+2. **Clean data**:
+   - Convert `Date` columns to `datetime`.  
+   - Handle missing values (e.g., fill AQI with median).  
+   - Standardize city names.  
+3. **Merge datasets** on `Date` and `City`.  
+4. **Correlation analysis**:
+   - Compute correlation matrix between AQI and weather variables.  
+   - Identify strongest correlations (e.g., AQI vs. WindSpeed).  
+5. **City-level insights**:
+   - Average AQI per city.  
+   - Rank cities by air quality.  
+6. **Seasonal trends**:
+   - Group by month to calculate average AQI.  
+7. **Export results** to CSV files.  
+
+---
+
+## 6. Usage Instructions
+Run the script:
+```bash
+python air_quality_analyzer.py
+```
+
+Expected output:
+- Confirmation message: `✅ Air quality & weather analysis completed successfully!`  
+- Exported CSV files (`city_aqi_summary.csv`, `correlation_matrix.csv`, `seasonal_trends.csv`).  
+
+---
+
+## 7. Error Handling
+- **Invalid frequency alias** → Ensure correct resampling aliases (`"h"`, `"min"`, `"ME"`).  
+- **Missing values** → Fill with median or drop rows.  
+- **Merge conflicts** → Ensure city names and dates match across datasets.  
+
+---
+
+## 8. Applications
+- **Environmental Monitoring** → Track pollution levels across cities.  
+- **Urban Planning** → Identify weather conditions that worsen air quality.  
+- **Public Health** → Correlate AQI with conditions affecting respiratory health.  
+- **Policy Making** → Support decisions on emission control and sustainability.  
+
+---
+
+## 9. Future Enhancements
+- Add **visualizations**:
+  - Line chart of AQI trends per city.  
+  - Scatter plot of AQI vs. WindSpeed.  
+  - Heatmap of correlation matrix.  
+- Integrate with **real-time air quality APIs**.  
+- Automate **daily/weekly reporting**.  
+- Expand to **predictive modeling** (forecast AQI based on weather).  
