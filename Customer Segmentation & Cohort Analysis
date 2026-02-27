@@ -1,0 +1,97 @@
+# 📑 Customer Segmentation & Cohort Analysis Documentation
+
+## 1. Overview
+This task extends the churn pipeline by performing **advanced customer analytics** using Pandas. 
+It applies **RFM segmentation** (Recency, Frequency, Monetary) to categorize customers into behavioral groups and conducts **cohort analysis** to measure retention trends over time. 
+These insights help businesses identify high‑value customers, at‑risk groups, and retention patterns.
+
+---
+
+## 2. Inputs
+- **customers.csv** → Customer demographics (ID, name, gender, age, region, join date).  
+- **transactions.csv** → Purchase history (transaction ID, customer ID, date, amount).  
+- **support_tickets.csv** → Customer complaints (ticket ID, customer ID, date, issue type).  
+
+---
+
+## 3. Outputs
+- **customer_segments.csv**  
+  - Contains RFM scores (Recency, Frequency, Monetary).  
+  - Includes RFM segment codes (e.g., `555` = best customers, `111` = worst customers).  
+  - Complaint counts merged from support tickets.  
+
+- **cohort_analysis.csv**  
+  - Retention matrix showing percentage of customers from each cohort (join month) who remain active after 1, 2, 3… months.  
+
+- **Visualizations**  
+  - Cohort retention heatmap (customer retention trends).  
+  - RFM segment distribution bar chart (customer group sizes).  
+
+---
+
+## 4. Dependencies
+- **Pandas** → Data manipulation and aggregation.  
+- **NumPy** → Numerical operations.  
+- **Matplotlib** → Visualization.  
+- **Seaborn** → Advanced plotting (heatmaps, bar charts).  
+
+Install with:
+```bash
+pip install pandas numpy matplotlib seaborn
+```
+
+---
+
+## 5. Process Steps
+1. **Load data** from CSV files.  
+2. **Clean and parse dates** for transactions, join dates, and support tickets.  
+3. **RFM Segmentation**  
+   - Recency = Days since last purchase.  
+   - Frequency = Number of purchases.  
+   - Monetary = Total spend.  
+   - Assign quintile scores (1–5) and combine into RFM segment codes.  
+4. **Cohort Analysis**  
+   - Define cohorts by first purchase month.  
+   - Calculate retention by tracking active customers month‑over‑month.  
+   - Build retention matrix with Pandas pivot tables.  
+5. **Support Ticket Impact**  
+   - Count complaints per customer.  
+   - Merge into RFM dataset for deeper insights.  
+6. **Export results** to CSV files.  
+7. **Visualize results** with heatmaps and bar charts.  
+
+---
+
+## 6. Usage Instructions
+Run the script:
+```bash
+python segmentation_cohort.py
+```
+
+Expected output:
+- `✅ Customer segmentation and cohort analysis completed successfully!`  
+- Two CSV files (`customer_segments.csv`, `cohort_analysis.csv`).  
+- Visualizations displayed (heatmap + bar chart).  
+
+---
+
+## 7. Error Handling
+- **Missing Pandas/Seaborn** → Install with `pip install pandas seaborn`.  
+- **Empty transactions** → Ensure `transactions.csv` has valid purchase data.  
+- **Date parsing errors** → Invalid dates are coerced to `NaT` (handled automatically).  
+
+---
+
+## 8. Applications
+- **Marketing** → Identify loyal customers and target at‑risk segments.  
+- **Customer Success** → Track retention trends by cohort and intervene early.  
+- **Revenue Growth** → Tailor promotions by RFM segment (e.g., reward `555` customers, re‑engage `111` customers).  
+- **Product Strategy** → Understand how retention changes across cohorts to improve offerings.  
+
+---
+
+## 9. Future Enhancements
+- Add **clustering (K‑Means)** for deeper segmentation.  
+- Automate **monthly cohort reports**.  
+- Integrate **visual dashboards** (Plotly, Power BI).  
+- Scale to **large datasets (100k+ customers)** for enterprise use.  
