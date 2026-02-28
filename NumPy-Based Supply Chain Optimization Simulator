@@ -1,0 +1,92 @@
+# 📘 Project Title: **NumPy-Based Supply Chain Optimization Simulator**
+
+## 📖 Overview
+This project models a simplified supply chain network consisting of factories, warehouses, and retail stores. Using NumPy arrays, it simulates production, storage, demand, and transportation costs. A greedy allocation algorithm assigns shipments along the cheapest available routes while respecting capacity and demand constraints. The simulator calculates total costs and visualizes allocation patterns and scenario outcomes.
+
+---
+
+## 🏗️ Project Structure
+- **Data Setup:** Define capacities, demands, and transport costs.  
+- **Greedy Allocation Algorithm:** Assign shipments from factories to warehouses, then warehouses to stores.  
+- **Cost Calculation:** Compute total supply chain cost.  
+- **Scenario Simulation:** Run multiple demand scenarios to analyze cost changes.  
+- **Visualization:** Use Matplotlib to plot allocation heatmaps and cost-demand relationships.  
+
+---
+
+## 🔧 Detailed Workflow
+
+### 1. Data Setup
+- **Factories:** Each has a production capacity (units available).  
+- **Warehouses:** Each has a storage capacity (units it can hold).  
+- **Stores:** Each has a demand (units required).  
+- **Transport Costs:**  
+  - Factory → Warehouse cost matrix.  
+  - Warehouse → Store cost matrix.  
+
+### 2. Greedy Allocation
+- **Factory → Warehouse:**  
+  - For each warehouse, choose the cheapest factory route.  
+  - Allocate as many units as possible without exceeding factory or warehouse capacity.  
+- **Warehouse → Store:**  
+  - For each store, choose the cheapest warehouse route.  
+  - Allocate units to meet demand without exceeding warehouse supply.  
+
+### 3. Cost Calculation
+- Total cost is the sum of:
+  \[
+  \text{Total Cost} = \sum (\text{Factory→Warehouse units} \times \text{FW cost}) + \sum (\text{Warehouse→Store units} \times \text{WS cost})
+  \]
+
+### 4. Scenario Simulation
+- Run multiple demand scenarios (e.g., normal, high, low).  
+- Recalculate allocations and costs for each scenario.  
+- Compare how costs scale with demand.  
+
+### 5. Visualization
+- **Heatmap:** Shows warehouse→store allocations.  
+- **Line Plot:** Shows total cost vs total demand across scenarios.  
+
+---
+
+## 📊 Example Output
+- **Console:**  
+  ```
+  Factory → Warehouse Allocation:
+   [[120   0]
+    [  0  80]]
+  Warehouse → Store Allocation:
+   [[70 50  0]
+    [ 0 10 40]]
+  Total Cost: 860
+  ```
+- **Plots:**  
+  - Heatmap of warehouse→store allocations (blue intensity = units shipped).  
+  - Line plot showing how total cost increases with demand scenarios.  
+
+---
+
+## 🧠 Real-World Applications
+- **Logistics:** Optimize supply chains for e-commerce or retail companies.  
+- **Manufacturing:** Allocate production across plants and distribution centers.  
+- **Transportation:** Minimize costs in shipping networks.  
+- **Operations Research:** Practice linear programming and optimization with NumPy.  
+
+---
+
+## 🚀 Extensions
+- Replace greedy allocation with **linear programming (simplex method)** for exact optimization.  
+- Add **random demand fluctuations** to simulate uncertainty.  
+- Introduce **multi-period simulation** (dynamic supply chain over time).  
+- Compare strategies (greedy vs optimal).  
+- Add **visual dashboards** for interactive analysis.  
+
+---
+
+## 🎯 Learning Outcomes
+By completing this project, you will:
+- Model supply chain networks using NumPy arrays.  
+- Implement greedy allocation algorithms.  
+- Calculate and analyze costs under constraints.  
+- Visualize allocation and scenario outcomes.  
+- Gain insight into optimization problems in logistics and operations research. 
