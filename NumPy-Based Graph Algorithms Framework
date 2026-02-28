@@ -1,0 +1,130 @@
+# 📘 Project Title: **NumPy-Based Graph Algorithms Framework**
+
+## 📖 Overview
+This project implements a framework for representing and analyzing graphs using **NumPy arrays**. 
+It includes implementations of classic graph algorithms such as **Dijkstra’s shortest path**, **Floyd-Warshall all-pairs shortest paths**, 
+and **PageRank**. The framework emphasizes **software engineering practices**: modularity, correctness testing, performance optimization, and visualization.
+
+---
+
+## 🏗️ Project Structure
+1. **Graph Representation:** Adjacency matrix using NumPy arrays.  
+2. **Algorithms:**  
+   - Dijkstra’s Algorithm (single-source shortest path).  
+   - Floyd-Warshall Algorithm (all-pairs shortest path).  
+   - PageRank Algorithm (node importance).  
+3. **Evaluation:** Compare outputs with expected results.  
+4. **Visualization:** Plot adjacency matrices as heatmaps.  
+5. **Testing:** Ensure correctness and stability.  
+
+---
+
+## 🔧 Detailed Workflow
+
+### 1. Graph Representation
+- Graphs are represented as adjacency matrices.  
+- For weighted graphs, edge weights are stored; for unweighted graphs, edges are stored as `1`.  
+- Example:
+  ```python
+  edges = [(0,1,2), (0,2,4), (1,2,1), (1,3,7), (2,3,3)]
+  graph = create_graph(4, edges, weighted=True)
+  ```
+
+---
+
+### 2. Dijkstra’s Algorithm
+Finds shortest paths from a single source node to all other nodes in a weighted graph.
+
+\[
+d[v] = \min(d[v], d[u] + w(u,v))
+\]
+
+Implemented with NumPy arrays for efficiency.
+
+---
+
+### 3. Floyd-Warshall Algorithm
+Computes shortest paths between all pairs of nodes.
+
+\[
+d[i,j] = \min(d[i,j], d[i,k] + d[k,j])
+\]
+
+Iteratively updates the distance matrix using NumPy’s broadcasting.
+
+---
+
+### 4. PageRank Algorithm
+Measures node importance in a graph (used in search engines).
+
+\[
+PR = \alpha M \cdot PR + (1-\alpha)/N
+\]
+
+Where:
+- \(M\) is the transition probability matrix.  
+- \(\alpha\) is the damping factor (usually 0.85).  
+- \(N\) is the number of nodes.  
+
+---
+
+### 5. Visualization
+Adjacency matrices are visualized as heatmaps using Matplotlib:
+
+```python
+plt.imshow(graph, cmap="Blues")
+plt.colorbar(label="Edge Weight")
+plt.title("Graph Adjacency Matrix")
+plt.show()
+```
+
+---
+
+### 6. Testing
+- Ensure Dijkstra’s and Floyd-Warshall outputs match expected shortest paths.  
+- Ensure PageRank scores sum to 1 (probability distribution).  
+- Ensure adjacency matrix is symmetric for undirected graphs.  
+
+---
+
+## 📊 Example Output
+
+- **Console:**
+  ```
+  Dijkstra distances from node 0: [0. 2. 3. 6.]
+  Floyd-Warshall all pairs shortest paths:
+  [[0. 2. 3. 6.]
+   [2. 0. 1. 4.]
+   [3. 1. 0. 3.]
+   [6. 4. 3. 0.]]
+  PageRank scores: [0.25 0.25 0.25 0.25]
+  ```
+
+- **Plot:** Heatmap showing adjacency matrix with edge weights.
+
+---
+
+## 🧠 Real-World Applications
+- **Networking:** Routing in communication networks.  
+- **Search Engines:** PageRank for ranking web pages.  
+- **Social Media:** Graph analysis for recommendations.  
+- **Transportation:** Shortest path in road networks.  
+
+---
+
+## 🚀 Extensions
+- Add **Breadth-First Search (BFS)** and **Depth-First Search (DFS)**.  
+- Implement **minimum spanning tree (Prim’s/Kruskal’s)**.  
+- Add **graph centrality measures** (degree, betweenness, closeness).  
+- Integrate with **NetworkX** for visualization of nodes and edges.  
+- Handle **large sparse graphs** using SciPy sparse matrices.  
+
+---
+
+## 🎯 Learning Outcomes
+By completing this project, you will:
+- Represent graphs using NumPy arrays.  
+- Implement classic graph algorithms with vectorized operations.  
+- Apply software engineering practices: modularity, testing, profiling.  
+- Visualize graph structures and algorithm outputs.  
+- Understand how graph algorithms power real-world systems.  
