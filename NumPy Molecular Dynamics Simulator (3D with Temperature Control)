@@ -1,0 +1,125 @@
+# 📘 Project Title: **NumPy Molecular Dynamics Simulator (3D with Temperature Control)**
+
+## 📖 Overview
+This project simulates the motion of particles in a 3D box using Newton’s laws of motion and the Lennard-Jones potential. It employs the Velocity Verlet integration method to update positions and velocities, applies periodic boundary conditions, and uses velocity rescaling to maintain a target temperature. The simulator tracks energies and temperature over time, providing insights into molecular behavior in controlled environments.
+
+---
+
+## 🏗️ Project Structure
+- **System Setup:** Define number of particles, box size, time step, and simulation length.  
+- **Force Calculation:** Compute inter-particle forces using the Lennard-Jones potential.  
+- **Integration:** Update positions and velocities using Velocity Verlet.  
+- **Temperature Control:** Rescale velocities to maintain target temperature.  
+- **Simulation Loop:** Run for many steps, storing trajectories and energies.  
+- **Visualization:** Plot energy vs time and temperature vs time.  
+
+---
+
+## 🔧 Detailed Workflow
+
+### 1. System Setup
+- **Particles:** Randomly placed in a cubic box of side length \(L\).  
+- **Velocities:** Initialized with small random values.  
+- **Parameters:**  
+  - \( \epsilon \): depth of potential well.  
+  - \( \sigma \): particle size parameter.  
+  - \( dt \): time step.  
+  - \( N \): number of particles.  
+
+---
+
+### 2. Lennard-Jones Potential
+The potential energy between two particles separated by distance \(r\) is:
+\[
+V(r) = 4\epsilon \left[ \left(\frac{\sigma}{r}\right)^{12} - \left(\frac{\sigma}{r}\right)^6 \right]
+\]
+
+The force is the negative gradient:
+\[
+F(r) = 24\epsilon \left[ \frac{2\sigma^{12}}{r^{13}} - \frac{\sigma^6}{r^7} \right] \hat{r}
+\]
+
+Periodic boundary conditions ensure particles exiting one side re-enter from the opposite side.
+
+---
+
+### 3. Velocity Verlet Integration
+Positions and velocities are updated as:
+\[
+r(t+dt) = r(t) + v(t)dt + \frac{1}{2}a(t)dt^2
+\]
+\[
+v(t+dt) = v(t) + \frac{1}{2}[a(t) + a(t+dt)]dt
+\]
+
+This method conserves energy better than simple Euler integration.
+
+---
+
+### 4. Temperature Control
+Temperature is related to average kinetic energy:
+\[
+T = \frac{2 \langle KE \rangle}{3N}
+\]
+
+Velocities are rescaled after each step:
+\[
+v \rightarrow v \cdot \sqrt{\frac{T_{\text{target}}}{T_{\text{current}}}}
+\]
+
+This keeps the system at the desired temperature (canonical ensemble).
+
+---
+
+### 5. Simulation Loop
+- For each step:
+  - Compute forces and potential energy.  
+  - Update positions and velocities.  
+  - Rescale velocities to maintain target temperature.  
+  - Record kinetic, potential, and total energy.  
+  - Record temperature.  
+
+---
+
+### 6. Visualization
+- **Energy vs Time:** Shows kinetic, potential, and total energy evolution.  
+- **Temperature vs Time:** Shows how velocity rescaling stabilizes temperature around the target.  
+
+---
+
+## 📊 Example Output
+- **Console:**  
+  ```
+  Simulation complete: 1000 steps
+  Final Temperature ~ 1.0 (target maintained)
+  ```
+- **Plots:**  
+  - Energy plot: total energy remains stable, kinetic and potential fluctuate.  
+  - Temperature plot: red curve oscillates around target temperature line.  
+
+---
+
+## 🧠 Real-World Applications
+- **Chemistry:** Simulating molecular interactions in liquids and gases.  
+- **Physics:** Studying thermodynamics and statistical mechanics.  
+- **Materials Science:** Modeling solids, liquids, and phase transitions.  
+- **Biology:** Protein folding and biomolecular dynamics.  
+
+---
+
+## 🚀 Extensions
+- **Radial Distribution Function (RDF):** Analyze structural properties of the system.  
+- **Pressure Control (Barostat):** Allow box size to vary to maintain pressure.  
+- **Different Potentials:** Add Coulomb or harmonic potentials.  
+- **Parallelization:** Use Numba or vectorization for larger particle counts.  
+- **3D Visualization:** Animate particle trajectories in 3D space.  
+
+---
+
+## 🎯 Learning Outcomes
+By completing this project, you will:
+- Implement molecular dynamics in 3D using NumPy.  
+- Apply Lennard-Jones potential for particle interactions.  
+- Use Velocity Verlet integration for stable simulations.  
+- Control system temperature with velocity rescaling.  
+- Visualize energy and temperature dynamics.  
