@@ -1,0 +1,118 @@
+# 📘 Project Title: **NumPy-Based Image Processing Toolkit**
+
+## 📖 Overview
+This project demonstrates how to perform basic image processing operations using **NumPy arrays**. 
+Images are represented as matrices of pixel values, and operations such as filtering, edge detection, and transformations 
+are implemented manually with NumPy rather than relying on specialized libraries like OpenCV. 
+The toolkit emphasizes **software engineering practices**: modular design, correctness testing, performance optimization, and visualization.
+
+---
+
+## 🏗️ Project Structure
+1. **Image Representation:** Load images into NumPy arrays, optionally convert to grayscale.  
+2. **Filtering:** Implement convolution filters (blur, sharpen, edge detection).  
+3. **Transformations:** Rotate, flip, and scale images using NumPy indexing.  
+4. **Edge Detection:** Implement Sobel operator for detecting edges.  
+5. **Visualization:** Display original and processed images with Matplotlib.  
+6. **Testing:** Validate filters and transformations on synthetic or real images.  
+
+---
+
+## 🔧 Detailed Workflow
+
+### 1. Image Representation
+- Images are loaded using **PIL (Python Imaging Library)** and converted to NumPy arrays.  
+- Grayscale conversion simplifies processing by reducing RGB channels to a single intensity channel.  
+
+```python
+def load_image(path, grayscale=False):
+    img = Image.open(path)
+    if grayscale:
+        img = img.convert("L")
+    return np.array(img, dtype=float)
+```
+
+---
+
+### 2. Convolution Filters
+Convolution applies a kernel (small matrix) to each pixel neighborhood to produce effects like blurring or sharpening.
+
+\[
+output[i,j] = \sum_{m,n} kernel[m,n] \cdot region[i+m,j+n]
+\]
+
+Examples:
+- **Blur Kernel:** Averages neighboring pixels.  
+- **Sharpen Kernel:** Enhances edges.  
+- **Sobel Kernels:** Detect horizontal and vertical edges.  
+
+---
+
+### 3. Transformations
+- **Rotation:** Rotate image by 90° using `np.rot90`.  
+- **Flip:** Flip vertically using `np.flipud`.  
+- **Scale:** Downsample by skipping pixels with slicing.  
+
+---
+
+### 4. Edge Detection
+The Sobel operator detects edges by combining horizontal and vertical gradients:
+
+\[
+edges = \sqrt{G_x^2 + G_y^2}
+\]
+
+Where \(G_x\) and \(G_y\) are results of convolution with Sobel kernels.
+
+---
+
+### 5. Visualization
+Matplotlib is used to display original and processed images side by side:
+
+```python
+def show_images(original, processed, title="Processed Image"):
+    plt.subplot(1,2,1)
+    plt.imshow(original, cmap="gray")
+    plt.title("Original")
+    plt.axis("off")
+
+    plt.subplot(1,2,2)
+    plt.imshow(processed, cmap="gray")
+    plt.title(title)
+    plt.axis("off")
+    plt.show()
+```
+
+---
+
+## 📊 Example Output
+- **Blurred Image:** Smooths details.  
+- **Sharpened Image:** Enhances edges.  
+- **Edge Detection:** Highlights boundaries.  
+- **Rotated/Flipped/Scaled Images:** Demonstrates transformations.  
+
+---
+
+## 🧠 Real-World Applications
+- **Computer Vision:** Preprocessing images for machine learning.  
+- **Medical Imaging:** Enhancing scans for analysis.  
+- **Photography:** Applying filters and transformations.  
+- **Robotics:** Edge detection for navigation.  
+
+---
+
+## 🚀 Extensions
+- Add **color image support** (process RGB channels separately).  
+- Implement **histogram equalization** for contrast enhancement.  
+- Add **Gaussian blur** and other advanced filters.  
+- Handle large images efficiently with vectorized NumPy operations.  
+
+---
+
+## 🎯 Learning Outcomes
+By completing this project, you will:
+- Represent images as NumPy arrays.  
+- Implement convolution filters manually.  
+- Apply transformations using NumPy indexing.  
+- Perform edge detection with Sobel operators.  
+- Visualize results with Matplotlib.  
