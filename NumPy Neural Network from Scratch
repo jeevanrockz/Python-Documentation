@@ -1,0 +1,112 @@
+# 📘 Project Title: **NumPy Neural Network from Scratch**
+
+## 📖 Overview
+This project implements a feedforward neural network entirely with NumPy, without using external deep learning libraries. 
+It demonstrates the mechanics of forward propagation, backpropagation, gradient descent, and training loops. 
+The network is trained on synthetic data for binary classification, but the framework can be extended to real-world datasets.
+
+---
+
+## 🏗️ Project Structure
+- **Data Generation:** Creates synthetic 2D points with binary labels.  
+- **Parameter Initialization:** Randomly initializes weights and biases.  
+- **Activation Functions:** Implements ReLU and Softmax.  
+- **Forward Propagation:** Computes outputs layer by layer.  
+- **Loss Function:** Uses cross-entropy for classification.  
+- **Backpropagation:** Derives gradients for weights and biases.  
+- **Training Loop:** Updates parameters using gradient descent.  
+- **Visualization:** Plots training loss and accuracy over epochs.
+
+---
+
+## 🔧 Detailed Workflow
+
+### 1. Data Preparation
+- Synthetic dataset: 2D points sampled from a normal distribution.  
+- Labels: Binary classification based on whether the product of coordinates is positive.  
+- One-hot encoding: Converts labels into vectors for training.  
+
+### 2. Network Architecture
+- Input layer: 2 features.  
+- Hidden layer: 16 neurons, ReLU activation.  
+- Output layer: 2 neurons, Softmax activation.  
+
+### 3. Forward Propagation
+- Hidden layer:
+  \[
+  z_1 = XW_1 + b_1, \quad a_1 = \text{ReLU}(z_1)
+  \]
+- Output layer:
+  \[
+  z_2 = a_1W_2 + b_2, \quad a_2 = \text{Softmax}(z_2)
+  \]
+
+### 4. Loss Function
+- Cross-entropy loss:
+  \[
+  L = -\frac{1}{m}\sum y \cdot \log(\hat{y})
+  \]
+
+### 5. Backpropagation
+- Output gradients:
+  \[
+  dZ_2 = a_2 - y
+  \]
+- Hidden gradients:
+  \[
+  dZ_1 = (dZ_2 W_2^T) \cdot \text{ReLU}'(z_1)
+  \]
+- Weight updates:
+  \[
+  W = W - \eta \cdot dW, \quad b = b - \eta \cdot db
+  \]
+
+### 6. Training Loop
+- Iterates over epochs.  
+- Performs forward pass, computes loss, backpropagates gradients, updates parameters.  
+- Tracks loss and accuracy.  
+
+### 7. Visualization
+- Loss vs epochs: Shows convergence.  
+- Accuracy vs epochs: Shows performance improvement.  
+
+---
+
+## 📊 Example Output
+- **Console:**  
+  ```
+  Epoch 0, Loss: 0.6931, Accuracy: 0.5000
+  Epoch 10, Loss: 0.4123, Accuracy: 0.8200
+  ...
+  ```
+- **Plots:**  
+  - Loss curve decreasing over time.  
+  - Accuracy curve increasing toward ~90–95%.  
+
+---
+
+## 🧠 Real-World Applications
+- **Education:** Learn how neural networks work internally.  
+- **AI Research:** Prototype new architectures without heavy frameworks.  
+- **Finance:** Predict binary outcomes (e.g., stock up/down).  
+- **Healthcare:** Classify medical signals or images.  
+- **NLP:** Text classification tasks.  
+
+---
+
+## 🚀 Extensions
+- Add multiple hidden layers.  
+- Experiment with different activations (sigmoid, tanh).  
+- Implement mini-batch gradient descent.  
+- Add regularization (dropout, L2 penalty).  
+- Train on real datasets (MNIST, CIFAR).  
+
+---
+
+## 🎯 Learning Outcomes
+By completing this project, you will:
+- Understand the math behind neural networks.  
+- Implement forward and backward propagation manually.  
+- Apply gradient descent optimization.  
+- Visualize training dynamics.  
+- Gain intuition for how frameworks like TensorFlow and PyTorch work internally.  
