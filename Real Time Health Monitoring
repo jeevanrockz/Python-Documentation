@@ -1,0 +1,146 @@
+# 📘 Real‑Time Health Monitoring System (FastAPI + SQLAlchemy + MySQL)
+
+## 1. Overview
+This system allows:
+- Patient registration
+- Real‑time vitals logging (heart rate, temperature, oxygen level)
+- REST API endpoints for patients and vitals
+- Database persistence using MySQL (via SQLAlchemy ORM)
+
+---
+
+## 2. Project Structure
+```
+fastapi/
+│
+├── app/
+│   ├── main.py          # FastAPI entry point
+│   ├── database.py      # Database engine, session, Base, get_db()
+│   ├── models.py        # SQLAlchemy ORM models
+│   ├── schemas.py       # Pydantic schemas
+│   └── routes/
+│       ├── patients.py  # Patient endpoints
+│       └── vitals.py    # Vital endpoints
+│
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## 3. Database Schema
+
+### Patients Table
+| Column   | Type      | Notes              |
+|----------|-----------|--------------------|
+| id       | INT       | Primary Key        |
+| name     | VARCHAR   | Patient name       |
+| age      | INT       | Patient age        |
+| gender   | VARCHAR   | Patient gender     |
+
+### Vitals Table
+| Column       | Type    | Notes                          |
+|--------------|---------|--------------------------------|
+| id           | INT     | Primary Key                    |
+| patient_id   | INT     | Foreign Key → patients.id       |
+| heart_rate   | FLOAT   | Beats per minute               |
+| temperature  | FLOAT   | Body temperature (°F/°C)       |
+| oxygen_level | FLOAT   | Oxygen saturation (%)          |
+
+---
+
+## 4. SQL Queries to Verify
+
+- Show tables:
+  ```sql
+  SHOW TABLES;
+  ```
+
+- Inspect structure:
+  ```sql
+  DESCRIBE patients;
+  DESCRIBE vitals;
+  ```
+
+- Insert sample data:
+  ```sql
+  INSERT INTO patients (name, age, gender)
+  VALUES ('Jeevan', 30, 'Male');
+
+  INSERT INTO vitals (patient_id, heart_rate, temperature, oxygen_level)
+  VALUES (1, 72, 98.6, 97.5);
+  ```
+
+- View records:
+  ```sql
+  SELECT * FROM patients;
+  SELECT * FROM vitals;
+  ```
+
+- Join patients with vitals:
+  ```sql
+  SELECT p.name, v.heart_rate, v.temperature, v.oxygen_level
+  FROM patients p
+  JOIN vitals v ON p.id = v.patient_id;
+  ```
+
+---
+
+## 5. API Endpoints
+
+### Patients
+- `POST /patients/` → Create patient
+- `GET /patients/{id}` → Get patient by ID
+- `GET /patients/` → List patients
+
+### Vitals
+- `POST /vitals/` → Log vitals for a patient
+- `GET /vitals/{id}` → Get vitals by ID
+- `GET /vitals/` → List vitals
+
+---
+
+## 6. Example JSON Payloads
+
+### Create Patient
+```json
+{
+  "name": "Jeevan",
+  "age": 30,
+  "gender": "Male"
+}
+```
+
+### Log Vitals
+```json
+{
+  "patient_id": 1,
+  "heart_rate": 72,
+  "temperature": 98.6,
+  "oxygen_level": 97.5
+}
+```
+
+---
+
+## 7. How to Run
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Run server
+uvicorn app.main:app --reload
+```
+
+- Open `http://127.0.0.1:8000/` → Neat HTML welcome page
+- Open `http://127.0.0.1:8000/docs` → Swagger UI
+- Open `http://127.0.0.1:8000/redoc` → ReDoc
+
+---
+
+## 8. Testing Workflow
+1. Register a patient (`POST /patients/`).
+2. Log vitals for that patient (`POST /vitals/`).
+3. Retrieve patient info (`GET /patients/{id}`).
+4. Retrieve vitals (`GET /vitals/{id}`).
+5. Use SQL queries to confirm data persistence.
