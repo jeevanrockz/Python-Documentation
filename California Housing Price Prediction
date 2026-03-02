@@ -1,0 +1,43 @@
+### 📚 Official Scikit-learn Documentation
+
+1. **California Housing Dataset (`fetch_california_housing`)**
+   - This dataset is built into Scikit-learn and is designed for regression tasks.  
+   - Contains **20,640 samples** with **8 numerical features** (median income, house age, average rooms, population, latitude, longitude, etc.) and the target variable `MedHouseVal` (median house value).  
+   - Documentation: fetch_california_housing — Scikit-learn API Reference [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fgenerated%2Fsklearn.datasets.fetch_california_housing.html")  
+
+2. **Regression Models**
+   - **Linear Regression**: Basic regression model for continuous targets.  
+     Docs: LinearRegression — Scikit-learn [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fgenerated%2Fsklearn.linear_model.LinearRegression.html")  
+   - **Random Forest Regressor**: Ensemble method using decision trees.  
+     Docs: RandomForestRegressor — Scikit-learn [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fgenerated%2Fsklearn.ensemble.RandomForestRegressor.html")  
+   - **Gradient Boosting Regressor**: Boosting method for strong predictive performance.  
+     Docs: GradientBoostingRegressor — Scikit-learn [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fgenerated%2Fsklearn.ensemble.GradientBoostingRegressor.html")
+
+3. **Preprocessing**
+   - **StandardScaler**: Standardizes features by removing the mean and scaling to unit variance.  
+     Docs: StandardScaler — Scikit-learn [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fgenerated%2Fsklearn.preprocessing.StandardScaler.html")  
+   - **PolynomialFeatures**: Generates polynomial and interaction features to capture non-linear relationships.  
+     Docs: PolynomialFeatures — Scikit-learn [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fgenerated%2Fsklearn.preprocessing.PolynomialFeatures.html")
+
+4. **Evaluation Metrics**
+   - **Mean Squared Error (MSE)**, **Mean Absolute Error (MAE)**, and **R² score** are standard regression metrics.  
+   - Docs: Regression Metrics — Scikit-learn [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fmodel_evaluation.html%23regression-metrics")
+
+---
+
+### 📘 Tutorials & Guides
+
+- **Scikit-learn Course: California Housing Dataset**  
+  A structured walkthrough of loading, exploring, and modeling with the dataset.  
+
+- **Working with the California Housing Dataset in Scikit-learn (Sling Academy)**  
+  Explains dataset exploration, regression modeling, feature scaling, and enhancements.  
+
+---
+
+### ✅ Why This Documentation Matters
+- **Dataset docs** explain the structure and features of California Housing.  
+- **Model docs** cover the algorithms you used (Linear Regression, Random Forest, Gradient Boosting).  
+- **Preprocessing docs** ensure correct scaling and feature engineering.  
+- **Evaluation docs** provide the metrics to judge model performance.  
+- Tutorials give you **step-by-step examples** to replicate and extend your notebook.
