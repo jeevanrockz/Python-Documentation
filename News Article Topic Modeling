@@ -1,0 +1,44 @@
+## 📚 Official Scikit-learn Documentation
+
+1. **TF-IDF Vectorizer**
+   - Converts text documents into a matrix of TF-IDF features.
+   - Documentation: TfidfVectorizer — Scikit-learn [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fgenerated%2Fsklearn.feature_extraction.text.TfidfVectorizer.html")  
+   - Key parameters:
+     - `stop_words`: remove common words (e.g., "english").
+     - `ngram_range`: use unigrams, bigrams, etc.
+     - `max_features`: limit vocabulary size.
+
+2. **Latent Dirichlet Allocation (LDA)**
+   - A generative probabilistic model for discovering topics in text.
+   - Documentation: LatentDirichletAllocation — Scikit-learn [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fgenerated%2Fsklearn.decomposition.LatentDirichletAllocation.html")  
+   - Key parameters:
+     - `n_components`: number of topics.
+     - `max_iter`: number of iterations for convergence.
+     - `learning_method`: batch or online.
+     - `random_state`: reproducibility.
+
+3. **Model Evaluation**
+   - LDA provides **perplexity** and **log-likelihood** as evaluation metrics.
+   - Documentation: Evaluating LDA models [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fdecomposition.html%23latent-dirichlet-allocation")
+
+---
+
+## 📘 Tutorials & Guides
+
+- **Scikit-learn Topic Extraction Guide**  
+  Explains how to use LDA and NMF for topic modeling: Topic extraction with LDA and NMF [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fauto_examples%2Ftext%2Fplot_topics_extraction_with_nmf_lda.html")
+
+- **Practical NLP with Scikit-learn**  
+  Covers preprocessing, vectorization, and unsupervised learning for text.
+
+- **pyLDAvis Visualization**  
+  Interactive visualization library for LDA topics: [pyLDAvis Documentation](https://pyldavis.readthedocs.io/)
+
+---
+
+## 🔧 What You’ll Learn from These Docs
+- How to **convert text into numerical features** using TF-IDF.  
+- How LDA discovers **latent topics** by modeling word distributions.  
+- How to **evaluate topic quality** with perplexity and coherence.  
+- How to **interpret topics** by examining top words.  
+- How to **visualize topics** interactively with pyLDAvis.  
