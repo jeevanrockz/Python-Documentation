@@ -1,0 +1,39 @@
+## 📚 Official Scikit-learn Documentation
+
+### 1. **Spectral Clustering**
+- Spectral clustering applies clustering to a projection of the normalized graph Laplacian.  
+- It is particularly useful when clusters are **non-convex** or when traditional methods like k-means fail.  
+- Documentation: Spectral Clustering — Scikit-learn API Reference [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fgenerated%2Fsklearn.cluster.SpectralClustering.html")  
+- Key parameters:
+  - `n_clusters`: number of clusters to form.
+  - `affinity`: can be an adjacency matrix for graph-based clustering.
+  - `assign_labels`: method used to assign labels (e.g., k-means).
+
+### 2. **Isolation Forest (Anomaly Detection)**
+- Isolation Forest isolates anomalies instead of profiling normal data points.  
+- It works well for **high-dimensional datasets** and is efficient for large samples.  
+- Documentation: Novelty and Outlier Detection — Scikit-learn User Guide [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Foutlier_detection.html")  
+- Key parameters:
+  - `contamination`: proportion of anomalies in the dataset.
+  - `random_state`: ensures reproducibility.
+  - Output: `-1` for anomalies, `1` for normal points.
+
+---
+
+## 📘 Tutorials & Guides
+
+- **Community Detection with Spectral Clustering**  
+  Explains how spectral clustering can be applied to graphs using adjacency matrices and Laplacians.  
+- **Outlier Detection in Graphs**  
+  Shows how anomaly detection methods like Isolation Forest can highlight unusual nodes in networks.  
+- **Scikit-learn User Guide (Unsupervised Learning)**  
+  Covers clustering methods, including spectral clustering, and anomaly detection techniques.  
+
+---
+
+## 🔧 What You’ll Learn
+- How to **represent graphs** with adjacency matrices.  
+- Apply **Spectral Clustering** to detect communities in networks.  
+- Use **Isolation Forest** to detect anomalies in graph structures.  
+- Visualize clusters and anomalies using **PCA**.  
+- Real-world applications: **fraud detection in social networks, cybersecurity monitoring, community detection in online platforms**.  
