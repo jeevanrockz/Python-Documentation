@@ -1,0 +1,42 @@
+### 📚 Official Scikit-learn Documentation
+
+1. **Isolation Forest**
+   - An ensemble method that isolates anomalies by randomly partitioning data.  
+   - Documentation: IsolationForest — Scikit-learn [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fgenerated%2Fsklearn.ensemble.IsolationForest.html")  
+   - Key parameters:
+     - `n_estimators`: number of trees.
+     - `contamination`: expected proportion of anomalies.
+     - `random_state`: reproducibility.
+
+2. **One-Class SVM**
+   - Learns a decision boundary around normal data points; anomalies fall outside.  
+   - Documentation: OneClassSVM — Scikit-learn [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fgenerated%2Fsklearn.svm.OneClassSVM.html")  
+   - Key parameters:
+     - `nu`: proportion of anomalies.
+     - `kernel`: type of kernel (e.g., RBF).
+     - `gamma`: kernel coefficient.
+
+3. **Local Outlier Factor (LOF)**
+   - Detects anomalies based on local density deviations.  
+   - Documentation: LocalOutlierFactor — Scikit-learn [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fgenerated%2Fsklearn.neighbors.LocalOutlierFactor.html")  
+   - Key parameters:
+     - `n_neighbors`: number of neighbors to compare density.
+     - `contamination`: expected proportion of anomalies.
+
+---
+
+### 📘 Tutorials & Guides
+
+- **Practical Anomaly Detection using Python and Scikit-learn**  
+  Explains contamination tuning, threshold optimization, and deployment patterns.  
+
+- **Anomaly Detection Applications**  
+  Covers fraud detection, network security, healthcare, manufacturing, and system monitoring.  
+
+---
+
+### ✅ Why This Documentation Matters
+- **Isolation Forest docs** explain how anomalies are isolated via random partitioning.  
+- **One-Class SVM docs** show how kernel-based boundaries detect outliers.  
+- **LOF docs** highlight density-based anomaly detection.  
+- Tutorials provide **real-world context** (fraud detection, intrusion detection, healthcare).  
