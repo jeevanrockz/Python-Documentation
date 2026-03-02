@@ -1,0 +1,30 @@
+## 📚 Key Documentation Sources
+
+### 1. **Scikit-learn Documentation (Classification & Evaluation)**
+- **Classification metrics**: Precision, Recall, F1-score, ROC-AUC  
+  Scikit-learn Classification Metrics Guide [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fmodel_evaluation.html%23classification-metrics")  
+- **Class weights**: Handling imbalanced datasets by adjusting weights in classifiers  
+  Scikit-learn Class Weight Parameter [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fgenerated%2Fsklearn.linear_model.LogisticRegression.html")  
+
+### 2. **Imbalanced-learn (imblearn) Library**
+- Provides advanced tools for handling imbalanced datasets (oversampling, undersampling, SMOTE).  
+- Documentation: Imbalanced-learn User Guide [(imbalanced-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fimbalanced-learn.org%2Fstable%2Fuser_guide.html")  
+
+### 3. **Credit Risk Prediction Projects**
+- Example GitHub project: *Credit Risk Prediction System using Scikit-learn*  
+  Shows how supervised learning algorithms can classify loan applicants as likely to default.  
+  GitHub Project: Credit Risk Prediction ML [(github.com in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fgithub.com%2FBhuvana5c3%2FCredit-risk-prediction-ML")  
+
+### 4. **Credit Risk Modeling in Finance**
+- Documentation of probability-of-default (PD) scoring models using Scikit-learn.  
+- Grounded in Basel II/III regulatory frameworks for credit risk quantification.  
+  Credit Risk Modeling Resources [(deepwiki.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fdeepwiki.org%2Fwiki%2FCredit_Risk_Modeling")  
+
+---
+
+## 🔧 What You’ll Learn from These Docs
+- **How to preprocess structured financial data** (scaling, encoding).  
+- **Strategies for imbalanced classification**: class weights, SMOTE, undersampling.  
+- **Evaluation metrics beyond accuracy**: ROC-AUC, Precision-Recall curves.  
+- **Regulatory context**: Basel frameworks for PD (Probability of Default), LGD (Loss Given Default), and EAD (Exposure at Default).  
+- **Practical implementations**: GitHub projects showing end-to-end pipelines.  
