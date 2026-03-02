@@ -1,0 +1,47 @@
+## 📚 Core Concepts
+
+### 1. Multi-Armed Bandit Problem
+- A classic **reinforcement learning** problem where an agent must choose between multiple actions (arms) with unknown reward probabilities.
+- Goal: maximize cumulative reward over time.
+- Challenge: balance **exploration** (trying new arms) vs **exploitation** (choosing the best-known arm).
+
+### 2. ε-Greedy Strategy
+- With probability **ε**, choose a random arm (exploration).
+- With probability **1-ε**, choose the arm with the highest estimated reward (exploitation).
+- Documentation: Exploration vs Exploitation in Bandits (reinforcement learning overview in Bing) [(bing.com in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fwww.bing.com%2Fsearch%3Fq%3Dmulti%2Barmed%2Bbandit%2Bepsilon%2Bgreedy%2Bdocumentation")
+
+### 3. Upper Confidence Bound (UCB)
+- Selects arms based on both estimated reward and uncertainty.
+- Formula:  
+  \[
+  UCB_i = \hat{\mu}_i + \sqrt{\frac{2 \cdot \ln t}{n_i}}
+  \]
+  where \(\hat{\mu}_i\) is the average reward of arm \(i\), \(t\) is the trial number, and \(n_i\) is the number of times arm \(i\) has been played.
+- Documentation: UCB Algorithm (bandit algorithms in Bing) [(bing.com in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fwww.bing.com%2Fsearch%3Fq%3Dmulti%2Barmed%2Bbandit%2BUCB%2Balgorithm%2Bdocumentation")
+
+### 4. Evaluation Metrics
+- **Cumulative Reward**: total reward collected over trials.
+- **Regret**: difference between optimal reward and achieved reward.
+- **Convergence**: how quickly the algorithm identifies the best arm.
+
+---
+
+## 📘 Tutorials & Guides
+
+- **Bandit Algorithms Book (Lattimore & Szepesvári)**  
+  Comprehensive reference on bandit theory and algorithms. (bandit algorithms book in Bing) [(bing.com in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fwww.bing.com%2Fsearch%3Fq%3Dbandit%2Balgorithms%2Blattimore%2Bszepesvari")
+
+- **Reinforcement Learning Basics (Sutton & Barto)**  
+  Classic textbook covering bandits, Markov decision processes, and RL strategies. (reinforcement learning Sutton Barto in Bing) [(bing.com in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fwww.bing.com%2Fsearch%3Fq%3Dreinforcement%2Blearning%2Bsutton%2Bbarto")
+
+- **Scikit-learn Context**  
+  While Scikit-learn doesn’t natively support RL, you can use its tools (e.g., metrics, plotting, simulation utilities) to analyze bandit strategies. (scikit-learn metrics in Bing) [(bing.com in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fwww.bing.com%2Fsearch%3Fq%3Dscikit-learn%2Bmetrics%2Broc%2Bauc%2Bdocumentation")
+
+---
+
+## 🔧 What You’ll Learn
+- How to **simulate environments** for reinforcement learning.  
+- Implement **exploration vs exploitation strategies** (ε-greedy, UCB).  
+- Evaluate algorithms using **cumulative reward and regret**.  
+- Real-world applications: **online advertising, clinical trials, recommendation systems**.  
+Would you like me to **add Thompson Sampling (Bayesian approach)** into the code so you can compare it against ε-greedy and UCB in your simulation?
