@@ -1,0 +1,47 @@
+### 📚 Official Scikit-learn Documentation
+
+1. **Principal Component Analysis (PCA)**
+   - PCA is a dimensionality reduction technique that projects data into fewer dimensions while preserving variance.  
+   - Documentation: Scikit-learn PCA [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fgenerated%2Fsklearn.decomposition.PCA.html")  
+   - Key parameters:
+     - `n_components`: number of dimensions to reduce to.
+     - `random_state`: reproducibility.
+   - Useful for visualizing high-dimensional data in 2D or 3D.
+
+2. **Clustering Algorithms**
+   - Scikit-learn provides multiple clustering methods, including **KMeans**, **DBSCAN**, **Agglomerative Clustering**, etc.  
+   - Documentation: Scikit-learn Clustering [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fclustering.html")  
+   - For KMeans:
+     - `n_clusters`: number of clusters.
+     - `init`: initialization method (default `"k-means++"`).
+     - `random_state`: reproducibility.
+
+3. **Evaluation Metrics**
+   - **Silhouette Score**: Measures how similar an object is to its own cluster compared to other clusters.  
+   - Documentation: Silhouette Coefficient [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fclustering.html%23silhouette-coefficient")  
+   - Range: -1 (poor clustering) to +1 (dense, well-separated clusters).
+
+4. **Preprocessing**
+   - `StandardScaler`: Standardizes features by removing the mean and scaling to unit variance.  
+   - Documentation: StandardScaler [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fgenerated%2Fsklearn.preprocessing.StandardScaler.html")
+
+---
+
+### 📘 Tutorials & Guides
+
+- **Implementing PCA in Python with Scikit-learn (GeeksforGeeks)**  
+  Explains PCA step-by-step with code examples.  
+    
+
+- **Scikit-learn Example Gallery**  
+  Contains runnable clustering examples (KMeans, DBSCAN, hierarchical clustering).  
+  👉 Scikit-learn Example Gallery [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fauto_examples%2Findex.html")
+
+---
+
+### ✅ Why This Documentation Matters
+- **PCA docs** explain how dimensionality reduction works for visualization.  
+- **Clustering docs** cover KMeans and alternatives, so you can experiment beyond KMeans.  
+- **Evaluation metrics** help you judge cluster quality.  
+- **Preprocessing docs** ensure your features are scaled correctly before clustering.  
+- Tutorials give you **practical, step-by-step examples** to replicate in Jupyter Notebook.
