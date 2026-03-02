@@ -1,0 +1,46 @@
+### 📚 Official Scikit-learn Documentation
+
+1. **`fetch_20newsgroups` Dataset**
+   - This is the dataset loader you used. It provides access to the 20 Newsgroups text dataset, widely used for text classification tasks.  
+   - Documentation: Scikit-learn  [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fgenerated%2Fsklearn.datasets.fetch_20newsgroups.html")  
+   - Key parameters:
+     - `subset`: `"train"`, `"test"`, or `"all"`.
+     - `categories`: list of categories to load (you used `['rec.sport.hockey', 'sci.space']`).
+     - `remove`: allows stripping headers, footers, and quotes.
+
+2. **Text Feature Extraction**
+   - `TfidfVectorizer`: Converts text into numerical features using Term Frequency–Inverse Document Frequency.  
+   - Documentation: Scikit-learn TfidfVectorizer [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fgenerated%2Fsklearn.feature_extraction.text.TfidfVectorizer.html")  
+   - Important options:
+     - `stop_words="english"` removes common English words.
+     - `max_features` limits vocabulary size.
+
+3. **Model Training**
+   - `LogisticRegression`: A linear classifier well-suited for text classification.  
+   - Documentation: Scikit-learn LogisticRegression [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fgenerated%2Fsklearn.linear_model.LogisticRegression.html")  
+   - Key parameter: `max_iter=1000` ensures convergence on large datasets.
+
+4. **Evaluation Metrics**
+   - `classification_report`: Provides precision, recall, F1-score, and support for each class.  
+   - `confusion_matrix`: Shows counts of correct and incorrect predictions.  
+   - Documentation: Scikit-learn Classification Metrics [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fclasses.html%23module-sklearn.metrics")
+
+---
+
+### 📘 Tutorials & Examples
+
+- **Working With Text Data (Scikit-learn User Guide)**  
+  A step-by-step tutorial on text classification, including preprocessing, feature extraction, and model training.  
+  👉 Working With Text Data Tutorial [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Ftutorial%2Ftext_analytics%2Fworking_with_text_data.html")  
+
+- **20 Newsgroups Example in Scikit-learn GitHub**  
+  Example code for document classification using the 20 Newsgroups dataset.  
+  👉 Scikit-learn GitHub Example [(github.com in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fgithub.com%2Fscikit-learn%2Fscikit-learn%2Fblob%2Fmain%2Fexamples%2Ftext%2Fplot_document_classification_20newsgroups.py")  
+
+---
+
+### ✅ How This Relates to Your Code
+- **Dataset Loader:** `fetch_20newsgroups` is documented in the API reference.  
+- **Vectorization:** `TfidfVectorizer` is explained in the feature extraction docs.  
+- **Model:** `LogisticRegression` is covered in the linear models section.  
+- **Evaluation:** `classification_report` and `confusion_matrix` are part of the metrics module.  
