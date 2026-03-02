@@ -1,0 +1,88 @@
+# 📄 Real-Time Patient Risk Prediction System (Scikit-learn)
+
+## 1. Project Overview
+This project simulates a **real-time health monitoring system** using **Scikit-learn**. It predicts whether a patient is at risk of a critical health event based on vital signs such as heart rate, blood pressure, oxygen saturation, glucose levels, and respiratory rate.  
+
+The system demonstrates how Scikit-learn can be applied to:
+- **Data preprocessing & feature engineering**
+- **Model training & evaluation**
+- **Pipeline construction**
+- **Real-time prediction simulation**
+
+---
+
+## 2. Objectives
+- Build a machine learning model that classifies patient states into **safe (0)** or **critical risk (1)**.  
+- Engineer features that mimic real-time signals (e.g., rate of change in vitals).  
+- Evaluate model performance using robust metrics (classification report, confusion matrix, ROC-AUC).  
+- Simulate real-time predictions for new patient data.  
+
+---
+
+## 3. Dataset
+- **Synthetic dataset** generated to simulate patient vitals.  
+- Features include:
+  - Heart rate (bpm)  
+  - Blood pressure (mmHg)  
+  - Oxygen saturation (%)  
+  - Glucose (mg/dL)  
+  - Respiratory rate (breaths/min)  
+  - Derived features: rate of change in heart rate, blood pressure, and oxygen saturation.  
+- Target variable: `critical_event` (binary classification).  
+
+---
+
+## 4. Workflow
+
+### Step 1: Data Generation
+- Synthetic data created using NumPy to simulate 5,000 patient records.  
+- Target variable (`critical_event`) assigned with imbalance (80% safe, 20% risk).  
+
+### Step 2: Feature Engineering
+- Added **rolling differences** (`diff()`) to capture sudden changes in vitals.  
+- These features mimic real-time monitoring signals.  
+
+### Step 3: Train/Test Split
+- 75% training, 25% testing.  
+- Stratified sampling ensures balanced representation of critical events.  
+
+### Step 4: Pipeline Construction
+- **StandardScaler** → normalize features.  
+- **PCA** → dimensionality reduction to 5 components.  
+- **GradientBoostingClassifier** → ensemble learning for robust predictions.  
+
+### Step 5: Model Training & Evaluation
+- Model trained on training set.  
+- Evaluated with:
+  - **Classification report** (precision, recall, F1-score).  
+  - **Confusion matrix** (true positives, false negatives).  
+  - **Cross-validation ROC-AUC** for robustness.  
+
+### Step 6: Real-Time Prediction Simulation
+- New patient data fed into pipeline.  
+- Model outputs:
+  - **Risk prediction** (0 = safe, 1 = risk).  
+  - **Risk probability** (confidence score).  
+
+---
+
+## 5. Results
+- Gradient Boosting achieved strong performance with balanced precision and recall.  
+- Cross-validation confirmed stability across folds.  
+- Real-time simulation successfully predicted risk probability for new patient input.  
+
+---
+
+## 6. Key Learnings
+- **Feature engineering** is critical for time-series health data.  
+- **Pipelines** streamline preprocessing, dimensionality reduction, and modeling.  
+- **Cross-validation** ensures reliability in imbalanced datasets.  
+- Scikit-learn provides a powerful toolkit for building **production-ready ML workflows**.  
+
+---
+
+## 7. Future Enhancements
+- Integrate **streaming data sources** (Kafka, MQTT).  
+- Add **time-series models** (e.g., LSTM via deep learning frameworks).  
+- Expand dataset with real-world ICU data (e.g., PhysioNet).  
+- Deploy model into a real-time API or dashboard for visualization.  
