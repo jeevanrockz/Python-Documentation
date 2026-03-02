@@ -1,0 +1,41 @@
+### 📚 Official Scikit-learn Documentation
+
+1. **Digits Dataset (`load_digits`)**
+   - The dataset contains 1,797 samples of handwritten digits (0–9), each represented as an 8×8 image.  
+   - Documentation: Recognizing hand-written digits — Scikit-learn [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fauto_examples%2Fclassification%2Fplot_digits_classification.html")  
+   - Key attributes:
+     - `digits.data`: Flattened 64-feature vectors (pixel intensities).
+     - `digits.images`: Original 8×8 arrays for visualization.
+     - `digits.target`: Labels (0–9).
+
+2. **Classification Algorithms**
+   - Scikit-learn provides multiple classifiers you can use:
+     - Logistic Regression (`sklearn.linear_model.LogisticRegression`)  
+     - Support Vector Machines (`sklearn.svm.SVC`)  
+     - Random Forest (`sklearn.ensemble.RandomForestClassifier`)  
+   - Documentation: Classification — Scikit-learn [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fsupervised_learning.html%23classification")
+
+3. **Model Evaluation**
+   - `classification_report`: Precision, recall, F1-score, and support for each class.  
+   - `confusion_matrix`: Counts of correct vs incorrect predictions.  
+   - Documentation: Metrics and scoring — Scikit-learn [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fmodules%2Fmodel_evaluation.html")
+
+---
+
+### 📘 Tutorials & Guides
+
+- **GeeksforGeeks Tutorial: Recognizing Handwritten Digits in Scikit-learn**  
+  Explains step-by-step how to train models (MLP, SVM, Random Forest) on the digits dataset.  
+  👉 GeeksforGeeks Guide [(geeksforgeeks.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fwww.geeksforgeeks.org%2Frecognizing-handwritten-digits-in-scikit-learn%2F")  
+
+- **Scikit-learn Example Gallery**  
+  Contains runnable examples for classification tasks, including digits recognition.  
+  👉 Scikit-learn Example Gallery [(scikit-learn.org in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fscikit-learn.org%2Fstable%2Fauto_examples%2Findex.html")  
+
+---
+
+### ✅ Why This Documentation Matters
+- It explains **how the digits dataset is structured**.  
+- Shows **different classifiers** you can experiment with.  
+- Provides **evaluation techniques** to measure performance.  
+- Offers **examples and tutorials** so you can replicate and extend your notebook easily.
