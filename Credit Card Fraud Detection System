@@ -1,0 +1,84 @@
+# 📄 Credit Card Fraud Detection System (Scikit-learn)
+
+## 1. Project Overview
+This project demonstrates how to use **Scikit-learn** to detect fraudulent credit card transactions. Fraud detection is a classic **imbalanced classification problem**, where fraudulent cases are rare compared to legitimate ones. The system builds a machine learning model to classify transactions as **legitimate (0)** or **fraudulent (1)**.
+
+---
+
+## 2. Objectives
+- Handle **imbalanced datasets** effectively.  
+- Train and evaluate machine learning models for fraud detection.  
+- Use **feature preprocessing and scaling** for numerical and categorical data.  
+- Simulate **real-time transaction predictions**.  
+
+---
+
+## 3. Dataset
+- **Synthetic dataset** generated for demonstration.  
+- Features include:
+  - Transaction amount  
+  - Time of transaction (seconds in a day)  
+  - Merchant type (categorical, encoded as integers)  
+  - Location (categorical, encoded as integers)  
+  - Device type (categorical, encoded as integers)  
+- Target variable: `fraud` (binary classification).  
+  - 0 = legitimate transaction  
+  - 1 = fraudulent transaction  
+
+---
+
+## 4. Workflow
+
+### Step 1: Data Generation
+- Created 5,000 synthetic transactions using NumPy.  
+- Fraud cases simulated with imbalance (95% legitimate, 5% fraud).  
+
+### Step 2: Preprocessing
+- Features separated into `X` (inputs) and `y` (target).  
+- **SMOTE** (Synthetic Minority Oversampling Technique) used to balance fraud vs legitimate cases.  
+- Alternatively, Scikit-learn’s `class_weight="balanced"` can be used if external libraries are not desired.  
+
+### Step 3: Train/Test Split
+- 75% training, 25% testing.  
+- Stratified sampling ensures balanced representation of fraud cases.  
+
+### Step 4: Model Training
+- Features standardized using **StandardScaler**.  
+- Model: **Random Forest Classifier** with `class_weight="balanced"`.  
+- Trained on resampled dataset.  
+
+### Step 5: Model Evaluation
+- Metrics used:
+  - **Classification report** (precision, recall, F1-score).  
+  - **Confusion matrix** (true positives, false negatives).  
+  - **ROC-AUC score** for probability-based evaluation.  
+- Cross-validation performed for robustness.  
+
+### Step 6: Real-Time Prediction Simulation
+- New transaction data fed into the trained model.  
+- Model outputs:
+  - **Fraud prediction** (0 = legitimate, 1 = fraud).  
+  - **Fraud probability** (confidence score).  
+
+---
+
+## 5. Results
+- Random Forest achieved strong performance with balanced precision and recall.  
+- ROC-AUC confirmed good separation between fraud and legitimate transactions.  
+- Real-time simulation successfully predicted fraud probability for new transaction input.  
+
+---
+
+## 6. Key Learnings
+- Fraud detection requires **special handling of imbalanced datasets**.  
+- **SMOTE** or `class_weight` are effective strategies to balance classes.  
+- **Evaluation metrics** must prioritize recall (catching fraud) while minimizing false positives.  
+- Scikit-learn provides a complete workflow for preprocessing, training, and evaluation.  
+
+---
+
+## 7. Future Enhancements
+- Integrate **real transaction datasets** (e.g., Kaggle Credit Card Fraud dataset).  
+- Compare multiple models (Logistic Regression, Gradient Boosting, Isolation Forest).  
+- Deploy model into a **real-time API** for production use.  
+- Add **anomaly detection techniques** for unsupervised fraud detection.  
