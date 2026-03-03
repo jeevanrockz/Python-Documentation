@@ -1,0 +1,111 @@
+# 📄 Documentation: Social Media Engagement Analytics Dashboard (Seaborn)
+
+## 1. Objective
+The goal of this task is to build a **multi-plot dashboard** that visualizes social media engagement metrics across platforms and content types. Unlike earlier tasks, this one introduces **advanced Seaborn functions** (`catplot`, `lmplot`, `jointplot`, `heatmap`, `stripplot`, `swarmplot`) that go beyond the basics of box plots and violin plots.
+
+Key objectives:
+- Compare **likes across platforms and content types**.  
+- Analyze **relationship between watch time and shares**.  
+- Explore **joint distribution of likes and comments**.  
+- Display **correlation matrix of engagement metrics**.  
+- Show **distribution of shares across platforms and content categories**.  
+
+---
+
+## 2. Dataset
+- **Platform:** Social media platforms (YouTube, Instagram, Twitter, Facebook).  
+- **ContentType:** Content categories (Video, Image, Text).  
+- **Likes:** Number of likes received.  
+- **Shares:** Number of shares.  
+- **Comments:** Number of comments.  
+- **WatchTime:** Average watch time in seconds.  
+
+Example:
+```python
+data = pd.DataFrame({
+    "Platform": np.random.choice(["YouTube", "Instagram", "Twitter", "Facebook"], n),
+    "ContentType": np.random.choice(["Video", "Image", "Text"], n),
+    "Likes": np.random.randint(50, 5000, n),
+    "Shares": np.random.randint(10, 1000, n),
+    "Comments": np.random.randint(5, 800, n),
+    "WatchTime": np.random.normal(300, 100, n)
+})
+```
+
+---
+
+## 3. Steps in the Code
+
+### Step 1: Catplot (Likes by Platform and Content Type)
+```python
+sns.catplot(x="Platform", y="Likes", hue="ContentType", kind="bar", data=data)
+```
+- Compares likes across platforms, broken down by content type.  
+- Useful for **engagement benchmarking across platforms**.  
+
+---
+
+### Step 2: LMPlot (Watch Time vs Shares by Platform)
+```python
+sns.lmplot(x="WatchTime", y="Shares", hue="Platform", data=data)
+```
+- Shows regression relationship between watch time and shares.  
+- Useful for **understanding how watch time drives sharing behavior**.  
+
+---
+
+### Step 3: JointPlot (Comments vs Likes)
+```python
+sns.jointplot(x="Likes", y="Comments", data=data, kind="scatter")
+```
+- Combines scatter plot with marginal distributions.  
+- Useful for **exploring correlation between likes and comments**.  
+
+---
+
+### Step 4: Heatmap (Correlation of Engagement Metrics)
+```python
+corr = data[["Likes", "Shares", "Comments", "WatchTime"]].corr()
+sns.heatmap(corr, annot=True, cmap="coolwarm")
+```
+- Displays correlation matrix of engagement metrics.  
+- Useful for **identifying strong or weak relationships**.  
+
+---
+
+### Step 5: StripPlot (Shares Distribution Across Platforms)
+```python
+sns.stripplot(x="Platform", y="Shares", data=data, jitter=True, alpha=0.6)
+```
+- Shows granular distribution of shares across platforms.  
+- Useful for **spotting variability in engagement**.  
+
+---
+
+### Step 6: SwarmPlot (Shares Across Content Categories)
+```python
+sns.swarmplot(x="ContentType", y="Shares", data=data, hue="Platform")
+```
+- Displays detailed scatter of shares across content categories.  
+- Useful for **comparing platform performance within content types**.  
+
+---
+
+## 4. Real-World Use Case
+This dashboard is useful for:
+- **Marketing Teams:** Understanding which platforms and content types drive engagement.  
+- **Content Creators:** Identifying which metrics (likes, shares, comments) correlate most strongly.  
+- **Social Media Analysts:** Exploring relationships between watch time and sharing behavior.  
+- **Business Intelligence:** Using correlation insights to optimize content strategy.  
+
+---
+
+## 5. Output
+- A **multi-plot dashboard** with six charts:  
+  1. Catplot (likes by platform and content type).  
+  2. LMPlot (watch time vs shares regression).  
+  3. JointPlot (comments vs likes distribution).  
+  4. Heatmap (correlation of engagement metrics).  
+  5. StripPlot (shares distribution across platforms).  
+  6. SwarmPlot (shares across content categories).  
+- Clear titles, labels, legends, and consistent styling.  
