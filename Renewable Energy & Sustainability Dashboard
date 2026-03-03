@@ -1,0 +1,122 @@
+# 📘 Renewable Energy & Sustainability Dashboard Documentation
+
+## 1. Overview
+The **Renewable Energy & Sustainability Dashboard** is an interactive web application built with **Plotly** and **Dash**. It provides synthetic but realistic sustainability visualizations for energy production, carbon emissions, resource efficiency, and country comparisons, enabling exploration of renewable adoption, emission trends, and sustainability scores.
+
+The dashboard is organized into **four tabs**:
+1. **Energy Production** – Stacked area chart of renewable sources and global growth line chart.
+2. **Carbon Emissions** – Bar chart of emissions by sector and scatter plot of consumption vs. emissions.
+3. **Resource Efficiency** – Pie chart of recycling vs. waste generation.
+4. **Country Comparisons** – Heatmap of correlations and bubble chart of sustainability scores.
+
+---
+
+## 2. Technology Stack
+- **Python 3.8+**
+- **Dash** (web app framework)
+- **Plotly Express & Graph Objects** (interactive visualizations)
+- **Pandas & NumPy** (data handling and synthetic generation)
+
+---
+
+## 3. Data Model
+Synthetic datasets are generated inline using Pandas DataFrames and NumPy arrays.
+
+### 3.1 Renewable Energy Production
+| Column     | Description |
+|------------|-------------|
+| year       | Year (2010–2020) |
+| source     | Energy source (Solar, Wind, Hydro, Biomass) |
+| production | Production units (synthetic values) |
+
+### 3.2 Carbon Emissions
+| Column   | Description |
+|----------|-------------|
+| sector   | Sector (Transport, Industry, Residential) |
+| emissions| Emissions (synthetic values) |
+
+### 3.3 Consumption vs Emissions
+| Column               | Description |
+|----------------------|-------------|
+| country              | Country name |
+| consumption_per_capita | Energy consumption per capita |
+| emissions_per_capita | Emissions per capita |
+
+### 3.4 Recycling vs Waste
+| Column   | Description |
+|----------|-------------|
+| category | Recycling or Waste |
+| value    | Percentage |
+
+### 3.5 Sustainability Scores
+| Column     | Description |
+|------------|-------------|
+| country    | Country name |
+| score      | Sustainability score (0–100) |
+| population | Population size (synthetic values) |
+
+### 3.6 Global Growth
+| Column     | Description |
+|------------|-------------|
+| year       | Year (2010–2020) |
+| renewables | Cumulative renewable energy growth |
+
+### 3.7 Correlation Matrix
+- Derived from consumption, emissions, and sustainability scores.
+- Shows pairwise correlation between metrics.
+
+---
+
+## 4. Features
+
+### 4.1 Energy Production
+- **Stacked Area Chart**: Renewable energy production by source.
+- **Line Chart**: Global renewable energy growth trend.
+
+### 4.2 Carbon Emissions
+- **Bar Chart**: Emissions by sector.
+- **Scatter Plot**: Energy consumption vs. emissions per capita.
+
+### 4.3 Resource Efficiency
+- **Pie Chart**: Recycling vs. waste generation.
+
+### 4.4 Country Comparisons
+- **Heatmap**: Correlation between consumption, emissions, and sustainability scores.
+- **Bubble Chart**: Country sustainability scores sized by population.
+
+---
+
+## 5. Interactivity
+- **Hover Tooltips**: Show detailed values on charts.
+- **Linked Charts**: Selecting a country updates scatter and bubble plots.
+- **Tabs**: Organize dashboard into thematic sections.
+
+---
+
+## 6. Architecture
+- **Dash Layout**: Organized into tabs (`dcc.Tabs`).
+- **Callbacks**: Handle interactivity and update figures dynamically.
+- **Plotly Figures**: Created using `plotly.express` and `plotly.graph_objects`.
+
+---
+
+## 7. Deployment
+- Run locally with `python app.py`.
+- Accessible at `http://127.0.0.1:8050/`.
+- Deployable to cloud platforms (Heroku, Azure, AWS) with minor configuration changes.
+
+---
+
+## 8. Future Enhancements
+- Replace synthetic data with **real sustainability datasets** (e.g., IEA, UN, World Bank).
+- Add **animated renewable adoption** across decades.
+- Implement **policy scenario simulator** (e.g., emission reduction targets, renewable subsidies).
+- Add **dual y-axis plots** for production vs. emissions.
+- Expand dataset coverage to more countries and longer timeframes.
+
+---
+
+## 9. Usage Notes
+- Current version uses **synthetic inline data** for demonstration.
+- For production, replace with real energy, emissions, and sustainability datasets.
+- Ensure compliance with **environmental data standards** when using real-world data.
