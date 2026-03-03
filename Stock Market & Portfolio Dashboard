@@ -1,0 +1,115 @@
+# 📘 Stock Market & Portfolio Dashboard Documentation
+
+## 1. Overview
+The **Stock Market & Portfolio Dashboard** is an interactive web application built with **Plotly** and **Dash**. It provides synthetic but realistic financial visualizations for stock prices, trading volume, portfolio allocations, and risk metrics, enabling exploration of market trends, correlations, and investment scenarios.
+
+The dashboard is organized into **four tabs**:
+1. **Stock Prices** – Line chart of closing prices and candlestick chart of OHLC data.
+2. **Trading Volume** – Bar chart of average trading volume per company.
+3. **Portfolio Allocation** – Pie chart of portfolio weights.
+4. **Risk & Correlation** – Scatter plot of risk vs. return, heatmap of correlations, and bubble chart of market capitalization vs. performance.
+
+---
+
+## 2. Technology Stack
+- **Python 3.8+**
+- **Dash** (web app framework)
+- **Plotly Express & Graph Objects** (interactive visualizations)
+- **Pandas & NumPy** (data handling and synthetic generation)
+
+---
+
+## 3. Data Model
+Synthetic datasets are generated inline using Pandas DataFrames and NumPy arrays.
+
+### 3.1 Stock Data (OHLC + Volume)
+| Column | Description |
+|--------|-------------|
+| date   | Daily date (Jan 1–15, 2021) |
+| company| Company name (Company A, B, C) |
+| open   | Opening price |
+| high   | Daily high |
+| low    | Daily low |
+| close  | Closing price |
+| volume | Trading volume |
+
+### 3.2 Portfolio Allocation
+| Column   | Description |
+|----------|-------------|
+| company  | Company name |
+| allocation | Portfolio weight (%) |
+
+### 3.3 Risk vs Return
+| Column | Description |
+|--------|-------------|
+| company| Company name |
+| risk   | Volatility (synthetic values) |
+| return | Expected return (synthetic values) |
+
+### 3.4 Market Capitalization
+| Column     | Description |
+|------------|-------------|
+| company    | Company name |
+| market_cap | Market capitalization (synthetic values) |
+| performance| Performance metric (synthetic values) |
+
+### 3.5 Correlation Matrix
+- Derived from closing prices of companies.
+- Shows pairwise correlation between stock returns.
+
+---
+
+## 4. Features
+
+### 4.1 Stock Prices
+- **Line Chart**: Closing price trend for selected company.
+- **Candlestick Chart**: OHLC visualization for selected company.
+
+### 4.2 Trading Volume
+- **Bar Chart**: Average trading volume per company.
+
+### 4.3 Portfolio Allocation
+- **Pie Chart**: Portfolio allocation by company.
+
+### 4.4 Risk & Correlation
+- **Scatter Plot**: Risk vs. return for companies.
+- **Heatmap**: Correlation between stock returns.
+- **Bubble Chart**: Market capitalization vs. performance.
+
+---
+
+## 5. Interactivity
+- **Dropdowns**: Select company for price and candlestick charts.
+- **Hover Tooltips**: Show detailed values on charts.
+- **Linked Charts**: Selecting a company updates price and candlestick plots.
+- **Tabs**: Organize dashboard into thematic sections.
+
+---
+
+## 6. Architecture
+- **Dash Layout**: Organized into tabs (`dcc.Tabs`).
+- **Callbacks**: Handle interactivity and update figures dynamically.
+- **Plotly Figures**: Created using `plotly.express` and `plotly.graph_objects`.
+
+---
+
+## 7. Deployment
+- Run locally with `python app.py`.
+- Accessible at `http://127.0.0.1:8050/`.
+- Deployable to cloud platforms (Heroku, Azure, AWS) with minor configuration changes.
+
+---
+
+## 8. Future Enhancements
+- Replace synthetic data with **real stock market datasets** (e.g., Yahoo Finance, Alpha Vantage APIs).
+- Add **animated stock price evolution** across months.
+- Implement **portfolio simulator** with adjustable weights and risk metrics.
+- Add **dual y-axis plots** for price vs. volume.
+- Expand dataset coverage to more companies and longer timeframes.
+
+---
+
+## 9. Usage Notes
+- Current version uses **synthetic inline data** for demonstration.
+- For production, replace with real stock and portfolio datasets.
+- Ensure compliance with **financial data licensing and regulations** when using real-world data.
