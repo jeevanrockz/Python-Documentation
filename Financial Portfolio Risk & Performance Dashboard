@@ -1,0 +1,125 @@
+# 📄 Documentation: Financial Portfolio Risk & Performance Dashboard
+
+## 1. Objective
+The goal of this task is to build a **multi-panel dashboard** that visualizes portfolio risk and performance metrics across multiple stocks. Unlike previous dashboards, this one introduces **financial analytics concepts** such as cumulative returns, volatility, risk-return trade-offs, and correlation matrices.
+
+Key objectives:
+- Show **stock price evolution** over time.  
+- Compare **cumulative returns** across stocks.  
+- Analyze **distribution of daily returns**.  
+- Compare **volatility** across stocks.  
+- Visualize **risk vs. return trade-offs**.  
+- Display **correlation matrix** of returns.  
+
+---
+
+## 2. Dataset
+- **Stock Prices:** Simulated daily closing prices for three stocks over 100 days.  
+- **Daily Returns:** Calculated as percentage change between consecutive days.  
+- **Cumulative Returns:** Growth factor over time based on compounding returns.  
+- **Risk & Return:** Standard deviation (risk) and mean (expected return) of daily returns.  
+- **Correlation Matrix:** Pairwise correlations between stock returns.  
+
+Example:
+```python
+returns = {name: np.diff(prices)/prices[:-1] for name, prices in stocks.items()}
+cum_returns = {name: np.cumprod(1 + r) for name, r in returns.items()}
+risk_return = {name: (np.std(r), np.mean(r)) for name, r in returns.items()}
+```
+
+---
+
+## 3. Steps in the Code
+
+### Step 1: Create Subplots
+```python
+fig, axs = plt.subplots(2, 3, figsize=(18,10))
+```
+- Creates a **2×3 grid** of subplots.  
+- Each subplot visualizes a different financial metric.  
+
+---
+
+### Step 2: Line Chart (Stock Prices)
+```python
+axs[0,0].plot(days, prices, label=name)
+```
+- Shows stock price evolution over 100 days.  
+- Useful for **trend analysis** and **price monitoring**.  
+
+---
+
+### Step 3: Line Chart (Cumulative Returns)
+```python
+axs[0,1].plot(cr, label=name)
+```
+- Shows compounded growth factor of each stock.  
+- Useful for **long-term performance comparison**.  
+
+---
+
+### Step 4: Histogram (Daily Returns)
+```python
+axs[0,2].hist(returns["Stock A"], bins=20, color="skyblue", edgecolor="black")
+```
+- Shows distribution of daily returns for Stock A.  
+- Useful for **risk assessment** and **return variability analysis**.  
+
+---
+
+### Step 5: Box Plot (Volatility Comparison)
+```python
+axs[1,0].boxplot(list(returns.values()), tick_labels=list(returns.keys()))
+```
+- Compares volatility across stocks.  
+- Useful for identifying **riskier assets**.  
+
+---
+
+### Step 6: Scatter Plot (Risk vs Return)
+```python
+axs[1,1].scatter(risk, ret, s=100, label=name)
+```
+- Plots risk (standard deviation) vs. return (mean).  
+- Useful for **portfolio optimization** and **risk-return trade-off analysis**.  
+
+---
+
+### Step 7: Heatmap (Correlation Matrix)
+```python
+im = axs[1,2].imshow(corr_matrix, cmap="coolwarm", vmin=-1, vmax=1)
+```
+- Shows correlation between stock returns.  
+- Useful for **diversification strategy** (low correlations reduce portfolio risk).  
+
+---
+
+### Step 8: Final Layout
+```python
+plt.tight_layout()
+plt.suptitle("Financial Portfolio Risk & Performance Dashboard", fontsize=18, y=1.05)
+plt.show()
+```
+- Ensures charts don’t overlap.  
+- Adds a main dashboard title.  
+
+---
+
+## 4. Real-World Use Case
+This dashboard is useful for:
+- **Portfolio Management:** Comparing performance and risk across assets.  
+- **Risk Analysis:** Understanding volatility and return distributions.  
+- **Diversification:** Using correlation matrix to reduce portfolio risk.  
+- **Investment Strategy:** Identifying optimal risk-return trade-offs.  
+
+---
+
+## 5. Output
+- A **multi-panel dashboard** with six charts:  
+  1. Line chart (stock prices).  
+  2. Line chart (cumulative returns).  
+  3. Histogram (daily returns distribution).  
+  4. Box plot (volatility comparison).  
+  5. Scatter plot (risk vs return).  
+  6. Heatmap (correlation matrix).  
+- Clear titles, labels, legends, and consistent styling.  
