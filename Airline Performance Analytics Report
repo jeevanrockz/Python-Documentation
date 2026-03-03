@@ -1,0 +1,132 @@
+# 📄 Documentation: Airline Performance Analytics Report with Matplotlib
+
+## 1. Objective
+The goal of this task is to build a **multi-panel analytics dashboard** that visualizes different aspects of airline operations. Instead of a single chart, the dashboard combines six different visualization types to provide a **comprehensive performance report**.
+
+Key objectives:
+- Show **monthly passenger traffic trends**.  
+- Compare **revenue breakdown** across streams.  
+- Visualize **flight delay reasons**.  
+- Analyze **distribution of flight delays**.  
+- Examine **ticket price variation** across classes.  
+- Explore **relationship between fuel cost and revenue**.  
+
+---
+
+## 2. Dataset
+- **Months & Passengers:** Monthly passenger counts.  
+- **Revenue Streams:** Ticket sales, cargo, ancillary services.  
+- **Delay Reasons:** Weather, technical, crew, ATC, others.  
+- **Delay Minutes:** Randomly generated delays (0–180 minutes).  
+- **Ticket Prices:** Simulated distributions for Economy, Business, First class.  
+- **Fuel Cost & Revenue:** Random fuel costs vs. calculated revenue.  
+
+Example:
+```python
+ticket_classes = ["Economy", "Business", "First"]
+ticket_prices = [np.random.normal(200, 30, 100), 
+                 np.random.normal(600, 80, 100), 
+                 np.random.normal(1200, 150, 100)]
+```
+
+---
+
+## 3. Steps in the Code
+
+### Step 1: Create Subplots
+```python
+fig, axs = plt.subplots(3, 2, figsize=(16,12))
+```
+- Creates a **3×2 grid** of subplots.  
+- Each subplot visualizes a different metric.  
+
+---
+
+### Step 2: Line Chart (Monthly Passenger Traffic)
+```python
+axs[0,0].plot(months, passengers, marker='o', color='blue', linewidth=2)
+```
+- Shows passenger growth across months.  
+- Useful for identifying **seasonal demand trends**.  
+
+---
+
+### Step 3: Stacked Bar Chart (Revenue Breakdown)
+```python
+axs[0,1].bar(months, ticket_sales, label="Ticket Sales")
+axs[0,1].bar(months, cargo, bottom=ticket_sales, label="Cargo")
+axs[0,1].bar(months, ancillary, bottom=np.array(ticket_sales)+np.array(cargo), label="Ancillary")
+```
+- Stacks revenue streams to show **total revenue composition**.  
+- Helps identify which revenue source contributes most.  
+
+---
+
+### Step 4: Pie Chart (Flight Delay Reasons)
+```python
+axs[1,0].pie(delay_share, labels=delay_reasons, autopct="%1.1f%%", 
+             startangle=140, explode=explode, shadow=True)
+```
+- Shows proportion of delay causes.  
+- Explodes the largest slice (Weather) for emphasis.  
+- Useful for **operational improvement planning**.  
+
+---
+
+### Step 5: Histogram (Flight Delay Distribution)
+```python
+axs[1,1].hist(delay_minutes, bins=15, color="skyblue", edgecolor="black")
+```
+- Shows spread of delays in minutes.  
+- Useful for **service reliability analysis**.  
+
+---
+
+### Step 6: Box Plot (Ticket Price Variation)
+```python
+axs[2,0].boxplot(ticket_prices, tick_labels=ticket_classes)
+```
+- Displays ticket price variation across classes.  
+- `tick_labels` replaces the deprecated `labels` parameter (Matplotlib 3.9+).  
+- Useful for **pricing strategy analysis**.  
+
+---
+
+### Step 7: Scatter Plot (Fuel Cost vs Revenue)
+```python
+axs[2,1].scatter(fuel_cost, revenue, color="purple", s=100)
+```
+- Shows correlation between fuel cost and revenue.  
+- Useful for **financial risk assessment**.  
+
+---
+
+### Step 8: Final Layout
+```python
+plt.tight_layout()
+plt.suptitle("Airline Performance Analytics Report", fontsize=18, y=1.02)
+plt.show()
+```
+- Ensures charts don’t overlap.  
+- Adds a main dashboard title.  
+
+---
+
+## 4. Real-World Use Case
+This dashboard is useful for:
+- **Operations:** Monitoring passenger traffic and delays.  
+- **Finance:** Tracking revenue streams and fuel cost impact.  
+- **Marketing:** Understanding ticket price variation.  
+- **Management:** Making data-driven decisions with a holistic view.  
+
+---
+
+## 5. Output
+- A **multi-panel dashboard** with six charts:  
+  1. Line chart (passenger traffic).  
+  2. Stacked bar chart (revenue breakdown).  
+  3. Pie chart (delay reasons).  
+  4. Histogram (delay distribution).  
+  5. Box plot (ticket price variation).  
+  6. Scatter plot (fuel cost vs revenue).  
+- Clear titles, labels, legends, and consistent styling.  
