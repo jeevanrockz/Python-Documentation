@@ -1,0 +1,136 @@
+# 📄 Documentation: Healthcare Patient Analytics Dashboard (Seaborn)
+
+## 1. Objective
+The goal of this task is to build a **multi-plot dashboard** that visualizes patient data in a hospital system. Unlike earlier dashboards, this one introduces **nine different Seaborn plots** to analyze demographics, treatment costs, recovery times, hospital visits, and satisfaction scores.
+
+Key objectives:
+- Compare **patient frequency across medical conditions**.  
+- Analyze **treatment cost distribution across age groups**.  
+- Explore **recovery time distribution across genders**.  
+- Visualize **patient satisfaction across conditions**.  
+- Study **relationship between hospital visits and treatment costs**.  
+- Show **pairwise relationships between treatment cost, recovery days, and satisfaction**.  
+- Display **correlation matrix of patient metrics**.  
+- Compare **recovery days distribution across conditions**.  
+- Explore **satisfaction distribution across age groups**.  
+
+---
+
+## 2. Dataset
+- **PatientID:** Unique identifier for each patient.  
+- **Gender:** Male/Female.  
+- **AgeGroup:** Age ranges (0–18, 19–35, 36–50, 51–65, 65+).  
+- **Condition:** Medical condition (Diabetes, Hypertension, Asthma, Cancer, Cardiac).  
+- **TreatmentCost:** Cost of treatment (normal distribution around 5000).  
+- **HospitalVisits:** Number of hospital visits (Poisson distribution around 3).  
+- **RecoveryDays:** Recovery time in days (normal distribution around 14).  
+- **Satisfaction:** Patient satisfaction score (1–5 scale).  
+
+---
+
+## 3. Steps in the Code
+
+### Step 1: CountPlot (Patients by Condition)
+```python
+sns.countplot(x="Condition", hue="Condition", data=data, palette="Set2", legend=False)
+```
+- Shows patient frequency by medical condition.  
+- Useful for **identifying common health issues**.  
+
+---
+
+### Step 2: Box Plot (Treatment Cost by Age Group)
+```python
+sns.boxplot(x="AgeGroup", y="TreatmentCost", hue="AgeGroup", data=data, palette="Set3", legend=False)
+```
+- Displays distribution of treatment costs across age groups.  
+- Useful for **age-based cost analysis**.  
+
+---
+
+### Step 3: Violin Plot (Recovery Days by Gender)
+```python
+sns.violinplot(x="Gender", y="RecoveryDays", hue="Gender", data=data, palette="muted", legend=False)
+```
+- Shows recovery time distribution across genders.  
+- Useful for **gender-based recovery analysis**.  
+
+---
+
+### Step 4: StripPlot (Satisfaction Across Conditions)
+```python
+sns.stripplot(x="Condition", y="Satisfaction", hue="Condition", data=data, jitter=True, alpha=0.6, palette="Set1", legend=False)
+```
+- Displays satisfaction scores across conditions.  
+- Useful for **condition-specific satisfaction analysis**.  
+
+---
+
+### Step 5: LMPlot (Hospital Visits vs Treatment Cost)
+```python
+sns.lmplot(x="HospitalVisits", y="TreatmentCost", hue="Gender", data=data)
+```
+- Regression analysis of hospital visits vs treatment cost.  
+- Useful for **studying cost implications of frequent visits**.  
+
+---
+
+### Step 6: PairPlot (Treatment Cost, Recovery Days, Satisfaction)
+```python
+sns.pairplot(data[["TreatmentCost", "RecoveryDays", "Satisfaction"]], diag_kind="kde")
+```
+- Shows pairwise relationships between metrics.  
+- Useful for **exploring correlations and dependencies**.  
+
+---
+
+### Step 7: Heatmap (Correlation Matrix)
+```python
+corr = data[["TreatmentCost", "HospitalVisits", "RecoveryDays", "Satisfaction"]].corr()
+sns.heatmap(corr, annot=True, cmap="coolwarm")
+```
+- Displays correlation matrix of patient metrics.  
+- Useful for **identifying strong or weak relationships**.  
+
+---
+
+### Step 8: FacetGrid (Recovery Days by Condition)
+```python
+g = sns.FacetGrid(data, col="Condition", height=4, aspect=1.2)
+g.map_dataframe(sns.histplot, x="RecoveryDays", bins=20, color="skyblue")
+```
+- Creates multiple histograms of recovery days by condition.  
+- Useful for **condition-specific recovery analysis**.  
+
+---
+
+### Step 9: SwarmPlot (Satisfaction by Age Group)
+```python
+sns.swarmplot(x="AgeGroup", y="Satisfaction", hue="AgeGroup", data=data, palette="Set2", legend=False, size=3)
+```
+- Shows granular satisfaction distribution across age groups.  
+- Useful for **age-based satisfaction analysis**.  
+
+---
+
+## 4. Real-World Use Case
+This dashboard is useful for:
+- **Hospital Administrators:** Tracking patient demographics and treatment costs.  
+- **Doctors:** Understanding recovery patterns across genders and conditions.  
+- **Healthcare Analysts:** Studying correlations between visits, costs, and satisfaction.  
+- **Policy Makers:** Identifying age groups or conditions with higher costs or longer recovery times.  
+
+---
+
+## 5. Output
+- A **multi-plot dashboard** with nine charts:  
+  1. CountPlot (patients by condition).  
+  2. Box Plot (treatment cost by age group).  
+  3. Violin Plot (recovery days by gender).  
+  4. StripPlot (satisfaction across conditions).  
+  5. LMPlot (hospital visits vs treatment cost regression).  
+  6. PairPlot (relationships between metrics).  
+  7. Heatmap (correlation matrix).  
+  8. FacetGrid (recovery days by condition).  
+  9. SwarmPlot (satisfaction by age group).  
+- Clear titles, labels, legends, and consistent styling.  
