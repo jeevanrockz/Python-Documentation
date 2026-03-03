@@ -1,0 +1,82 @@
+# 📄 Documentation: Smartphone Market Share Analysis with Pie Chart
+
+## 1. Objective
+The goal of this task is to visualize **market share proportions** of smartphone companies. The visualization should:
+- Display each company’s share as a slice of a pie chart.  
+- Show percentages directly on the chart.  
+- Highlight the largest market share with an exploded slice.  
+- Provide a clear title for context.  
+
+---
+
+## 2. Dataset
+- **Companies:** Apple, Samsung, Xiaomi, OnePlus, Others.  
+- **Market Share (%):** `[35, 30, 15, 10, 10]`.  
+
+Example:
+```python
+companies = ["Apple", "Samsung", "Xiaomi", "OnePlus", "Others"]
+market_share = [35, 30, 15, 10, 10]
+```
+
+---
+
+## 3. Steps in the Code
+
+### Step 1: Import Library
+```python
+import matplotlib.pyplot as plt
+```
+- **Matplotlib** is used for plotting.  
+
+---
+
+### Step 2: Create Pie Chart
+```python
+plt.figure(figsize=(8,8))
+explode = [0.1 if share == max(market_share) else 0 for share in market_share]
+
+plt.pie(market_share, labels=companies, autopct="%1.1f%%", 
+        startangle=140, explode=explode, shadow=True, 
+        colors=["#ff9999","#66b3ff","#99ff99","#ffcc99","#c2c2f0"])
+```
+- `plt.pie()` creates the pie chart.  
+- `labels=companies` adds company names.  
+- `autopct="%1.1f%%"` shows percentages with one decimal place.  
+- `startangle=140` rotates the chart for better layout.  
+- `explode` highlights the largest slice (Apple).  
+- `shadow=True` adds depth effect.  
+- `colors` assigns custom colors to slices.  
+
+---
+
+### Step 3: Add Title
+```python
+plt.title("Smartphone Market Share Analysis")
+```
+- Provides context for the chart.  
+
+---
+
+### Step 4: Display Plot
+```python
+plt.show()
+```
+- Renders the pie chart in Jupyter Notebook or Python IDE.  
+
+---
+
+## 4. Real-World Use Case
+This visualization is useful for:
+- **Business Analysts:** Presenting market share comparisons.  
+- **Marketing Teams:** Identifying dominant competitors.  
+- **Finance:** Showing portfolio allocations.  
+- **Project Management:** Visualizing resource distribution.  
+
+---
+
+## 5. Output
+- A **pie chart** showing smartphone market shares.  
+- Percentages displayed on each slice.  
+- Largest slice (Apple) exploded for emphasis.  
+- Clear title and visually distinct colors.  
