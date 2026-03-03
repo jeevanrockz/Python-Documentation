@@ -1,0 +1,131 @@
+# 📄 Documentation: Retail Sales Forecasting & Analytics Dashboard
+
+## 1. Objective
+The goal of this task is to build a **multi-panel dashboard** that visualizes both **historical sales data** and a **forecast for future months**, alongside other retail performance metrics. This dashboard combines six different visualization types to provide a **comprehensive view of retail performance**.
+
+Key objectives:
+- Show **historical monthly sales trends**.  
+- Extend the trend with a **forecast for the next 6 months**.  
+- Compare **product category sales**.  
+- Visualize **regional sales distribution**.  
+- Analyze **customer purchase frequency**.  
+- Examine **price variation across categories**.  
+
+---
+
+## 2. Dataset
+- **Months & Sales:** Monthly sales values for January–December.  
+- **Forecast Sales:** Linear regression applied to historical data to predict next 6 months.  
+- **Categories & Sales:** Sales figures for product categories (Electronics, Fashion, Home, Books, Sports).  
+- **Regions & Share:** Regional sales distribution (North, South, East, West).  
+- **Purchase Frequency:** Randomly generated customer purchase counts (1–20 purchases per customer).  
+- **Price Data:** Simulated distributions of product prices across categories.  
+
+Example:
+```python
+coeffs = np.polyfit(x, sales, 1)  # linear fit
+forecast_sales = np.polyval(coeffs, forecast_x)
+```
+
+---
+
+## 3. Steps in the Code
+
+### Step 1: Create Subplots
+```python
+fig, axs = plt.subplots(2, 3, figsize=(18,10))
+```
+- Creates a **2×3 grid** of subplots.  
+- Each subplot visualizes a different metric.  
+
+---
+
+### Step 2: Line Chart (Historical Sales)
+```python
+axs[0,0].plot(months, sales, marker='o', color='blue', linewidth=2)
+```
+- Shows sales growth across months.  
+- Useful for identifying **seasonal demand trends**.  
+
+---
+
+### Step 3: Forecast Line Chart
+```python
+axs[0,1].plot(months, sales, marker='o', color='blue', label="Historical")
+axs[0,1].plot(forecast_months, forecast_sales, marker='o', color='red', linestyle='--', label="Forecast")
+```
+- Extends sales trend with forecasted values.  
+- Uses `np.polyfit` and `np.polyval` for linear regression.  
+- Useful for **predictive planning**.  
+
+---
+
+### Step 4: Bar Chart (Product Category Sales)
+```python
+axs[0,2].bar(categories, category_sales, color=['#ff9999','#66b3ff','#99ff99','#ffcc99','#c2c2f0'])
+```
+- Compares sales across product categories.  
+- Helps identify **top-performing categories**.  
+
+---
+
+### Step 5: Pie Chart (Regional Sales Distribution)
+```python
+axs[1,0].pie(region_share, labels=regions, autopct="%1.1f%%", 
+             startangle=140, explode=explode, shadow=True)
+```
+- Shows proportion of sales by region.  
+- Explodes the largest slice (North) for emphasis.  
+- Useful for **regional strategy planning**.  
+
+---
+
+### Step 6: Histogram (Customer Purchase Frequency)
+```python
+axs[1,1].hist(purchase_frequency, bins=15, color="skyblue", edgecolor="black")
+```
+- Shows how often customers make purchases.  
+- Useful for **customer segmentation** (frequent vs. occasional buyers).  
+
+---
+
+### Step 7: Box Plot (Price Variation Across Categories)
+```python
+axs[1,2].boxplot(price_data, tick_labels=price_categories)
+```
+- Displays price variation across categories.  
+- Useful for **pricing strategy analysis**.  
+- Uses `tick_labels` (Matplotlib 3.9+) instead of deprecated `labels`.  
+
+---
+
+### Step 8: Final Layout
+```python
+plt.tight_layout()
+plt.suptitle("Retail Sales Forecasting & Analytics Dashboard", fontsize=18, y=1.05)
+plt.show()
+```
+- Ensures charts don’t overlap.  
+- Adds a main dashboard title.  
+
+---
+
+## 4. Real-World Use Case
+This dashboard is useful for:
+- **Business Intelligence:** Providing executives with a quick overview of performance.  
+- **Marketing:** Identifying which categories need promotion.  
+- **Finance:** Tracking revenue growth and forecasting future sales.  
+- **Customer Analytics:** Understanding purchase behavior for loyalty programs.  
+- **Pricing Strategy:** Analyzing price variation across categories.  
+
+---
+
+## 5. Output
+- A **multi-panel dashboard** with six charts:  
+  1. Line chart (historical sales).  
+  2. Forecast chart (future sales).  
+  3. Bar chart (category sales).  
+  4. Pie chart (regional distribution).  
+  5. Histogram (purchase frequency).  
+  6. Box plot (price variation).  
+- Clear titles, labels, legends, and consistent styling.  
