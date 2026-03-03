@@ -1,0 +1,119 @@
+# 📘 Climate Change Dashboard Documentation
+
+## 1. Overview
+The **Climate Change Dashboard** is an interactive web application built with **Plotly** and **Dash**. It visualizes synthetic climate-related datasets across multiple dimensions, including:
+- Global temperature anomalies
+- CO₂ emissions by country
+- GDP vs. emissions relationships
+- Extreme weather events
+- Sea level rise projections
+
+The dashboard is organized into **three tabs**:
+1. **Global Overview** – Temperature anomalies and CO₂ emissions map.
+2. **Country Comparisons** – GDP vs. emissions scatter plot and weather events bar chart.
+3. **Future Projections** – Sea level rise scenarios with a 3D surface plot.
+
+---
+
+## 2. Technology Stack
+- **Python 3.8+**
+- **Dash** (for web app framework)
+- **Plotly Express & Graph Objects** (for interactive visualizations)
+- **Pandas** (for data handling)
+
+---
+
+## 3. Data Model
+Synthetic datasets are embedded directly in the code for demonstration purposes. They mimic real-world climate data structures.
+
+### 3.1 Temperature Anomalies
+| Column     | Description |
+|------------|-------------|
+| year       | Year (1980–2020) |
+| anomaly    | Temperature anomaly (°C) |
+| lower_ci   | Lower confidence interval |
+| upper_ci   | Upper confidence interval |
+
+### 3.2 CO₂ Emissions
+| Column     | Description |
+|------------|-------------|
+| country    | Country name |
+| iso_code   | ISO-3 country code (e.g., USA, CHN) |
+| year       | Year (2000–2004) |
+| emissions  | CO₂ emissions (synthetic values) |
+
+### 3.3 GDP vs. Emissions
+| Column        | Description |
+|---------------|-------------|
+| country       | Country name |
+| year          | Year (2020) |
+| gdp_per_capita| GDP per capita (USD) |
+| emissions     | CO₂ emissions |
+| continent     | Continent name |
+
+### 3.4 Extreme Weather Events
+| Column     | Description |
+|------------|-------------|
+| year       | Year (2010–2014) |
+| event_type | Type of event (Hurricane, Flood, etc.) |
+| count      | Frequency of events |
+
+### 3.5 Sea Level Rise
+| Column     | Description |
+|------------|-------------|
+| year       | Projection year (2020–2050) |
+| scenario   | Scenario (Low, Medium, High, Extreme) |
+| sea_level  | Projected rise (meters) |
+
+---
+
+## 4. Features
+
+### 4.1 Global Overview
+- **Line Chart**: Displays global temperature anomalies with confidence intervals.
+- **Choropleth Map**: Shows CO₂ emissions by country using ISO-3 codes.
+
+### 4.2 Country Comparisons
+- **Scatter Plot**: GDP per capita vs. CO₂ emissions, color-coded by continent.
+- **Bar Chart**: Frequency of extreme weather events.
+
+### 4.3 Future Projections
+- **Slider**: Selects projection year.
+- **3D Surface Plot**: Displays sea level rise scenarios.
+
+---
+
+## 5. Interactivity
+- **Dropdowns**: Filter by country.
+- **Sliders**: Adjust projection year.
+- **Hover Tooltips**: Show detailed metadata (country names, values).
+- **Linked Charts**: Selecting filters updates multiple visualizations.
+
+---
+
+## 6. Architecture
+- **Dash Layout**: Organized into tabs (`dcc.Tabs`).
+- **Callbacks**: Handle interactivity by updating figures dynamically.
+- **Plotly Figures**: Created using `plotly.express` and `plotly.graph_objects`.
+
+---
+
+## 7. Deployment
+- Run locally with `python app.py`.
+- Accessible at `http://127.0.0.1:8050/`.
+- Can be deployed to cloud platforms (Heroku, Azure, AWS) with minor configuration changes.
+
+---
+
+## 8. Future Enhancements
+- Replace synthetic data with **real datasets** (NASA GISS, NOAA, World Bank).
+- Add **time-series animations** for emissions and temperature.
+- Implement **story-driven timeline events** (e.g., Paris Agreement).
+- Expand dataset coverage to more countries and years.
+
+---
+
+## 9. Usage Notes
+- Current version uses **synthetic inline data** for demonstration.
+- For production, replace with real CSVs or API calls.
+- Ensure ISO-3 codes are used for choropleth maps to avoid deprecation warnings.
