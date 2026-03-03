@@ -1,0 +1,103 @@
+
+# 📄 Documentation: Real-Time Sensor Data Visualization with Matplotlib
+
+## 1. Objective
+The goal of this task is to visualize **sensor readings in real time**. Instead of static plots, the chart updates continuously as new data arrives. This is critical for:
+- Monitoring IoT devices (temperature, humidity, pressure).  
+- Tracking financial tick data (stock prices).  
+- Observing live system metrics (CPU usage, network traffic).  
+
+---
+
+## 2. Dataset
+- **Simulated Sensor Data:** Random temperature values between 20–30 °C.  
+- **Time Steps:** 30 readings taken at half-second intervals.  
+
+Example:
+```python
+y_data.append(np.random.uniform(20, 30))  # random temperature
+```
+
+---
+
+## 3. Steps in the Code
+
+### Step 1: Import Libraries
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+import time
+```
+- **Matplotlib** for plotting.  
+- **NumPy** for generating random sensor values.  
+- **time** for simulating delays between readings.  
+
+---
+
+### Step 2: Initialize Interactive Plot
+```python
+plt.ion()  # interactive mode ON
+fig, ax = plt.subplots()
+x_data, y_data = [], []
+line, = ax.plot(x_data, y_data, 'b-o')
+```
+- `plt.ion()` enables interactive mode, allowing live updates.  
+- `ax.plot()` initializes an empty line plot with blue circles (`b-o`).  
+
+---
+
+### Step 3: Configure Plot
+```python
+ax.set_xlabel("Time (seconds)")
+ax.set_ylabel("Temperature (°C)")
+ax.set_title("Real-Time Sensor Data Visualization")
+```
+- Labels and title make the chart **self-explanatory**.  
+
+---
+
+### Step 4: Simulate Live Data
+```python
+for i in range(30):  # simulate 30 readings
+    x_data.append(i)
+    y_data.append(np.random.uniform(20, 30))  # random temperature
+    
+    line.set_xdata(x_data)
+    line.set_ydata(y_data)
+    ax.relim()
+    ax.autoscale_view()
+    
+    plt.draw()
+    plt.pause(0.5)  # wait half a second before next reading
+```
+- A loop simulates 30 sensor readings.  
+- `line.set_xdata()` and `line.set_ydata()` update the plot.  
+- `ax.relim()` and `ax.autoscale_view()` rescale axes dynamically.  
+- `plt.pause(0.5)` introduces a delay to mimic real-time data arrival.  
+
+---
+
+### Step 5: Finalize Plot
+```python
+plt.ioff()
+plt.show()
+```
+- `plt.ioff()` turns off interactive mode.  
+- `plt.show()` displays the final chart.  
+
+---
+
+## 4. Real-World Use Case
+This visualization is useful for:
+- **IoT Monitoring:** Tracking live sensor readings (temperature, humidity, etc.).  
+- **Finance:** Visualizing stock prices or cryptocurrency values in real time.  
+- **System Monitoring:** Observing CPU, memory, or network usage dynamically.  
+- **Healthcare:** Monitoring patient vitals continuously.  
+
+---
+
+## 5. Output
+- A **dynamic line chart** that updates every 0.5 seconds.  
+- X-axis = time (seconds).  
+- Y-axis = temperature readings.  
+- Blue line with markers shows sensor data progression.  
