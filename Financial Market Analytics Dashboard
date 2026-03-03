@@ -1,0 +1,130 @@
+# 📄 Documentation: Financial Market Analytics Dashboard (Seaborn)
+
+## 1. Objective
+The goal of this task is to build a **multi-plot dashboard** that visualizes stock market metrics across companies and sectors. Unlike earlier dashboards, this one introduces **time series analysis, regression, distribution, and correlation plots** in a single workflow, making it more complex and comprehensive.
+
+Key objectives:
+- Track **stock price trends over time by company**.  
+- Analyze **trading volume distributions across sectors**.  
+- Explore **distribution of returns**.  
+- Study **relationship between volatility and returns**.  
+- Visualize **pairwise relationships between stock price, returns, and volatility**.  
+- Show **joint distribution of stock price and trading volume**.  
+- Display **correlation matrix of financial metrics**.  
+- Compare **returns distribution across companies**.  
+
+---
+
+## 2. Dataset
+- **Date:** Monthly data from Jan 2020 to Dec 2025.  
+- **Company:** TechCorp, HealthInc, RetailCo, EnergyLtd.  
+- **Sector:** Technology, Healthcare, Retail, Energy.  
+- **StockPrice:** Simulated stock prices with upward trend.  
+- **Volume:** Trading volume (random integers).  
+- **Returns:** Monthly returns (normal distribution around 2%).  
+- **Volatility:** Stock volatility (normal distribution around 15%).  
+
+Example:
+```python
+dates = pd.date_range(start="2020-01-01", end="2025-12-31", freq="MS")
+companies = ["TechCorp", "HealthInc", "RetailCo", "EnergyLtd"]
+```
+
+---
+
+## 3. Steps in the Code
+
+### Step 1: Line Plot (Stock Price Trends by Company)
+```python
+sns.lineplot(x="Date", y="StockPrice", hue="Company", data=data, marker="o")
+```
+- Tracks stock price trends over time.  
+- Useful for **time series analysis of company performance**.  
+
+---
+
+### Step 2: FacetGrid (Trading Volume by Sector)
+```python
+g = sns.FacetGrid(data, col="Sector", height=4, aspect=1.2)
+g.map_dataframe(sns.histplot, x="Volume", bins=20, color="skyblue")
+```
+- Shows trading volume distributions faceted by sector.  
+- Useful for **sector-level trading activity analysis**.  
+
+---
+
+### Step 3: KDE Plot (Returns Distribution)
+```python
+sns.kdeplot(data["Returns"], fill=True, color="green")
+```
+- Displays smooth distribution of returns.  
+- Useful for **understanding return variability**.  
+
+---
+
+### Step 4: LMPlot (Volatility vs Returns by Sector)
+```python
+sns.lmplot(x="Volatility", y="Returns", hue="Sector", data=data)
+```
+- Regression analysis of volatility vs returns.  
+- Useful for **studying risk-return trade-offs**.  
+
+---
+
+### Step 5: PairPlot (Stock Price, Returns, Volatility)
+```python
+sns.pairplot(data[["StockPrice", "Returns", "Volatility"]], diag_kind="kde")
+```
+- Shows pairwise relationships between metrics.  
+- Useful for **exploring correlations and dependencies**.  
+
+---
+
+### Step 6: JointPlot (Stock Price vs Volume)
+```python
+sns.jointplot(x="StockPrice", y="Volume", data=data, kind="scatter", color="purple")
+```
+- Combines scatter plot with marginal distributions.  
+- Useful for **studying relationship between price and trading activity**.  
+
+---
+
+### Step 7: Heatmap (Correlation Matrix)
+```python
+corr = data[["StockPrice", "Volume", "Returns", "Volatility"]].corr()
+sns.heatmap(corr, annot=True, cmap="coolwarm")
+```
+- Displays correlation matrix of financial metrics.  
+- Useful for **identifying strong or weak relationships**.  
+
+---
+
+### Step 8: SwarmPlot (Returns by Company)
+```python
+sns.swarmplot(x="Company", y="Returns", hue="Company", data=data, palette="Set2", legend=False)
+```
+- Shows granular returns distribution across companies.  
+- Useful for **company-level return comparison**.  
+
+---
+
+## 4. Real-World Use Case
+This dashboard is useful for:
+- **Investors:** Tracking stock price trends and volatility.  
+- **Financial Analysts:** Studying correlations between returns, volatility, and trading volume.  
+- **Portfolio Managers:** Comparing sector-level performance.  
+- **Researchers:** Exploring relationships between financial metrics.  
+
+---
+
+## 5. Output
+- A **multi-plot dashboard** with eight charts:  
+  1. Line Plot (stock price trends).  
+  2. FacetGrid (trading volume by sector).  
+  3. KDE Plot (returns distribution).  
+  4. LMPlot (volatility vs returns regression).  
+  5. PairPlot (relationships between metrics).  
+  6. JointPlot (stock price vs volume).  
+  7. Heatmap (correlation matrix).  
+  8. SwarmPlot (returns by company).  
+- Clear titles, labels, legends, and consistent styling.  
