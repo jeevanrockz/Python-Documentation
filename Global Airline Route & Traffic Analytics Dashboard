@@ -1,0 +1,133 @@
+# 📄 Documentation: Global Airline Route & Traffic Analytics Dashboard
+
+## 1. Objective
+The goal of this task is to build a **multi-panel dashboard** that visualizes global airline operations. Unlike previous dashboards, this one introduces **geospatial plotting** using latitude/longitude coordinates to show hub airports and airline routes, alongside supporting charts for traffic, fleet, flight durations, and ticket prices.
+
+Key objectives:
+- Plot **hub airports** on a world map.  
+- Visualize **airline route networks** between hubs.  
+- Compare **regional passenger traffic**.  
+- Show **aircraft fleet distribution**.  
+- Analyze **flight duration distribution**.  
+- Examine **ticket price variation across continents**.  
+
+---
+
+## 2. Dataset
+- **Airports:** Latitude/longitude coordinates for major hubs (New York, London, Dubai, Singapore, Sydney, Tokyo).  
+- **Routes:** Pairs of airports connected by airline routes.  
+- **Passenger Traffic:** Regional totals (North America, Europe, Asia, Middle East, Australia).  
+- **Fleet Distribution:** Aircraft types (A320, B737, B777, A350, Others).  
+- **Flight Durations:** Randomly generated flight times (average 8 hours).  
+- **Ticket Prices:** Simulated distributions for continents (North America, Europe, Asia, Australia).  
+
+Example:
+```python
+airports = {
+    "New York": (40.7128, -74.0060),
+    "London": (51.5074, -0.1278),
+    "Dubai": (25.2048, 55.2708),
+    "Singapore": (1.3521, 103.8198),
+    "Sydney": (-33.8688, 151.2093),
+    "Tokyo": (35.6762, 139.6503)
+}
+```
+
+---
+
+## 3. Steps in the Code
+
+### Step 1: Create Subplots
+```python
+fig, axs = plt.subplots(2, 3, figsize=(18,10))
+```
+- Creates a **2×3 grid** of subplots.  
+- Each subplot visualizes a different metric.  
+
+---
+
+### Step 2: Scatter Plot (Hub Airports)
+```python
+axs[0,0].scatter(longitudes, latitudes, color="red", s=100)
+```
+- Plots hub airports on a world map using latitude/longitude.  
+- Useful for **geospatial awareness** of global hubs.  
+
+---
+
+### Step 3: Route Network Plot
+```python
+for route in routes:
+    axs[0,1].plot([lon1, lon2], [lat1, lat2], color="blue", linewidth=2)
+```
+- Connects airports with lines to show airline routes.  
+- Useful for **network visualization** of connectivity.  
+
+---
+
+### Step 4: Bar Chart (Regional Passenger Traffic)
+```python
+axs[0,2].bar(regions, passenger_traffic, color=[...])
+```
+- Compares passenger traffic across regions.  
+- Useful for **regional demand analysis**.  
+
+---
+
+### Step 5: Pie Chart (Fleet Distribution)
+```python
+axs[1,0].pie(fleet_share, labels=aircraft_types, autopct="%1.1f%%", ...)
+```
+- Shows proportion of aircraft types in the fleet.  
+- Explodes the largest slice (B737) for emphasis.  
+- Useful for **fleet management strategy**.  
+
+---
+
+### Step 6: Histogram (Flight Duration Distribution)
+```python
+axs[1,1].hist(flight_durations, bins=15, color="skyblue", edgecolor="black")
+```
+- Shows spread of flight durations.  
+- Useful for **operational planning** and **crew scheduling**.  
+
+---
+
+### Step 7: Box Plot (Ticket Price Variation)
+```python
+axs[1,2].boxplot(ticket_prices, tick_labels=continents)
+```
+- Displays ticket price variation across continents.  
+- Useful for **pricing strategy analysis**.  
+
+---
+
+### Step 8: Final Layout
+```python
+plt.tight_layout()
+plt.suptitle("Global Airline Route & Traffic Analytics Dashboard", fontsize=18, y=1.05)
+plt.show()
+```
+- Ensures charts don’t overlap.  
+- Adds a main dashboard title.  
+
+---
+
+## 4. Real-World Use Case
+This dashboard is useful for:
+- **Operations:** Monitoring hub connectivity and flight durations.  
+- **Finance:** Tracking ticket price variation and regional traffic.  
+- **Fleet Management:** Understanding aircraft type distribution.  
+- **Strategy:** Identifying strong and weak regions for expansion.  
+
+---
+
+## 5. Output
+- A **multi-panel dashboard** with six charts:  
+  1. Scatter plot (hub airports).  
+  2. Route network plot (airline connectivity).  
+  3. Bar chart (regional passenger traffic).  
+  4. Pie chart (fleet distribution).  
+  5. Histogram (flight durations).  
+  6. Box plot (ticket price variation).  
+- Clear titles, labels, legends, and consistent styling.  
