@@ -1,0 +1,115 @@
+# 📄 Documentation: Retail Sales Analytics Dashboard (Seaborn)
+
+## 1. Objective
+The goal of this task is to build a **multi-plot dashboard** that visualizes retail sales metrics across product categories, regions, and customer segments. Unlike earlier dashboards, this one introduces **new Seaborn plots** (`countplot`, `swarmplot`, `pairplot`, `jointplot`, `heatmap`, `facetgrid`) to diversify your visualization toolkit.
+
+Key objectives:
+- Compare **transaction frequency across product categories**.  
+- Analyze **profit distribution across regions**.  
+- Explore **pairwise relationships between revenue, profit, and discount**.  
+- Visualize **joint distribution of revenue and profit**.  
+- Display **correlation matrix of retail metrics**.  
+- Show **revenue distribution across customer segments**.  
+
+---
+
+## 2. Dataset
+- **TransactionID:** Unique identifier for each transaction.  
+- **Category:** Product category (Electronics, Clothing, Groceries, Furniture).  
+- **Region:** Geographic region (North, South, East, West).  
+- **CustomerSegment:** Customer type (Regular, Premium).  
+- **Revenue:** Transaction revenue (normal distribution around 500).  
+- **Profit:** Transaction profit (normal distribution around 50).  
+- **Discount:** Discount applied (uniform distribution between 0–30%).  
+
+Example:
+```python
+data = pd.DataFrame({
+    "TransactionID": [f"T{i}" for i in range(n)],
+    "Category": np.random.choice(["Electronics", "Clothing", "Groceries", "Furniture"], n),
+    "Region": np.random.choice(["North", "South", "East", "West"], n),
+    "CustomerSegment": np.random.choice(["Regular", "Premium"], n),
+    "Revenue": np.random.normal(500, 150, n),
+    "Profit": np.random.normal(50, 20, n),
+    "Discount": np.random.uniform(0, 0.3, n)
+})
+```
+
+---
+
+## 3. Steps in the Code
+
+### Step 1: CountPlot (Transactions by Category)
+```python
+sns.countplot(x="Category", hue="Category", data=data, palette="Set2", legend=False)
+```
+- Shows transaction frequency by product category.  
+- Useful for **identifying popular product categories**.  
+
+---
+
+### Step 2: SwarmPlot (Profit Distribution by Region)
+```python
+sns.swarmplot(x="Region", y="Profit", hue="Region", data=data, palette="Set1", legend=False)
+```
+- Displays granular profit distribution across regions.  
+- Useful for **regional profitability analysis**.  
+
+---
+
+### Step 3: PairPlot (Revenue, Profit, Discount)
+```python
+sns.pairplot(data[["Revenue", "Profit", "Discount"]], diag_kind="kde")
+```
+- Shows pairwise relationships between revenue, profit, and discount.  
+- Useful for **exploring correlations and trade-offs**.  
+
+---
+
+### Step 4: JointPlot (Revenue vs Profit)
+```python
+sns.jointplot(x="Revenue", y="Profit", data=data, kind="scatter", color="purple")
+```
+- Combines scatter plot with marginal distributions.  
+- Useful for **studying revenue-profit relationships**.  
+
+---
+
+### Step 5: Heatmap (Correlation Matrix)
+```python
+corr = data[["Revenue", "Profit", "Discount"]].corr()
+sns.heatmap(corr, annot=True, cmap="coolwarm")
+```
+- Displays correlation matrix of retail metrics.  
+- Useful for **identifying strong or weak metric relationships**.  
+
+---
+
+### Step 6: FacetGrid (Revenue Distribution by Customer Segment)
+```python
+g = sns.FacetGrid(data, col="CustomerSegment", height=4, aspect=1.2)
+g.map_dataframe(sns.histplot, x="Revenue", bins=20, color="skyblue")
+```
+- Creates multiple histograms of revenue, faceted by customer segment.  
+- Useful for **segment-specific revenue analysis**.  
+
+---
+
+## 4. Real-World Use Case
+This dashboard is useful for:
+- **Retail Managers:** Tracking product category performance.  
+- **Regional Analysts:** Comparing profitability across regions.  
+- **Marketing Teams:** Studying discount impact on revenue and profit.  
+- **Customer Insights Teams:** Understanding revenue distribution across customer segments.  
+
+---
+
+## 5. Output
+- A **multi-plot dashboard** with six charts:  
+  1. CountPlot (transactions by category).  
+  2. SwarmPlot (profit distribution by region).  
+  3. PairPlot (revenue, profit, discount relationships).  
+  4. JointPlot (revenue vs profit).  
+  5. Heatmap (correlation matrix of retail metrics).  
+  6. FacetGrid (revenue distribution by customer segment).  
+- Clear titles, labels, legends, and consistent styling.  
