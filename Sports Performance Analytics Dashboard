@@ -1,0 +1,115 @@
+# 📄 Documentation: Sports Performance Analytics Dashboard (Seaborn)
+
+## 1. Objective
+The goal of this task is to build a **multi-plot dashboard** that visualizes player performance metrics in a football (soccer) league. Unlike earlier dashboards, this one introduces **advanced Seaborn functions** (`FacetGrid`, `KDEPlot`, `LMPlot`, `JointPlot`, `Heatmap`, `StripPlot`) that allow deeper exploration of categorical and continuous data.
+
+Key objectives:
+- Compare **goals vs assists across positions and teams**.  
+- Analyze **fitness score distribution**.  
+- Explore **relationship between minutes played and goals**.  
+- Visualize **joint distribution of goals and assists**.  
+- Display **correlation matrix of performance metrics**.  
+- Show **distribution of goals across positions**.  
+
+---
+
+## 2. Dataset
+- **Player:** Player identifier.  
+- **Team:** Team assignment (Team A, Team B, Team C, Team D).  
+- **Position:** Player position (Forward, Midfielder, Defender, Goalkeeper).  
+- **Goals:** Number of goals scored (Poisson distribution).  
+- **Assists:** Number of assists (Poisson distribution).  
+- **MinutesPlayed:** Total minutes played in the season.  
+- **FitnessScore:** Simulated fitness score (normal distribution).  
+
+Example:
+```python
+data = pd.DataFrame({
+    "Player": [f"Player{i}" for i in range(n)],
+    "Team": np.random.choice(["Team A", "Team B", "Team C", "Team D"], n),
+    "Position": np.random.choice(["Forward", "Midfielder", "Defender", "Goalkeeper"], n),
+    "Goals": np.random.poisson(5, n),
+    "Assists": np.random.poisson(3, n),
+    "MinutesPlayed": np.random.randint(200, 3000, n),
+    "FitnessScore": np.random.normal(70, 10, n)
+})
+```
+
+---
+
+## 3. Steps in the Code
+
+### Step 1: FacetGrid (Goals vs Assists by Position)
+```python
+g = sns.FacetGrid(data, col="Position", hue="Team", height=4)
+g.map_dataframe(sns.scatterplot, x="Goals", y="Assists")
+```
+- Creates multiple scatter plots for goals vs assists, faceted by player position.  
+- Useful for **position-specific performance analysis**.  
+
+---
+
+### Step 2: KDE Plot (Fitness Score Distribution)
+```python
+sns.kdeplot(data["FitnessScore"], fill=True, color="green")
+```
+- Shows smooth distribution of fitness scores.  
+- Useful for **fitness benchmarking across players**.  
+
+---
+
+### Step 3: LMPlot (Minutes Played vs Goals by Team)
+```python
+sns.lmplot(x="MinutesPlayed", y="Goals", hue="Team", data=data)
+```
+- Regression analysis of minutes played vs goals, grouped by team.  
+- Useful for **studying workload vs scoring efficiency**.  
+
+---
+
+### Step 4: JointPlot (Goals vs Assists)
+```python
+sns.jointplot(x="Goals", y="Assists", data=data, kind="scatter")
+```
+- Combines scatter plot with marginal distributions.  
+- Useful for **exploring correlation between goals and assists**.  
+
+---
+
+### Step 5: Heatmap (Correlation Matrix of Performance Metrics)
+```python
+corr = data[["Goals", "Assists", "MinutesPlayed", "FitnessScore"]].corr()
+sns.heatmap(corr, annot=True, cmap="coolwarm")
+```
+- Displays correlation matrix of performance metrics.  
+- Useful for **identifying strong or weak relationships**.  
+
+---
+
+### Step 6: StripPlot (Goals Distribution Across Positions)
+```python
+sns.stripplot(x="Position", y="Goals", data=data, jitter=True, alpha=0.6)
+```
+- Shows granular distribution of goals across positions.  
+- Useful for **spotting variability in scoring across roles**.  
+
+---
+
+## 4. Real-World Use Case
+This dashboard is useful for:
+- **Coaches:** Comparing player performance across positions and teams.  
+- **Sports Analysts:** Studying correlations between workload, fitness, and performance.  
+- **Team Managers:** Identifying high-performing players and positions.  
+- **Fitness Staff:** Monitoring fitness score distributions.  
+
+---
+
+## 5. Output
+- A **multi-plot dashboard** with six charts:  
+  1. FacetGrid (goals vs assists by position).  
+  2. KDE Plot (fitness score distribution).  
+  3. LMPlot (minutes played vs goals regression).  
+  4. JointPlot (goals vs assists distribution).  
+  5. Heatmap (correlation matrix of performance metrics).  
+  6. StripPlot (goals distribution across positions).  
+- Clear titles, labels, legends, and consistent styling.  
