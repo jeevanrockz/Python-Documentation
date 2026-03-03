@@ -1,0 +1,94 @@
+# 📄 Documentation: 3D Geological Data Visualization with Matplotlib
+
+## 1. Objective
+The goal of this task is to visualize **geological data** in three dimensions — latitude, longitude, and depth. The visualization should:
+- Display data points in a **3D scatter plot**.  
+- Use **color intensity** to represent depth values.  
+- Provide clear axis labels, a title, and a color bar for interpretation.  
+- Help scientists identify spatial patterns in mineral deposits or geological features.  
+
+---
+
+## 2. Dataset
+- **Latitude:** Random values between 10–20.  
+- **Longitude:** Random values between 70–80.  
+- **Depth:** Random values between 100–500 meters.  
+
+Example:
+```python
+latitude = np.random.uniform(10, 20, 100)
+longitude = np.random.uniform(70, 80, 100)
+depth = np.random.uniform(100, 500, 100)
+```
+- Each point represents a **location** with a corresponding **depth measurement**.  
+
+---
+
+## 3. Steps in the Code
+
+### Step 1: Import Libraries
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+```
+- **Matplotlib** is used for plotting.  
+- **NumPy** is used to generate random geological data.  
+
+---
+
+### Step 2: Create 3D Scatter Plot
+```python
+fig = plt.figure(figsize=(10,7))
+ax = fig.add_subplot(111, projection='3d')
+
+scatter = ax.scatter(latitude, longitude, depth, 
+                     c=depth, cmap="viridis", s=50)
+```
+- `projection='3d'` enables 3D plotting.  
+- `ax.scatter()` creates a 3D scatter plot.  
+- `c=depth` maps depth values to colors.  
+- `cmap="viridis"` applies a color gradient (dark = shallow, bright = deep).  
+
+---
+
+### Step 3: Add Labels and Title
+```python
+ax.set_xlabel("Latitude")
+ax.set_ylabel("Longitude")
+ax.set_zlabel("Depth (m)")
+ax.set_title("3D Geological Data Visualization")
+```
+- Labels and title make the chart **self-explanatory**.  
+
+---
+
+### Step 4: Add Color Bar
+```python
+fig.colorbar(scatter, ax=ax, label="Depth (m)")
+```
+- The color bar provides a **scale** for interpreting depth values.  
+
+---
+
+### Step 5: Display Plot
+```python
+plt.show()
+```
+- Renders the 3D scatter plot in Jupyter Notebook or Python IDE.  
+
+---
+
+## 4. Real-World Use Case
+This visualization is useful for:
+- **Geoscientists:** Mapping mineral deposits or oil exploration sites.  
+- **Environmental Studies:** Analyzing soil depth or water table levels.  
+- **Engineering:** Visualizing underground structures for construction projects.  
+- **Finance:** Modeling multi-dimensional datasets (e.g., risk factors).  
+
+---
+
+## 5. Output
+- A **3D scatter plot** showing geological data.  
+- Axes: Latitude, Longitude, Depth.  
+- Color intensity represents depth values.  
+- Color bar for interpretation.  
