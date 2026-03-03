@@ -1,0 +1,130 @@
+# 📄 Documentation: Customer Spending Analysis Dashboard (Seaborn)
+
+## 1. Objective
+The goal of this task is to build a **multi-panel dashboard** that visualizes customer spending behavior. Unlike Matplotlib, Seaborn provides **statistical plots with elegant defaults**, making it ideal for analyzing distributions, categorical comparisons, and correlations.
+
+Key objectives:
+- Compare **spending distributions** across demographics.  
+- Analyze **purchase frequency**.  
+- Explore **relationships between income and spending**.  
+- Visualize **correlations between numerical variables**.  
+
+---
+
+## 2. Dataset
+- **Gender:** Male/Female customers.  
+- **AgeGroup:** Age ranges (18–25, 26–35, 36–45, 46–60).  
+- **Region:** Geographic regions (North, South, East, West).  
+- **Income:** Simulated annual income values.  
+- **Spending:** Simulated spending values.  
+- **Purchases:** Number of purchases made by each customer.  
+
+Example:
+```python
+data = pd.DataFrame({
+    "Gender": np.random.choice(["Male", "Female"], n),
+    "AgeGroup": np.random.choice(["18-25", "26-35", "36-45", "46-60"], n),
+    "Region": np.random.choice(["North", "South", "East", "West"], n),
+    "Income": np.random.normal(50000, 15000, n),
+    "Spending": np.random.normal(2000, 500, n),
+    "Purchases": np.random.randint(1, 20, n)
+})
+```
+
+---
+
+## 3. Steps in the Code
+
+### Step 1: Create Subplots
+```python
+fig, axs = plt.subplots(2, 3, figsize=(18,10))
+```
+- Creates a **2×3 grid** of subplots.  
+- Each subplot visualizes a different customer metric.  
+
+---
+
+### Step 2: Box Plot (Spending by Gender)
+```python
+sns.boxplot(x="Gender", y="Spending", data=data, ax=axs[0,0])
+```
+- Shows spending distribution between Male and Female customers.  
+- Useful for **gender-based spending analysis**.  
+
+---
+
+### Step 3: Violin Plot (Spending by Age Group)
+```python
+sns.violinplot(x="AgeGroup", y="Spending", data=data, ax=axs[0,1])
+```
+- Shows distribution and density of spending across age groups.  
+- Useful for **age-based segmentation**.  
+
+---
+
+### Step 4: Bar Plot (Average Spending by Region)
+```python
+sns.barplot(x="Region", y="Spending", data=data, estimator=np.mean, ax=axs[0,2])
+```
+- Displays average spending per region.  
+- Useful for **regional performance comparison**.  
+
+---
+
+### Step 5: Histogram (Purchase Frequency)
+```python
+sns.histplot(data["Purchases"], bins=15, kde=True, ax=axs[1,0], color="skyblue")
+```
+- Shows distribution of customer purchase frequency.  
+- Useful for **customer loyalty and behavior analysis**.  
+
+---
+
+### Step 6: Scatter Plot (Income vs Spending)
+```python
+sns.scatterplot(x="Income", y="Spending", hue="Gender", data=data, ax=axs[1,1])
+```
+- Shows relationship between income and spending, colored by gender.  
+- Useful for **income-spending correlation analysis**.  
+
+---
+
+### Step 7: Heatmap (Correlation Matrix)
+```python
+corr = data[["Income", "Spending", "Purchases"]].corr()
+sns.heatmap(corr, annot=True, cmap="coolwarm", ax=axs[1,2])
+```
+- Displays correlation between numerical variables.  
+- Useful for **identifying strong or weak relationships**.  
+
+---
+
+### Step 8: Final Layout
+```python
+plt.tight_layout()
+plt.suptitle("Customer Spending Analysis Dashboard (Seaborn)", fontsize=18, y=1.05)
+plt.show()
+```
+- Ensures charts don’t overlap.  
+- Adds a main dashboard title.  
+
+---
+
+## 4. Real-World Use Case
+This dashboard is useful for:
+- **Marketing:** Identifying high-spending demographics.  
+- **Finance:** Understanding income-spending relationships.  
+- **Operations:** Comparing regional performance.  
+- **Customer Analytics:** Segmenting customers by purchase frequency.  
+
+---
+
+## 5. Output
+- A **multi-panel dashboard** with six charts:  
+  1. Box plot (spending by gender).  
+  2. Violin plot (spending by age group).  
+  3. Bar plot (average spending by region).  
+  4. Histogram (purchase frequency).  
+  5. Scatter plot (income vs spending).  
+  6. Heatmap (correlation matrix).  
+- Clear titles, labels, legends, and consistent styling.  
