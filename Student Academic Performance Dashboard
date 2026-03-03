@@ -1,0 +1,114 @@
+# 📄 Documentation: Student Academic Performance Dashboard (Seaborn)
+
+## 1. Objective
+The goal of this task is to build a **multi-plot dashboard** that visualizes student performance metrics across subjects, grade levels, and genders. Unlike earlier dashboards, this one introduces **education analytics**, focusing on academic outcomes and study behaviors.
+
+Key objectives:
+- Compare **average exam scores across subjects**.  
+- Analyze **study hours distribution across grade levels**.  
+- Explore **attendance distribution across genders**.  
+- Visualize **exam score distribution across subjects**.  
+- Study **relationship between study hours and exam scores**.  
+- Display **correlation matrix of academic metrics**.  
+
+---
+
+## 2. Dataset
+- **Student:** Identifier for each student.  
+- **Gender:** Male/Female.  
+- **GradeLevel:** Grade 9–12.  
+- **Subject:** Academic subjects (Math, Science, English, History).  
+- **ExamScore:** Simulated exam scores (normal distribution around 75).  
+- **StudyHours:** Average weekly study hours (normal distribution around 15).  
+- **Attendance:** Attendance percentage (normal distribution around 90).  
+
+Example:
+```python
+data = pd.DataFrame({
+    "Student": [f"Student{i}" for i in range(n)],
+    "Gender": np.random.choice(["Male", "Female"], n),
+    "GradeLevel": np.random.choice(["Grade 9", "Grade 10", "Grade 11", "Grade 12"], n),
+    "Subject": np.random.choice(["Math", "Science", "English", "History"], n),
+    "ExamScore": np.random.normal(75, 10, n),
+    "StudyHours": np.random.normal(15, 5, n),
+    "Attendance": np.random.normal(90, 5, n)
+})
+```
+
+---
+
+## 3. Steps in the Code
+
+### Step 1: Bar Plot (Average Exam Scores by Subject)
+```python
+sns.barplot(x="Subject", y="ExamScore", data=data, estimator=np.mean, errorbar=None)
+```
+- Compares average exam scores across subjects.  
+- Useful for **identifying subject-level performance trends**.  
+
+---
+
+### Step 2: Box Plot (Study Hours by Grade Level)
+```python
+sns.boxplot(x="GradeLevel", y="StudyHours", data=data)
+```
+- Shows distribution of study hours across grade levels.  
+- Useful for **understanding study habits by grade**.  
+
+---
+
+### Step 3: Violin Plot (Attendance by Gender)
+```python
+sns.violinplot(x="Gender", y="Attendance", data=data)
+```
+- Displays attendance distribution across genders.  
+- Useful for **gender-based attendance analysis**.  
+
+---
+
+### Step 4: StripPlot (Exam Scores Across Subjects)
+```python
+sns.stripplot(x="Subject", y="ExamScore", data=data, jitter=True, alpha=0.6)
+```
+- Shows granular distribution of exam scores across subjects.  
+- Useful for **spotting variability in subject performance**.  
+
+---
+
+### Step 5: LMPlot (Study Hours vs Exam Scores)
+```python
+sns.lmplot(x="StudyHours", y="ExamScore", hue="Gender", data=data)
+```
+- Regression analysis of study hours vs exam scores, grouped by gender.  
+- Useful for **studying how study time impacts performance**.  
+
+---
+
+### Step 6: Heatmap (Correlation Matrix of Academic Metrics)
+```python
+corr = data[["ExamScore", "StudyHours", "Attendance"]].corr()
+sns.heatmap(corr, annot=True, cmap="coolwarm")
+```
+- Displays correlation matrix of academic metrics.  
+- Useful for **identifying relationships between study hours, attendance, and exam scores**.  
+
+---
+
+## 4. Real-World Use Case
+This dashboard is useful for:
+- **Teachers:** Comparing subject performance and study habits.  
+- **School Administrators:** Monitoring attendance and academic outcomes.  
+- **Education Researchers:** Studying correlations between study hours, attendance, and exam scores.  
+- **Students/Parents:** Understanding how study habits affect performance.  
+
+---
+
+## 5. Output
+- A **multi-plot dashboard** with six charts:  
+  1. Bar Plot (average exam scores by subject).  
+  2. Box Plot (study hours by grade level).  
+  3. Violin Plot (attendance by gender).  
+  4. StripPlot (exam scores across subjects).  
+  5. LMPlot (study hours vs exam scores regression).  
+  6. Heatmap (correlation matrix of academic metrics).  
+- Clear titles, labels, legends, and consistent styling.  
