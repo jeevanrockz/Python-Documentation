@@ -1,0 +1,136 @@
+# 📄 Documentation: E-commerce Customer Behavior Analytics Dashboard (Seaborn)
+
+## 1. Objective
+The goal of this task is to build a **multi-plot dashboard** that visualizes customer behavior on an e-commerce platform. Unlike earlier dashboards, this one introduces **nine different Seaborn plots** to analyze demographics, spending habits, browsing time, and satisfaction scores.
+
+Key objectives:
+- Compare **purchase frequency across product categories**.  
+- Analyze **purchase amount distribution across age groups**.  
+- Explore **browsing time distribution across genders**.  
+- Visualize **customer satisfaction across categories**.  
+- Study **relationship between browsing time and purchase amount**.  
+- Show **pairwise relationships between purchase amount, browsing time, and satisfaction**.  
+- Display **correlation matrix of customer metrics**.  
+- Compare **purchase amount distribution across regions**.  
+- Explore **satisfaction distribution across age groups**.  
+
+---
+
+## 2. Dataset
+- **CustomerID:** Unique identifier for each customer.  
+- **Gender:** Male/Female.  
+- **AgeGroup:** Age ranges (18–25, 26–35, 36–45, 46–60, 60+).  
+- **Region:** Geographic region (North, South, East, West).  
+- **Category:** Product category (Electronics, Clothing, Groceries, Books, Furniture).  
+- **PurchaseAmount:** Transaction amount (normal distribution around 200).  
+- **BrowsingTime:** Average browsing time in minutes (normal distribution around 15).  
+- **Satisfaction:** Customer satisfaction score (1–5 scale).  
+
+---
+
+## 3. Steps in the Code
+
+### Step 1: CountPlot (Purchases by Category)
+```python
+sns.countplot(x="Category", hue="Category", data=data, palette="Set2", legend=False)
+```
+- Shows purchase frequency by category.  
+- Useful for **identifying popular product categories**.  
+
+---
+
+### Step 2: Box Plot (Purchase Amount by Age Group)
+```python
+sns.boxplot(x="AgeGroup", y="PurchaseAmount", hue="AgeGroup", data=data, palette="Set3", legend=False)
+```
+- Displays distribution of purchase amounts across age groups.  
+- Useful for **age-based spending analysis**.  
+
+---
+
+### Step 3: Violin Plot (Browsing Time by Gender)
+```python
+sns.violinplot(x="Gender", y="BrowsingTime", hue="Gender", data=data, palette="muted", legend=False)
+```
+- Shows browsing time distribution across genders.  
+- Useful for **gender-based engagement analysis**.  
+
+---
+
+### Step 4: StripPlot (Satisfaction Across Categories)
+```python
+sns.stripplot(x="Category", y="Satisfaction", hue="Category", data=data, jitter=True, alpha=0.6, palette="Set1", legend=False)
+```
+- Displays satisfaction scores across categories.  
+- Useful for **product category satisfaction analysis**.  
+
+---
+
+### Step 5: LMPlot (Browsing Time vs Purchase Amount)
+```python
+sns.lmplot(x="BrowsingTime", y="PurchaseAmount", hue="Gender", data=data)
+```
+- Regression analysis of browsing time vs purchase amount.  
+- Useful for **studying how browsing impacts spending**.  
+
+---
+
+### Step 6: PairPlot (Purchase Amount, Browsing Time, Satisfaction)
+```python
+sns.pairplot(data[["PurchaseAmount", "BrowsingTime", "Satisfaction"]], diag_kind="kde")
+```
+- Shows pairwise relationships between metrics.  
+- Useful for **exploring correlations and dependencies**.  
+
+---
+
+### Step 7: Heatmap (Correlation Matrix)
+```python
+corr = data[["PurchaseAmount", "BrowsingTime", "Satisfaction"]].corr()
+sns.heatmap(corr, annot=True, cmap="coolwarm")
+```
+- Displays correlation matrix of customer metrics.  
+- Useful for **identifying strong or weak relationships**.  
+
+---
+
+### Step 8: FacetGrid (Purchase Amount by Region)
+```python
+g = sns.FacetGrid(data, col="Region", height=4, aspect=1.2)
+g.map_dataframe(sns.histplot, x="PurchaseAmount", bins=20, color="skyblue")
+```
+- Creates multiple histograms of purchase amounts by region.  
+- Useful for **regional spending analysis**.  
+
+---
+
+### Step 9: SwarmPlot (Satisfaction by Age Group)
+```python
+sns.swarmplot(x="AgeGroup", y="Satisfaction", hue="AgeGroup", data=data, palette="Set2", legend=False, size=3)
+```
+- Shows granular satisfaction distribution across age groups.  
+- Useful for **age-based satisfaction analysis**.  
+
+---
+
+## 4. Real-World Use Case
+This dashboard is useful for:
+- **Marketing Teams:** Identifying popular categories and satisfaction levels.  
+- **Product Managers:** Understanding spending habits by age and region.  
+- **UX Designers:** Studying browsing time differences across genders.  
+- **Customer Insights Teams:** Exploring correlations between engagement and satisfaction.  
+
+---
+
+## 5. Output
+- A **multi-plot dashboard** with nine charts:  
+  1. CountPlot (purchases by category).  
+  2. Box Plot (purchase amount by age group).  
+  3. Violin Plot (browsing time by gender).  
+  4. StripPlot (satisfaction across categories).  
+  5. LMPlot (browsing time vs purchase amount regression).  
+  6. PairPlot (relationships between metrics).  
+  7. Heatmap (correlation matrix).  
+  8. FacetGrid (purchase amount by region).  
+  9. SwarmPlot (satisfaction by age group).  
+- Clear titles, labels, legends, and consistent styling.  
