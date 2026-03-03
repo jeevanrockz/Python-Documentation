@@ -1,0 +1,131 @@
+# 📄 Documentation: Sales & Profit Analytics Dashboard (Seaborn)
+
+## 1. Objective
+The goal of this task is to build a **multi-panel dashboard** that visualizes sales and profit performance across categories, regions, and discounts. Unlike Matplotlib, Seaborn provides **statistical plots with elegant defaults**, making it ideal for analyzing distributions, categorical comparisons, regression relationships, and correlations.
+
+Key objectives:
+- Compare **average profit across categories**.  
+- Analyze **profit distribution across regions**.  
+- Explore **sales distribution across categories**.  
+- Visualize **relationship between sales and profit**.  
+- Explore **relationships among multiple numerical variables** with a pair plot.  
+- Display **correlation matrix** of numerical variables.  
+
+---
+
+## 2. Dataset
+- **Category:** Product categories (Electronics, Fashion, Home, Books).  
+- **Region:** Geographic regions (North, South, East, West).  
+- **Sales:** Simulated sales values.  
+- **Profit:** Simulated profit values.  
+- **Discount:** Simulated discount percentages.  
+
+Example:
+```python
+data = pd.DataFrame({
+    "Category": np.random.choice(["Electronics", "Fashion", "Home", "Books"], n),
+    "Region": np.random.choice(["North", "South", "East", "West"], n),
+    "Sales": np.random.normal(500, 150, n),
+    "Profit": np.random.normal(50, 20, n),
+    "Discount": np.random.uniform(0, 0.3, n)
+})
+```
+
+---
+
+## 3. Steps in the Code
+
+### Step 1: Create Subplots
+```python
+fig, axs = plt.subplots(2, 3, figsize=(18,10))
+```
+- Creates a **2×3 grid** of subplots.  
+- Each subplot visualizes a different business metric.  
+
+---
+
+### Step 2: Bar Plot (Average Profit by Category)
+```python
+sns.barplot(x="Category", y="Profit", data=data, estimator=np.mean, ax=axs[0,0])
+```
+- Shows average profit across product categories.  
+- Useful for **category-level profitability analysis**.  
+
+---
+
+### Step 3: Box Plot (Profit Distribution by Region)
+```python
+sns.boxplot(x="Region", y="Profit", data=data, ax=axs[0,1])
+```
+- Shows spread of profit values across regions.  
+- Useful for **regional performance comparison**.  
+
+---
+
+### Step 4: Violin Plot (Sales Distribution by Category)
+```python
+sns.violinplot(x="Category", y="Sales", data=data, ax=axs[0,2])
+```
+- Shows distribution and density of sales across categories.  
+- Useful for **sales variability analysis**.  
+
+---
+
+### Step 5: Regression Plot (Sales vs Profit)
+```python
+sns.regplot(x="Sales", y="Profit", data=data, ax=axs[1,0], scatter_kws={"alpha":0.6})
+```
+- Shows relationship between sales and profit with regression line.  
+- Useful for **sales-profit correlation analysis**.  
+
+---
+
+### Step 6: Heatmap (Correlation Matrix)
+```python
+corr = data[["Sales", "Profit", "Discount"]].corr()
+sns.heatmap(corr, annot=True, cmap="coolwarm", ax=axs[1,2])
+```
+- Displays correlation between numerical variables.  
+- Useful for **identifying strong or weak relationships**.  
+
+---
+
+### Step 7: Pair Plot (Separate Figure)
+```python
+sns.pairplot(data[["Sales", "Profit", "Discount"]], diag_kind="kde")
+```
+- Explores relationships among Sales, Profit, and Discount.  
+- Useful for **multi-variable exploration**.  
+- Rendered separately since `pairplot` creates its own figure.  
+
+---
+
+### Step 8: Final Layout
+```python
+plt.tight_layout()
+plt.suptitle("Sales & Profit Analytics Dashboard (Seaborn)", fontsize=18, y=1.05)
+plt.show()
+```
+- Ensures charts don’t overlap.  
+- Adds a main dashboard title.  
+
+---
+
+## 4. Real-World Use Case
+This dashboard is useful for:
+- **Finance:** Understanding profitability across categories and regions.  
+- **Sales Strategy:** Identifying high- and low-performing categories.  
+- **Operations:** Analyzing sales variability and discount effects.  
+- **Business Intelligence:** Exploring correlations and regression relationships for decision-making.  
+
+---
+
+## 5. Output
+- A **multi-panel dashboard** with six charts:  
+  1. Bar plot (average profit by category).  
+  2. Box plot (profit distribution by region).  
+  3. Violin plot (sales distribution by category).  
+  4. Regression plot (sales vs profit).  
+  5. Heatmap (correlation matrix).  
+  6. Pair plot (sales, profit, discount — separate figure).  
+- Clear titles, labels, legends, and consistent styling.  
