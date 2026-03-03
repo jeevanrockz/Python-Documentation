@@ -1,0 +1,104 @@
+# 📘 Stock Market Analysis Dashboard Documentation
+
+## 1. Overview
+The **Stock Market Analysis Dashboard** is an interactive web application built with **Plotly** and **Dash**. It provides synthetic but realistic financial visualizations for multiple companies, enabling exploration of stock trends, portfolio allocations, and risk analysis.
+
+The dashboard is organized into **three tabs**:
+1. **Stock Overview** – Candlestick charts, moving averages, and trading volume.
+2. **Portfolio Analysis** – Portfolio allocation pie chart and risk-return scatter plot.
+3. **Risk & Correlation** – Correlation heatmap of stock returns.
+
+---
+
+## 2. Technology Stack
+- **Python 3.8+**
+- **Dash** (web app framework)
+- **Plotly Express & Graph Objects** (interactive visualizations)
+- **Pandas & NumPy** (data handling and synthetic generation)
+
+---
+
+## 3. Data Model
+Synthetic datasets are generated inline using NumPy random walks and Pandas DataFrames.
+
+### 3.1 Stock Data
+| Column   | Description |
+|----------|-------------|
+| date     | Daily trading date (2020) |
+| company  | Company name (Apple, Microsoft, Tesla, Amazon) |
+| open     | Opening price |
+| high     | Daily high |
+| low      | Daily low |
+| close    | Closing price |
+| volume   | Trading volume |
+
+### 3.2 Portfolio Allocation
+| Column   | Description |
+|----------|-------------|
+| company  | Company name |
+| allocation | Portfolio weight (fraction of total investment) |
+
+### 3.3 Risk-Return Data
+| Column   | Description |
+|----------|-------------|
+| company  | Company name |
+| risk     | Standard deviation of returns (synthetic) |
+| return   | Expected return (synthetic) |
+
+### 3.4 Correlation Matrix
+- Generated from synthetic returns.
+- Shows pairwise correlation between companies.
+
+---
+
+## 4. Features
+
+### 4.1 Stock Overview
+- **Candlestick Chart**: OHLC prices with 50-day and 200-day moving averages.
+- **Volume Bar Chart**: Daily trading volume.
+- **Date Range Picker**: Filter stock data by time period.
+- **Dropdown Selector**: Choose company.
+
+### 4.2 Portfolio Analysis
+- **Pie Chart**: Portfolio allocation across companies.
+- **Scatter Plot**: Risk vs. return, with company labels.
+
+### 4.3 Risk & Correlation
+- **Heatmap**: Correlation matrix of stock returns.
+
+---
+
+## 5. Interactivity
+- **Dropdowns**: Select company.
+- **Date Picker**: Adjust analysis window.
+- **Hover Tooltips**: Show detailed values.
+- **Linked Charts**: Selecting filters updates multiple visualizations.
+
+---
+
+## 6. Architecture
+- **Dash Layout**: Organized into tabs (`dcc.Tabs`).
+- **Callbacks**: Handle interactivity and update figures dynamically.
+- **Plotly Figures**: Created using `plotly.express` and `plotly.graph_objects`.
+
+---
+
+## 7. Deployment
+- Run locally with `python app.py`.
+- Accessible at `http://127.0.0.1:8050/`.
+- Deployable to cloud platforms (Heroku, Azure, AWS) with minor configuration changes.
+
+---
+
+## 8. Future Enhancements
+- Replace synthetic data with **real stock market data** (e.g., Yahoo Finance, Alpha Vantage APIs).
+- Add **portfolio simulation tools** (e.g., Sharpe ratio, Monte Carlo simulations).
+- Implement **animated time-series** for stock price evolution.
+- Expand dataset coverage to more companies and longer timeframes.
+
+---
+
+## 9. Usage Notes
+- Current version uses **synthetic inline data** for demonstration.
+- For production, replace with real financial datasets or API calls.
+- Ensure moving averages and risk-return metrics are calculated from actual historical data.
