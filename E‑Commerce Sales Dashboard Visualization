@@ -1,0 +1,127 @@
+# 📄 Documentation: E‑Commerce Sales Dashboard with Matplotlib
+
+## 1. Objective
+The goal of this task is to build a **multi-panel dashboard** that visualizes different aspects of e‑commerce sales performance. Instead of a single chart, the dashboard combines multiple chart types to provide a **comprehensive view** of business metrics.  
+
+Key objectives:
+- Show **monthly revenue trends**.  
+- Compare **product category sales**.  
+- Visualize **payment method distribution**.  
+- Analyze **customer purchase frequency**.  
+
+---
+
+## 2. Dataset
+- **Months & Revenue:** Monthly revenue values for January–December.  
+- **Categories & Sales:** Sales figures for product categories (Electronics, Fashion, Home, Books, Sports).  
+- **Payment Methods:** Distribution of payment methods (Credit Card, Debit Card, UPI, Wallet).  
+- **Purchase Frequency:** Randomly generated customer purchase counts (1–20 purchases per customer).  
+
+Example:
+```python
+months = ["Jan", "Feb", ..., "Dec"]
+revenue = [12000, 15000, ..., 35000]
+
+categories = ["Electronics", "Fashion", "Home", "Books", "Sports"]
+category_sales = [40000, 30000, 20000, 15000, 10000]
+
+payment_methods = ["Credit Card", "Debit Card", "UPI", "Wallet"]
+payment_share = [45, 25, 20, 10]
+
+purchase_frequency = np.random.randint(1, 20, 200)
+```
+
+---
+
+## 3. Steps in the Code
+
+### Step 1: Create Subplots
+```python
+fig, axs = plt.subplots(2, 2, figsize=(14,10))
+```
+- Creates a **2x2 grid** of subplots.  
+- Each subplot will hold a different chart.  
+
+---
+
+### Step 2: Line Chart (Monthly Revenue Trend)
+```python
+axs[0,0].plot(months, revenue, marker='o', color='blue', linewidth=2)
+axs[0,0].set_title("Monthly Revenue Trend")
+axs[0,0].set_xlabel("Months")
+axs[0,0].set_ylabel("Revenue ($)")
+axs[0,0].grid(True, linestyle='--', alpha=0.7)
+```
+- Shows revenue growth across months.  
+- Useful for identifying **seasonal trends** or growth patterns.  
+
+---
+
+### Step 3: Bar Chart (Product Category Sales)
+```python
+axs[0,1].bar(categories, category_sales, 
+             color=['#ff9999','#66b3ff','#99ff99','#ffcc99','#c2c2f0'])
+axs[0,1].set_title("Product Category Sales")
+axs[0,1].set_xlabel("Categories")
+axs[0,1].set_ylabel("Sales ($)")
+axs[0,1].grid(axis='y', linestyle='--', alpha=0.7)
+```
+- Compares sales across product categories.  
+- Helps identify **top-performing categories**.  
+
+---
+
+### Step 4: Pie Chart (Payment Method Distribution)
+```python
+explode = [0.1 if share == max(payment_share) else 0 for share in payment_share]
+axs[1,0].pie(payment_share, labels=payment_methods, autopct="%1.1f%%", 
+             startangle=140, explode=explode, shadow=True, 
+             colors=["#ff9999","#66b3ff","#99ff99","#ffcc99"])
+axs[1,0].set_title("Payment Method Distribution")
+```
+- Shows proportion of payment methods.  
+- Explodes the largest slice (Credit Card) for emphasis.  
+- Useful for **payment strategy planning**.  
+
+---
+
+### Step 5: Histogram (Customer Purchase Frequency)
+```python
+axs[1,1].hist(purchase_frequency, bins=10, color="skyblue", edgecolor="black")
+axs[1,1].set_title("Customer Purchase Frequency")
+axs[1,1].set_xlabel("Purchases per Customer")
+axs[1,1].set_ylabel("Number of Customers")
+axs[1,1].grid(axis='y', linestyle='--', alpha=0.7)
+```
+- Shows how often customers make purchases.  
+- Useful for **customer segmentation** (e.g., frequent vs. occasional buyers).  
+
+---
+
+### Step 6: Final Layout
+```python
+plt.tight_layout()
+plt.suptitle("E-Commerce Sales Dashboard", fontsize=16, y=1.02)
+plt.show()
+```
+- `tight_layout()` ensures charts don’t overlap.  
+- `suptitle()` adds a main dashboard title.  
+
+---
+
+## 4. Real-World Use Case
+This dashboard is useful for:
+- **Business Intelligence:** Providing executives with a quick overview of performance.  
+- **Marketing:** Identifying which categories need promotion.  
+- **Finance:** Tracking revenue growth and payment method trends.  
+- **Customer Analytics:** Understanding purchase behavior for loyalty programs.  
+
+---
+
+## 5. Output
+- A **multi-panel dashboard** with 4 charts:  
+  1. Line chart (monthly revenue).  
+  2. Bar chart (category sales).  
+  3. Pie chart (payment methods).  
+  4. Histogram (purchase frequency).  
+- Clear titles, labels, and consistent styling.  
