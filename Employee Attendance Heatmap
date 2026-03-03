@@ -1,0 +1,96 @@
+# 📄 Documentation: Employee Attendance Heatmap with Matplotlib
+
+## 1. Objective
+The goal of this task is to visualize **employee attendance patterns** across different days of the week and months of the year. The visualization should:
+- Represent attendance counts using **color intensity**.  
+- Provide clear **labels for days and months**.  
+- Include a **color bar** to interpret values.  
+- Help HR identify patterns such as frequent absences on certain days or seasonal dips in attendance.  
+
+---
+
+## 2. Dataset
+- **Days:** Monday to Friday.  
+- **Months:** January to December.  
+- **Attendance Data:** Randomly generated integers between 50 and 100, representing attendance counts.  
+
+Example:
+```python
+days = ["Mon", "Tue", "Wed", "Thu", "Fri"]
+months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+          "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+attendance = np.random.randint(50, 100, size=(len(days), len(months)))
+```
+
+---
+
+## 3. Steps in the Code
+
+### Step 1: Import Libraries
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+```
+- **Matplotlib** is used for plotting.  
+- **NumPy** is used to generate random attendance data.  
+
+---
+
+### Step 2: Create Heatmap
+```python
+plt.figure(figsize=(12,6))
+plt.imshow(attendance, cmap="YlGnBu", aspect="auto")
+```
+- `plt.imshow()` displays the attendance matrix as an image.  
+- `cmap="YlGnBu"` applies a color map (yellow-green-blue).  
+- `aspect="auto"` ensures the heatmap scales properly.  
+
+---
+
+### Step 3: Add Labels
+```python
+plt.xticks(ticks=np.arange(len(months)), labels=months)
+plt.yticks(ticks=np.arange(len(days)), labels=days)
+plt.xlabel("Months")
+plt.ylabel("Days of the Week")
+plt.title("Employee Attendance Heatmap")
+```
+- X-axis shows **months**.  
+- Y-axis shows **days of the week**.  
+- Labels and title make the chart **self-explanatory**.  
+
+---
+
+### Step 4: Add Color Bar
+```python
+plt.colorbar(label="Attendance Count")
+```
+- The color bar provides a **scale** for interpreting values.  
+- Darker colors = higher attendance, lighter colors = lower attendance.  
+
+---
+
+### Step 5: Display Plot
+```python
+plt.show()
+```
+- Renders the heatmap in Jupyter Notebook or Python IDE.  
+
+---
+
+## 4. Real-World Use Case
+This visualization is useful for:
+- **HR Analytics:** Spotting attendance trends (e.g., frequent absences on Mondays).  
+- **Seasonal Analysis:** Identifying dips in attendance during certain months (e.g., holidays).  
+- **Operational Planning:** Adjusting staffing levels based on attendance patterns.  
+- **Education:** Tracking student attendance across days and semesters.  
+
+---
+
+## 5. Output
+- A **heatmap** showing attendance counts.  
+- Rows = days of the week.  
+- Columns = months of the year.  
+- Color intensity = attendance levels.  
+- Color bar for interpretation.  
