@@ -1,0 +1,110 @@
+# 📘 Soccer Analytics Dashboard Documentation
+
+## 1. Overview
+The **Soccer Analytics Dashboard** is an interactive web application built with **Plotly** and **Dash**. It provides synthetic but realistic soccer visualizations for teams, matches, and players, enabling exploration of performance metrics, tactical insights, and league standings.
+
+The dashboard is organized into **three tabs**:
+1. **Match Overview** – Team possession, league standings progression, and match results table.
+2. **Player Analysis** – Radar chart for player performance and heatmap for activity zones.
+3. **League Stats** – Scatter plot comparing goals vs assists for top players.
+
+---
+
+## 2. Technology Stack
+- **Python 3.8+**
+- **Dash** (web app framework)
+- **Plotly Express & Graph Objects** (interactive visualizations)
+- **Pandas & NumPy** (data handling and synthetic generation)
+
+---
+
+## 3. Data Model
+Synthetic datasets are generated inline using Pandas DataFrames and NumPy arrays.
+
+### 3.1 Player Statistics
+| Column           | Description |
+|------------------|-------------|
+| player           | Player name (Messi, Ronaldo, Neymar, Mbappe) |
+| goals            | Number of goals scored |
+| assists          | Number of assists |
+| tackles          | Defensive tackles |
+| passing_accuracy | Passing accuracy (fraction) |
+
+### 3.2 Match Statistics
+| Column     | Description |
+|------------|-------------|
+| match      | Match identifier |
+| team       | Team name (Team A, Team B) |
+| possession | Ball possession percentage |
+| shots      | Number of shots |
+| goals      | Goals scored |
+
+### 3.3 League Standings
+| Column | Description |
+|--------|-------------|
+| week   | Week number |
+| team   | Team name |
+| points | Points accumulated |
+
+### 3.4 Goals vs Assists
+| Column | Description |
+|--------|-------------|
+| player | Player name |
+| goals  | Goals scored |
+| assists| Assists made |
+
+### 3.5 Heatmap Data
+- Synthetic 10x10 matrix representing player activity zones on the pitch.
+
+---
+
+## 4. Features
+
+### 4.1 Match Overview
+- **Bar Chart**: Team possession per match.
+- **Line Chart**: League standings progression over weeks.
+- **Table**: Match results with sortable columns.
+
+### 4.2 Player Analysis
+- **Radar Chart**: Player performance comparison across multiple metrics.
+- **Heatmap**: Player activity zones on the pitch.
+
+### 4.3 League Stats
+- **Scatter Plot**: Goals vs assists for top players.
+
+---
+
+## 5. Interactivity
+- **Dropdowns**: Select player for radar chart and heatmap.
+- **Hover Tooltips**: Show detailed values on charts.
+- **Linked Charts**: Selecting a player updates both radar chart and heatmap.
+
+---
+
+## 6. Architecture
+- **Dash Layout**: Organized into tabs (`dcc.Tabs`).
+- **Callbacks**: Handle interactivity and update figures dynamically.
+- **Plotly Figures**: Created using `plotly.express` and `plotly.graph_objects`.
+
+---
+
+## 7. Deployment
+- Run locally with `python app.py`.
+- Accessible at `http://127.0.0.1:8050/`.
+- Deployable to cloud platforms (Heroku, Azure, AWS) with minor configuration changes.
+
+---
+
+## 8. Future Enhancements
+- Replace synthetic data with **real soccer datasets** (e.g., Opta, StatsBomb, FIFA data).
+- Add **animated player movement heatmaps** across matches.
+- Implement **formation visualizer** showing team lineups on the pitch.
+- Add **pass network graphs** to analyze team tactics.
+- Expand dataset coverage to more teams, players, and seasons.
+
+---
+
+## 9. Usage Notes
+- Current version uses **synthetic inline data** for demonstration.
+- For production, replace with real match and player statistics.
+- Ensure radar charts and heatmaps are populated with actual performance metrics.
