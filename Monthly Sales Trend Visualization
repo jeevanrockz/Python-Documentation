@@ -1,0 +1,96 @@
+# 📄 Documentation: Monthly Sales Trend Visualization with Matplotlib
+
+## 1. Objective
+The goal of this task is to visualize **monthly sales data** for a business over one year. The visualization should:
+- Show the overall **trend** in sales.
+- Highlight the **highest** and **lowest** sales months.
+- Provide clear **labels, title, grid, and legend** for readability.
+
+---
+
+## 2. Dataset
+- **Months:** January to December.
+- **Sales Data:** A list of integers representing sales in thousands of dollars.
+
+Example:
+```python
+months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+          "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+sales = [50, 55, 60, 58, 70, 65, 80, 85, 78, 90, 95, 100]
+```
+
+---
+
+## 3. Steps in the Code
+
+### Step 1: Import Libraries
+```python
+import matplotlib.pyplot as plt
+```
+- **Matplotlib** is imported for plotting.
+
+---
+
+### Step 2: Create the Plot
+```python
+plt.figure(figsize=(10,6))
+plt.plot(months, sales, marker='o', color='blue', linewidth=2)
+```
+- `plt.figure(figsize=(10,6))` sets the plot size.
+- `plt.plot()` creates a line chart with markers (`o`) for each data point.
+
+---
+
+### Step 3: Add Labels and Title
+```python
+plt.xlabel("Months")
+plt.ylabel("Sales (in $1000s)")
+plt.title("Monthly Sales Trend")
+```
+- Labels and title make the chart **self-explanatory**.
+
+---
+
+### Step 4: Highlight Max and Min Sales
+```python
+max_sales = max(sales)
+min_sales = min(sales)
+plt.scatter(months[sales.index(max_sales)], max_sales, color='green', s=100, label="Max Sales")
+plt.scatter(months[sales.index(min_sales)], min_sales, color='red', s=100, label="Min Sales")
+```
+- `plt.scatter()` is used to highlight the **maximum** and **minimum** sales points.
+- Green = Max, Red = Min.
+
+---
+
+### Step 5: Add Grid and Legend
+```python
+plt.grid(True, linestyle='--', alpha=0.7)
+plt.legend()
+```
+- Grid improves readability.
+- Legend explains highlighted points.
+
+---
+
+### Step 6: Display the Plot
+```python
+plt.show()
+```
+- Renders the chart in Jupyter Notebook or Python IDE.
+
+---
+
+## 4. Real-World Use Case
+This visualization is useful for:
+- **Business Analysts**: Spotting seasonal trends in sales.
+- **Managers**: Identifying best and worst-performing months.
+- **Decision Making**: Planning promotions or resource allocation based on performance.
+
+---
+
+## 5. Output
+- A line chart showing monthly sales.
+- Green marker for **highest sales month**.
+- Red marker for **lowest sales month**.
+- Clear labels, title, grid, and legend.
