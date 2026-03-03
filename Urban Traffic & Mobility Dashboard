@@ -1,0 +1,115 @@
+# 📘 Urban Traffic & Mobility Dashboard Documentation
+
+## 1. Overview
+The **Urban Traffic & Mobility Dashboard** is an interactive web application built with **Plotly** and **Dash**. It provides synthetic but realistic transportation visualizations for traffic, public transport, accidents, and commuter behavior, enabling exploration of congestion patterns, transit efficiency, and travel times.
+
+The dashboard is organized into **four tabs**:
+1. **Traffic Analysis** – Traffic volume trends and speed vs. congestion scatter plots.
+2. **Public Transport** – Ridership bar chart and commuter mode share pie chart.
+3. **Accident Hotspots** – Map visualization of accident locations and severity.
+4. **Commuter Behavior** – Box plot of travel time distribution by mode.
+
+---
+
+## 2. Technology Stack
+- **Python 3.8+**
+- **Dash** (web app framework)
+- **Plotly Express & Graph Objects** (interactive visualizations)
+- **Pandas & NumPy** (data handling and synthetic generation)
+
+---
+
+## 3. Data Model
+Synthetic datasets are generated inline using Pandas DataFrames and NumPy arrays.
+
+### 3.1 Traffic Data
+| Column           | Description |
+|------------------|-------------|
+| road             | Road segment (Highway 1, Main St, etc.) |
+| hour             | Hour of day (0–23) |
+| volume           | Traffic volume (vehicles/hour) |
+| speed            | Average vehicle speed (km/h) |
+| congestion_index | Congestion index (0.2–1.0 range) |
+
+### 3.2 Public Transport Ridership
+| Column   | Description |
+|----------|-------------|
+| mode     | Transport mode (Bus, Metro, Tram) |
+| ridership| Number of riders |
+
+### 3.3 Commuter Mode Share
+| Column | Description |
+|--------|-------------|
+| mode   | Transport mode (Car, Bike, Bus, Metro, Walking) |
+| share  | Percentage of commuters |
+
+### 3.4 Accident Statistics
+| Column   | Description |
+|----------|-------------|
+| location | Zone identifier |
+| severity | Accident severity (High, Medium, Low) |
+| count    | Number of accidents |
+| lat      | Latitude |
+| lon      | Longitude |
+
+### 3.5 Travel Times
+| Column | Description |
+|--------|-------------|
+| mode   | Transport mode |
+| time   | Travel time (minutes) |
+
+---
+
+## 4. Features
+
+### 4.1 Traffic Analysis
+- **Line Chart**: Traffic volume trend by hour for selected road.
+- **Scatter Plot**: Speed vs. congestion index, sized by traffic volume.
+
+### 4.2 Public Transport
+- **Bar Chart**: Ridership by transport mode.
+- **Pie Chart**: Commuter mode share.
+
+### 4.3 Accident Hotspots
+- **Map Visualization**: Accident locations with severity markers.
+
+### 4.4 Commuter Behavior
+- **Box Plot**: Travel time distribution across modes.
+
+---
+
+## 5. Interactivity
+- **Dropdowns**: Select road segment.
+- **Hover Tooltips**: Show detailed values on charts.
+- **Linked Charts**: Selecting a road updates traffic line and scatter plots.
+- **Tabs**: Organize dashboard into thematic sections.
+
+---
+
+## 6. Architecture
+- **Dash Layout**: Organized into tabs (`dcc.Tabs`).
+- **Callbacks**: Handle interactivity and update figures dynamically.
+- **Plotly Figures**: Created using `plotly.express` and `plotly.graph_objects`.
+
+---
+
+## 7. Deployment
+- Run locally with `python app.py`.
+- Accessible at `http://127.0.0.1:8050/`.
+- Deployable to cloud platforms (Heroku, Azure, AWS) with minor configuration changes.
+
+---
+
+## 8. Future Enhancements
+- Replace synthetic data with **real traffic datasets** (e.g., city transport APIs, Google Maps, OpenStreetMap).
+- Add **animated traffic evolution** across hours of the day.
+- Implement **policy scenario simulator** (e.g., bus lanes, car restrictions).
+- Add **dual y-axis plots** for traffic volume vs. speed.
+- Expand dataset coverage to multiple cities and longer timeframes.
+
+---
+
+## 9. Usage Notes
+- Current version uses **synthetic inline data** for demonstration.
+- For production, replace with real traffic, transport, and accident datasets.
+- Ensure compliance with **data privacy and safety regulations** when using real commuter data.
