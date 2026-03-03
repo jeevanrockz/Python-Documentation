@@ -1,0 +1,113 @@
+# 📄 Documentation: Climate Change Analytics Dashboard (Seaborn)
+
+## 1. Objective
+The goal of this task is to build a **multi-plot dashboard** that visualizes climate metrics over time and across regions. Unlike earlier dashboards, this one introduces **time series analysis** and focuses on **environmental data**. Seaborn’s advanced plots make it ideal for analyzing distributions, regression relationships, and correlations in climate science.
+
+Key objectives:
+- Compare **temperature trends over years by region**.  
+- Analyze **rainfall distribution across regions**.  
+- Explore **distribution of CO₂ emissions**.  
+- Visualize **relationship between temperature and CO₂ emissions**.  
+- Show **joint distribution of rainfall and sea level rise**.  
+- Display **correlation matrix of climate metrics**.  
+
+---
+
+## 2. Dataset
+- **Year:** 2000–2025.  
+- **Region:** Asia, Europe, North America, Africa.  
+- **Temperature:** Average temperature (simulated rising trend).  
+- **Rainfall:** Annual rainfall (mm).  
+- **CO₂:** Atmospheric CO₂ concentration (ppm, rising trend).  
+- **SeaLevel:** Sea level rise (meters, rising trend).  
+
+Example:
+```python
+data = pd.DataFrame({
+    "Year": np.tile(years, len(regions)),
+    "Region": np.repeat(regions, len(years)),
+    "Temperature": np.random.normal(15, 2, n) + np.linspace(0, 2, n),
+    "Rainfall": np.random.normal(1000, 200, n),
+    "CO2": np.random.normal(400, 50, n) + np.linspace(0, 30, n),
+    "SeaLevel": np.random.normal(5, 1, n) + np.linspace(0, 1.5, n)
+})
+```
+
+---
+
+## 3. Steps in the Code
+
+### Step 1: Line Plot (Temperature Trends by Region)
+```python
+sns.lineplot(x="Year", y="Temperature", hue="Region", data=data, marker="o")
+```
+- Shows temperature trends over years by region.  
+- Useful for **time series analysis of global warming**.  
+
+---
+
+### Step 2: FacetGrid (Rainfall Distribution by Region)
+```python
+g = sns.FacetGrid(data, col="Region", height=4)
+g.map_dataframe(sns.histplot, x="Rainfall", bins=15, color="skyblue")
+```
+- Creates multiple histograms of rainfall, faceted by region.  
+- Useful for **regional rainfall variability analysis**.  
+
+---
+
+### Step 3: KDE Plot (CO₂ Emissions Distribution)
+```python
+sns.kdeplot(data["CO2"], fill=True, color="red")
+```
+- Shows smooth distribution of CO₂ emissions.  
+- Useful for **understanding emission levels**.  
+
+---
+
+### Step 4: LMPlot (Temperature vs CO₂ Emissions)
+```python
+sns.lmplot(x="CO2", y="Temperature", hue="Region", data=data)
+```
+- Regression analysis of temperature vs CO₂ emissions.  
+- Useful for **studying greenhouse gas impact on temperature**.  
+
+---
+
+### Step 5: JointPlot (Rainfall vs Sea Level Rise)
+```python
+sns.jointplot(x="Rainfall", y="SeaLevel", data=data, kind="scatter", color="green")
+```
+- Combines scatter plot with marginal distributions.  
+- Useful for **exploring rainfall-sea level relationships**.  
+
+---
+
+### Step 6: Heatmap (Correlation Matrix of Climate Metrics)
+```python
+corr = data[["Temperature", "Rainfall", "CO2", "SeaLevel"]].corr()
+sns.heatmap(corr, annot=True, cmap="coolwarm")
+```
+- Displays correlation matrix of climate metrics.  
+- Useful for **identifying strong or weak environmental relationships**.  
+
+---
+
+## 4. Real-World Use Case
+This dashboard is useful for:
+- **Climate Scientists:** Studying long-term environmental trends.  
+- **Policy Makers:** Understanding links between emissions and temperature rise.  
+- **Environmental NGOs:** Communicating climate risks.  
+- **Educators:** Teaching climate change analytics with visualizations.  
+
+---
+
+## 5. Output
+- A **multi-plot dashboard** with six charts:  
+  1. Line Plot (temperature trends by region).  
+  2. FacetGrid (rainfall distribution by region).  
+  3. KDE Plot (CO₂ emissions distribution).  
+  4. LMPlot (temperature vs CO₂ regression).  
+  5. JointPlot (rainfall vs sea level rise).  
+  6. Heatmap (correlation matrix of climate metrics).  
+- Clear titles, labels, legends, and consistent styling.  
