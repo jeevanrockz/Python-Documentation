@@ -1,0 +1,74 @@
+### 1. **Installation**
+pip install loguru
+---
+
+### 2. **Basic Usage**
+- `logger.info("Message")` → logs info.  
+- `logger.error("Error message")` → logs errors.  
+- Preconfigured to output to `stderr` with colors.  
+**Reference:** Overview [(loguru.readthedocs.io in Bing)](https://www.bing.com/search?q="https%3A%2F%2Floguru.readthedocs.io%2Fen%2Fstable%2Foverview.html")  
+
+---
+
+### 3. **Exception Handling**
+- Use `logger.exception("Error occurred")` inside `try/except`.  
+- Use `@logger.catch` to automatically log uncaught exceptions.  
+**Reference:** Exceptions [(loguru.readthedocs.io in Bing)](https://www.bing.com/search?q="https%3A%2F%2Floguru.readthedocs.io%2Fen%2Fstable%2Fapi%2Flogger.html%23logger.catch")  
+
+---
+
+### 4. **File Logging**
+- Add file logging with rotation and retention:  
+  ```python
+  logger.add("app.log", rotation="1 MB", retention="7 days", compression="zip")
+  ```
+- Rotation: split logs when they reach a size/time.  
+- Retention: delete old logs after a duration.  
+- Compression: zip old logs.  
+**Reference:** Sinks [(loguru.readthedocs.io in Bing)](https://www.bing.com/search?q="https%3A%2F%2Floguru.readthedocs.io%2Fen%2Fstable%2Fapi%2Flogger.html%23logger.add")  
+
+---
+
+### 5. **Contextual Logging**
+- Add extra fields to logs:  
+  ```python
+  logger.bind(user="Jeevan", action="login").info("User performed an action")
+  ```
+- Useful for multi-user systems.  
+**Reference:** Contextualize Logs [(loguru.readthedocs.io in Bing)](https://www.bing.com/search?q="https%3A%2F%2Floguru.readthedocs.io%2Fen%2Fstable%2Fresources%2Fcontextualize.html")  
+
+---
+
+### 6. **Filtering Logs**
+- Direct logs to different files based on conditions:  
+  ```python
+  logger.add("orders.log", filter=lambda record: "ORDER" in record["message"])
+  ```
+**Reference:** Filtering [(loguru.readthedocs.io in Bing)](https://www.bing.com/search?q="https%3A%2F%2Floguru.readthedocs.io%2Fen%2Fstable%2Fresources%2Ffilter.html")  
+
+---
+
+### 7. **Structured Logging (JSON)**
+- Serialize logs for dashboards:  
+  ```python
+  import sys
+  logger.add(sys.stdout, serialize=True)
+  logger.info("User logged in", user="Jeevan", role="admin")
+  ```
+**Reference:** Serialization [(loguru.readthedocs.io in Bing)](https://www.bing.com/search?q="https%3A%2F%2Floguru.readthedocs.io%2Fen%2Fstable%2Fresources%2Fserialization.html")  
+
+---
+
+### 8. **Flask Integration**
+- Use Loguru inside Flask routes for request and error logging.  
+- Example:  
+  ```python
+  @app.route("/error")
+  def error_route():
+      try:
+          1/0
+      except Exception:
+          logger.exception("Error occurred in /error route")
+  ```
+**Reference:** Integration Examples [(loguru.readthedocs.io in Bing)](https://www.bing.com/search?q="https%3A%2F%2Floguru.readthedocs.io%2Fen%2Fstable%2Fresources%2Fintegrations.html")  
+ 
