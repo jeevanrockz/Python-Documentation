@@ -1,0 +1,72 @@
+# 📘 Typer Projects Documentation
+
+## 1. Task Manager CLI
+**Purpose:** Manage a simple list of tasks (add, list, complete).  
+**Features:**
+- `add <task>` → Add a new task.  
+- `list` → Show all tasks.  
+- `complete <task_number>` → Mark a task as completed.  
+**Notes:**  
+- Tasks are stored in memory (not persistent).  
+- Loguru logs every action.  
+
+---
+
+## 2. Weather CLI
+**Purpose:** Simulate weather reports for cities.  
+**Features:**
+- `current <city>` → Show current weather.  
+- `forecast <city> --days N` → Show forecast for N days.  
+**Notes:**  
+- Weather data is randomly generated.  
+- Useful for practicing arguments and options.  
+
+---
+
+## 3. File Organizer CLI
+**Purpose:** Organize files in a folder by type.  
+**Features:**
+- `organize <folder> --output <output_folder>` → Sort files into categories (images, documents, videos, others).  
+**Notes:**  
+- Uses `shutil` and `pathlib` for file handling.  
+- Creates subfolders automatically.  
+- Loguru logs file movements.  
+
+---
+
+## 4. Password Manager CLI
+**Purpose:** Store, retrieve, and manage passwords securely.  
+**Features:**
+- `add <service> <username> --password <password>` → Add or auto‑generate a password.  
+- `list` → Show all stored services.  
+- `get <service>` → Retrieve username and password.  
+- `delete <service>` → Remove a stored password.  
+**Notes:**  
+- Data stored in `passwords.json`.  
+- Auto‑generates secure random passwords if none provided.  
+- Loguru logs all actions.  
+
+---
+
+## 5. Note‑Taking CLI
+**Purpose:** Create, search, view, and delete notes.  
+**Features:**
+- `add <title> <content>` → Add a new note.  
+- `list` → Show all notes.  
+- `search <keyword>` → Search notes by keyword.  
+- `view <title>` → View a note’s content.  
+- `delete <title>` → Delete a note.  
+**Notes:**  
+- Notes stored in `notes.json`.  
+- Supports keyword search in both title and content.  
+- Loguru logs all note actions.  
+
+---
+
+# 🛠️ Common Typer Concepts Used
+- **Arguments** → Required inputs (`city`, `task`, `title`).  
+- **Options** → Optional flags (`--days`, `--password`, `--output`).  
+- **Multiple Commands** → Each app had multiple subcommands (`add`, `list`, `delete`).  
+- **Persistence** → Some apps used JSON files for storage.  
+- **Logging** → Loguru integrated for tracking actions.  
+- **Validation** → Type hints ensured correct input types.  
