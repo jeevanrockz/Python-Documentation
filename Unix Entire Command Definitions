@@ -1,0 +1,791 @@
+unix commands:-
+
+date: current system date and time
+echo 'Hello, Terminal!': displays message
+whoami: command tells you which user you are currently logged in as. This can be useful when working on a system with multiple users.
+
+If you start typing a command but change your mind, you can use CTRL+C to cancel it before pressing Enter. 
+This keyboard shortcut clears the current line and returns you to a fresh prompt, allowing you to start over with a new command.
+
+sleep: delay for a specified amount of time
+clear: If the terminal screen gets cluttered, you can clear it with a simple command. or press ctrl + l for same.
+ls: lists files and directories
+ls -a: lists hidden files
+ls --all: same as above one
+ls -lh: When you run ls -lh, you'll see a detailed listing with file permissions, owner, group, size 
+(in human-readable format like 4.0K, 1.2M), modification date, and filename.
+head -n 5 sample.txt: command used to display beginning of file and how many lines we need to print
+ls --help: displays list of available options and their description
+pwd: prints current working directory
+cd /: moves to root directory
+cd ~: moves back to home directory
+cd filename: move into that file
+mkdir: create directory
+touch file1.txt file2.txt: creates two empty files
+cd ..: moves back
+rmdir: deletes directory
+rm: deletes files
+tail: prints first few lines of file
+tail -n 5 filename
+cat displays the file contents
+grep "jeevan" hello.txt: search for word jeevan in file
+ps: list running processes
+cal: show calendar
+uname -a: show system info
+---------------
+Excellent, Jeevan — you’ve pasted a list of **inbuilt shell commands** (these are Bash built‑ins). Let me define them clearly so you understand their purpose.  
+
+---
+
+## 📖 Common Inbuilt Shell Commands and Their Uses
+
+- **alias** → Create or list command shortcuts.  
+- **bg** → Resume a job in the background.  
+- **bind** → Set or display key bindings for the shell.  
+- **break [n]** → Exit from a loop (optionally multiple levels).  
+- **builtin** → Run a shell built‑in command directly.  
+- **caller** → Return context of a function call (useful in debugging).  
+- **cd** → Change the current directory.  
+- **command** → Run a command, bypassing shell functions/aliases.  
+- **compgen** → Generate possible completions for a word.  
+- **complete** → Specify how arguments should be auto‑completed.  
+- **compopt** → Modify completion options.  
+- **continue [n]** → Resume the next iteration of a loop.  
+- **coproc** → Start a command asynchronously as a co‑process.  
+- **declare / typeset** → Define variables and attributes (arrays, integers, etc.).  
+- **dirs** → Display the directory stack.  
+- **disown** → Remove jobs from the shell’s job table.  
+- **echo** → Print text to the terminal.  
+- **enable** → Enable or disable shell built‑ins.  
+- **eval** → Execute arguments as a shell command.  
+- **exec** → Replace the shell with a specified command.  
+- **exit [n]** → Exit the shell with status *n*.  
+- **export** → Mark variables to be passed to child processes.  
+- **false** → Return a non‑zero exit status (always fails).  
+- **fc** → Edit and re‑execute commands from history.  
+- **fg** → Resume a job in the foreground.  
+- **for / while / until** → Loop constructs.  
+- **function** → Define a shell function.  
+- **getopts** → Parse positional parameters (for scripts).  
+- **hash** → Remember command locations.  
+- **help** → Display help for built‑ins.  
+- **jobs** → List active jobs.  
+- **kill** → Send signals to processes/jobs.  
+- **let** → Perform arithmetic evaluation.  
+- **local** → Define variables local to a function.  
+- **logout** → Exit a login shell.  
+- **mapfile / readarray** → Read lines into an array.  
+- **popd / pushd** → Manage the directory stack.  
+- **printf** → Format and print data.  
+- **pwd** → Print current working directory.  
+- **read** → Read input into variables.  
+- **readonly** → Mark variables as read‑only.  
+- **return** → Exit from a function with a status.  
+- **select** → Create a simple menu loop.  
+- **set** → Set shell options or positional parameters.  
+- **shift** → Shift positional parameters left.  
+- **shopt** → Set shell options (like extended globbing).  
+- **source** → Read and execute commands from a file.  
+- **suspend** → Suspend the shell process.  
+- **test / [[ ]]** → Evaluate conditional expressions.  
+- **time** → Measure execution time of a command.  
+- **trap** → Run commands when signals are received.  
+- **true** → Return a zero exit status (always succeeds).  
+- **type** → Show how a command name is interpreted.  
+- **ulimit** → Control resource limits.  
+- **umask** → Set default file permissions mask.  
+- **unalias** → Remove command aliases.  
+- **unset** → Remove variables or functions.  
+- **wait** → Wait for background jobs to finish.  
+
+-------------------------------------------------------
+zipdetails: display internal structure of zip files
+corelist: a commandline frontend to Module::CoreList
+vimdiff: edit between two and eight versions of a file with Vim and show differences
+socat1: Socat is a command line based utility that establishes two bidirectional byte streams and transfers data between
+       them.  Because the streams can be constructed from a large set of different types of data sinks and sources (see
+       address types), and because lots of address options may be applied to the streams, socat can be  used  for  many
+       different purposes.
+pod2usage: print usage messages from embedded pod docs in files
+prtstat: print statistics of a process
+groff: front end to the GNU roff document formatting system
+fuser: identify processes using files or sockets
+ptargrep: Apply pattern matching to the contents of files in a tar archive
+pstree: display a tree of processes
+killall: kill processes by name
+traceroute6.db: print the route packets trace to network host
+register-python-argcomplete: argcomplete utility script
+sudoedit: execute a command as another user
+pod2html: convert .pod files to .html files
+cvtsudoers: convert between sudoers file formats
+funzip:filter for extracting from a ZIP archive in a pipe
+shasum: Print or Check SHA Checksums
+tree: list contents of directories in a tree-like format.
+nroff: format documents with groff for TTY (terminal) devices
+h2xs: convert .h C header files to Perl extensions
+soelim: recursively interpolate source requests in roff or other text files
+lnstat: unified linux network statistics
+rtstat: symbolic link to lnstat
+grotty: groff output driver for typewriter-like (terminal) devices
+busybox: is a single lightweight executable that combines tiny versions of many common Unix/Linux utilities, often called the “Swiss Army Knife of Embedded Linux.” 
+It’s widely used in embedded systems and Docker images because it provides essential commands in a very small footprint.
+nano: Nano's ANOther editor, inspired by Pico
+vim: Vi IMproved, a programmer's text editor
+netcat:arbitrary TCP and UDP connections and listens
+zip: package and compress (archive) files
+pl2pm: Rough tool to translate Perl4 .pl files to Perl5 .pm modules.
+ping: send ICMP ECHO_REQUEST to network hosts
+grog: "groff guess"--infer the groff command a document requires
+rnano:a restricted nano
+zipgrep: search files in a ZIP archive for lines matching a pattern
+grops: groff output driver for PostScript
+unzipsfx:self-extracting stub for prepending to ZIP archives
+look: display lines beginning with a given string
+pic: compile pictures for troff or TeX
+info: read Info documents 
+install-info:update info/dir entries
+perldoc: perldoc is the standard documentation viewer for Perl. It lets you read the built‑in documentation for Perl itself, 
+its modules, and functions directly from the terminal.
+
+zipinfo:list detailed information about a ZIP archive
+pod2text:Convert POD data to formatted ASCII text
+python-argcomplete-check-easy-install-script: argcomplete utility script
+less: opposite of more
+file: determine file type
+traceproto.db: traceproto.db is not a typical user‑facing command, but rather a data file that comes with the traceroute package.
+sudoreplay: replay sudo session logs
+preconv: prepare files for typesetting with groff
+xq-python: xq-python is a command-line XML processor that converts XML into JSON and passes it to jq for filtering. 
+It’s part of the yq/xq toolset, making it easy to query and transform XML data using the powerful jq syntax.
+write:send a message to another user
+helpztags: generate the help tags file for directory
+dig: DNS lookup utility
+rdma: RDMA tool
+podchecker: check the syntax of POD format documentation files
+nstat: nstat, rtacct - network statistics tools.
+ss:another utility to investigate sockets
+pygettext3.12: Python equivalent of xgettext(1)
+rsync: a fast, versatile, remote (and local) file-copying tool
+vimtutor: the Vim tutor
+pcregrep - a grep with Perl-compatible regular expressions.
+zpcregrep
+ssh-keyscan: gather SSH public keys from servers
+systemctl: Control the systemd system and service manager
+dbus-send: Send a message to a message bus
+systemd-path: List and query system and user paths
+busctl:Introspect the bus
+systemd-ask-password: Query the user for a system password
+systemd-cgtop: Show top control groups by their resource usage
+systemd-tty-ask-password-agent: List or process pending systemd password requests
+c_rehash: openssl-rehash, c_rehash - Create symbolic links to files named by the hash values
+py3versions:print python3 version information
+ssh -- OpenSSH remote login client
+slogin: alias for ssh
+scp: OpenSSH secure file copy
+dbus-run-session: start a process as a new D-Bus session
+systemd:systemd, init - systemd system and service manager
+systemd-notify: Notify service manager about start-up completion and other daemon status changes
+hostnamectl: Control the system hostname
+systemd-repart: systemd-repart, systemd-repart.service - Automatically grow and add partitions
+systemd-inhibit: Execute a program with an inhibition lock taken
+resolvectl: resolvectl, resolvconf - Resolve domain names, IPV4 and IPv6 addresses, DNS resource records, and services;
+       introspect and reconfigure the DNS resolver
+ssh-import-id  -  retrieve one or more public keys from a public keyserver and append them to the current user's
+       authorized_keys file (or some other specified file)
+ssh-import-id-lp: to use launchpad
+systemd-cryptenroll: Enroll PKCS#11, FIDO2, TPM2 token/devices to LUKS2 encrypted volumes
+pydoc3: the Python documentation tool
+ssh-keygen: OpenSSH authentication key utility
+systemd-umount: systemd-mount, systemd-umount - Establish and destroy transient mount or auto-mount points
+varlinkctl:Introspect with and invoke Varlink services
+lsb_release: print distribution-specific information (minimal implementation).
+ucfq: ucf - Update Configuration File:  preserve user changes in configuration files
+systemd-run: Run programs in transient scope units, service units, or path-, socket-, or timer-triggered
+       service units
+systemd-tmpfiles: systemd-tmpfiles, systemd-tmpfiles-setup.service, systemd-tmpfiles-setup-dev-early.service, systemd-tmpfiles-
+       setup-dev.service, systemd-tmpfiles-clean.service, systemd-tmpfiles-clean.timer - Creates, deletes and cleans up
+       volatile and temporary files and directories
+systemd-socket-activate: Test socket activation of daemons
+systemd-sysext, systemd-sysext.service, systemd-confext, systemd-confext.service - Activates System Extension
+       Images
+systemd-firstboot, systemd-firstboot.service - Initialize basic system settings on or before the first boot-up
+       of a system
+pdb3.12.db - the Python debugger
+openssl - OpenSSL command line program
+dbus-update-activation-environment - update environment used for D-Bus session services
+update-mime-database - a program to build the Shared MIME-Info database cache
+networkctl - Query or modify the status of network links
+ssh-import-id  -  retrieve one or more public keys from a public keyserver and append them to the current user's
+       authorized_keys file (or some other specified file)
+systemd-stdio-bridge - D-Bus proxy
+systemd-creds - Lists, shows, encrypts and decrypts service credentials
+ssh -- OpenSSH remote login client
+systemd-analyze - Analyze and debug system manager
+xdg-user-dirs-update - Update XDG user dir configuration
+pygettext - Python equivalent of xgettext(1)
+ssh-copy-id -- use locally available keys to authorise logins on a remote machine
+systemd-sysusers, systemd-sysusers.service - Allocate system users and groups
+systemd-cryptsetup, systemd-cryptsetup@.service - Full disk decryption logic
+Wget - The non-interactive network downloader.
+systemd-id128 - Generate and print sd-128 identifiers
+dbus-cleanup-sockets - clean up leftover sockets in a directory
+timedatectl - Control the system time and date
+dbus-monitor - debug probe to print message bus messages
+xauth - X authority file utility
+lcf - Determine which of the historical versions of a config is installed
+systemd-ac-power - Report whether we are connected to an external power source
+python - an interpreted, interactive, object-oriented programming language
+kernel-install - Add and remove kernel and initrd images to and from /boot
+xdg-user-dir - Find an XDG user dir
+ssh-argv0 -- replaces the old ssh command-name as hostname handling
+systemd-detect-virt - Detect execution in a virtualized environment
+localectl - Control the system locale and keyboard layout settings
+dbus-daemon - Message bus daemon
+dbus-uuidgen - Utility to generate UUIDs
+systemd-machine-id-setup - Initialize the machine ID in /etc/machine-id
+py3compile - byte compile Python 3 source files
+ssh-add -- adds private key identities to the OpenSSH authentication agent
+ucfr - Update Configuration File Registry:  associate packages with configuration files
+ucf - Update Configuration File:  preserve user changes in configuration files
+journalctl - Print log entries from the systemd journal
+systemd-mount, systemd-umount - Establish and destroy transient mount or auto-mount points
+systemd-delta - Find overridden configuration files
+ssh-agent -- OpenSSH authentication agent
+loginctl - Control the systemd login manager
+py3clean - removes .pyc and .pyo files
+sftp -- OpenSSH secure file transfer
+systemd-cgls - Recursively show control group contents
+networkd-dispatcher - Dispatcher service for systemd-networkd connection status changes
+systemd-cat - Connect a pipeline or program's output with the journal
+systemd-escape - Escape strings for usage in systemd unit names
+sulogin - single-user login
+pam-auth-update - manage PAM configuration using packaged profiles
+chmem - configure memory
+debugfs - ext2/ext3/ext4 file system debugger
+cppw, cpgr - copy with locking the given file to the password or group file
+iconvconfig - create iconv module configuration cache
+pwhistory_helper - Helper binary that transfers password hashes from passwd or shadow to opasswd
+e2mmpstatus - Check MMP status of an ext4 file system
+rmt - remote magnetic tape server
+fsfreeze - suspend access to a filesystem (Ext3/4, ReiserFS, JFS, XFS)
+losetup - set up and control loop devices
+rtcwake - enter a system sleep state until specified wakeup time
+filefrag - report on file fragmentation
+grpck - verify integrity of group files
+swapon, swapoff - enable/disable devices and files for paging and swapping
+e2undo - Replay an undo log for an ext2/ext3/ext4 file system
+groupadd - create a new group
+installkernel - install a new kernel image
+pwconv, pwunconv, grpconv, grpunconv - convert to and from shadow passwords and group
+mklost+found - create a lost+found directory on a mounted Linux second extended file system
+agetty - alternative Linux getty
+ldattach - attach a line discipline to a serial line
+faillock - Tool for displaying and modifying the authentication failure record files
+e2label - Change the label on an ext2/ext3/ext4 file system
+
+killall5 - send a signal to all processes
+blockdev - call block device ioctls from the command line
+isosize - output the length of an iso9660 filesystem
+unix_chkpwd - Helper binary that verifies the password of the current user
+groupmems - administer members of a user's primary group
+runuser - run a command with substitute user and group ID
+update-shells - update the list of valid login shells
+resize2fs - ext2/ext3/ext4 file system resizer
+e2scrub_all - check all mounted ext[234] file systems for errors.
+usermod - modify a user account
+e4defrag - online defragmenter for ext4 file system
+fsck.cramfs - fsck compressed ROM file system
+mkfs.bfs - make an SCO bfs filesystem
+findfs - find a filesystem by label or UUID
+groupdel - delete a group
+vipw, vigr - edit the password, group, shadow-password or shadow-group file
+pivot_root - change the root filesystem
+blkzone - run zone command on a device
+newusers - update and create new users in batch
+chcpu - configure CPUs
+ctrlaltdel - set the function of the Ctrl-Alt-Del combination
+fsck - check and repair a Linux filesystem
+readprofile - read kernel profiling information
+zramctl - set up and control zram devices
+invoke-rc.d - executes System-V style init script actions
+ldconfig - configure dynamic linker run-time bindings
+remove-shell - remove shells from the list of valid login shells
+dumpe2fs - dump ext2/ext3/ext4 file system information
+chgpasswd - update group passwords in batch mode
+pam_getenv - get environment variables from /etc/environment
+mke2fs - create an ext2/ext3/ext4 file system
+mkfs.minix - make a Minix filesystem
+e4crypt - ext4 file system encryption utility
+e2image - Save critical ext2/ext3/ext4 file system metadata to a file
+e2freefrag - report free space fragmentation information
+userdel - delete a user account and related files
+tarcat - concatenates the pieces of a GNU tar multi-volume archive
+swaplabel - print or change the label or UUID of a swap area
+mkfs.cramfs - make compressed ROM file system
+e2fsck - check a Linux ext2/ext3/ext4 file system
+chroot - run command or interactive shell with special root directory
+chpasswd - update passwords in batch mode
+badblocks - search a device for bad blocks
+pam_timestamp_check - Check to see if the default timestamp is valid
+mkfs - build a Linux filesystem
+fsck.minix - check consistency of Minix filesystem
+wipefs - wipe a signature from a device
+blkdiscard - discard sectors on a device
+vipw, vigr - edit the password, group, shadow-password or shadow-group file
+nologin - politely refuse a login
+service - run a System V init script
+mkhomedir_helper - Helper binary that creates home directories
+e2scrub - check the contents of a mounted ext[234] file system
+sysctl - configure kernel parameters at runtime
+logsave - save the output of a command in a logfile
+update-passwd - safely update /etc/passwd, /etc/shadow and /etc/group
+dpkg-reconfigure - reconfigure an already installed package
+start-stop-daemon - start and stop system daemon programs
+blkid - locate/print block device attributes
+unix_update - Helper binary that updates the password of a given user
+update-rc.d - install and remove System-V style init script links
+zic - timezone compiler
+pwck - verify the integrity of password files
+groupmod - modify a group definition on the system
+fstrim - discard unused blocks on a mounted filesystem
+add-shell - add shells to the list of valid login shells
+switch_root - switch to another filesystem as the root of the mount tree
+pam_namespace_helper - Helper binary that creates home directories
+rmt - remote magnetic tape server
+tune2fs - adjust tunable file system parameters on ext2/ext3/ext4 file systems
+dpkg-preconfigure - let packages ask questions prior to their installation
+mkswap - set up a Linux swap area
+fstab-decode - run a command with fstab-encoded arguments
+sudo_logsrvd -- sudo event and I/O log server
+iptunnel - Create and manage IP tunnels
+rtmon - listens to and monitors RTnetlink
+tipc - a TIPC configuration and management tool
+slattach - attach a network interface to a serial line
+visudo -- edit the sudoers file
+arp - manipulate the system ARP cache
+dcb - show / manipulate DCB (Data Center Bridging) settings
+arpd - userspace arp daemon
+rarp - manipulate the system RARP table
+devlink - Devlink tool
+mii-tool - view, manipulate media-independent interface status
+tc - show / manipulate traffic control settings
+locale-gen -- generate localisation files from templates
+genl - generic netlink utility frontend
+update-info-dir - update or create index file from all installed info files in directory
+validlocale - Test if a given locale is available
+setcap - set file capabilities
+vdpa - vdpa management tool
+getcap - examine file capabilities
+bridge - show / manipulate bridge addresses and devices
+update-locale - Modify global locale settings
+ifconfig - configure a network interface
+route - show / manipulate the IP routing table
+nameif - name network interfaces based on MAC addresses
+sudo_sendlog -- send sudo I/O log to log server
+getpcaps - display process capabilities
+plipconfig - fine tune PLIP device parameters
+accessdb - dumps the content of a man-db database in a human readable format
+capsh - capability shell wrapper
+sshd -- OpenSSH daemon
+poweroff, reboot, halt - Power off, reboot, or halt the machine
+adduser, addgroup - add or manipulate users or groups
+blkdeactivate -- utility to deactivate block devices
+runlevel - Print previous and current SysV runlevel
+deluser, delgroup - remove a user or group from the system
+dmsetup -- low level logical volume management
+resolvectl, resolvconf - Resolve domain names, IPV4 and IPv6 addresses, DNS resource records, and services;
+       introspect and reconfigure the DNS resolver
+systemd, init - systemd system and service manager
+update-ca-certificates - update /etc/ssl/certs and ca-certificates.crt
+shutdown - Halt, power off or reboot the machine
+telinit - Change SysV runlevel
+deluser, delgroup - remove a user or group from the system
+dmstats -- device-mapper statistics management
+pam-auth-update - manage PAM configuration using packaged profiles
+chmem - configure memory
+debugfs - ext2/ext3/ext4 file system debugger
+
+toe - list table of entries of terminfo terminal types
+basenc - Encode/decode data and print to standard output
+debconf-communicate - communicate with debconf
+apt-config - APT Configuration Query program
+mv - move (rename) files
+last, lastb - show a listing of last logged in users
+zdump - timezone dumper
+gzip, gunzip, zcat - compress or expand files
+pgrep, pkill, pidwait - look up, signal, or wait for processes based on name and other attributes
+pldd - display dynamic shared objects linked into a process
+apt-key - Deprecated APT key management utility
+tee - read from standard input and write to standard output and files
+tar - an archiving utility
+seq - print a sequence of numbers
+pr - convert text files for printing
+delpart - tell the kernel to forget about a partition
+resizepart - tell the kernel about the new size of a partition
+cksum - compute and verify file checksums
+captoinfo - convert a termcap description into a terminfo description
+ipcrm - remove certain IPC resources
+expr - evaluate expressions
+scriptlive - re-run session typescripts, using timing information
+dir - list directory contents
+pathchk - check whether file names are valid or portable
+uclampset - manipulate the utilization clamping attributes of the system or a process
+apt-cache - query the APT cache
+zcmp, zdiff - compare compressed files
+flock - manage locks from shell scripts
+dash -- command interpreter (shell)
+lsblk - list block devices
+setarch - change reported architecture in new program environment and/or set personality flags
+perl - The Perl 5 language interpreter
+nproc - print the number of processing units available
+diff3 - compare three files line by line
+zmore - file perusal filter for crt viewing of compressed text
+sdiff - side-by-side merge of file differences
+debconf-copydb - copy a debconf database
+mount - mount a filesystem
+apt - command-line interface
+mktemp - create a temporary file or directory
+slabtop - display kernel slab cache information in real time
+stdbuf - Run COMMAND, with modified buffering operations for its standard streams
+chown - change file owner and group
+sha224sum - compute and check SHA224 message digest
+getent - get entries from Name Service Switch libraries
+which - locate a command
+hostid - print the numeric identifier for the current host
+addpart - tell the kernel about the existence of a partition
+ps - report a snapshot of the current processes
+utmpdump - dump UTMP and WTMP files in raw format
+gpasswd - administer /etc/group and /etc/gshadow
+mountpoint - see if a directory or file is a mountpoint
+debconf-escape - helper when working with debconf's escape capabilit
+vmstat - Report virtual memory statistics
+chrt - manipulate the real-time attributes of a process
+login - begin session on the system
+fold - wrap each input line to fit in specified width
+rm - remove files or directories
+hostname - show or set the system's host name
+domainname - show or set the system's NIS/YP domain name
+ypdomainname - show or set the system's NIS/YP domain name
+nisdomainname - show or set the system's NIS/YP domain name
+dnsdomainname - show the system's DNS domain name
+runcon - run command with specified security context
+touch - change file timestamps
+lscpu - display information about the CPU architecture
+stat - display file or file system status
+env - run a program in a modified environment
+prlimit - get and set process resource limits
+select-editor - select your default sensible-editor from all installed editors
+nsenter - run program in different namespaces
+setarch - change reported architecture in new program environment and/or set personality flags
+basename - strip directory and suffix from filenames
+mknod - make block or character special files
+cp - copy files and directories
+grep, egrep, fgrep, rgrep - print lines that match patterns
+chsh - change login shell
+localedef - compile locale definition files
+faillog - display faillog records or set login failure limits
+partx - tell the kernel about the presence and numbering of on-disk partitions
+lsipc - show information on IPC facilities currently employed in the system
+diff - compare files line by line
+who - show who is logged on
+dircolors - color setup for ls
+namei - follow a pathname until a terminal point is found
+df - report file system space usage
+bash - GNU Bourne-Again SHell
+man - an interface to the system reference manuals
+more - display the contents of a file in a terminal
+md5sum - compute and check MD5 message digest
+sed - stream editor for filtering and transforming text
+timeout - run a command with a time limit
+wdctl - show hardware watchdog status
+readlink - print resolved symbolic links or canonical file names
+vdir - list directory contents
+paste - merge lines of files
+gzip, gunzip, zcat - compress or expand files
+sensible-browser - sensible web browsing
+skill, snice - send a signal or report process status
+whoami - print effective user name
+wall - write a message to all users
+pgrep, pkill, pidwait - look up, signal, or wait for processes based on name and other attributes
+base64 - base64 encode/decode data and print to standard output
+mkfifo - make FIFOs (named pipes)
+debconf-show - query the debconf database
+head - output the first part of files
+gzexe - compress executable files in place
+sha384sum - compute and check SHA384 message digest
+pinky - lightweight finger
+umount - unmount filesystems
+dpkg - package manager for Debian
+tempfile - create a temporary file in a safe manner
+fallocate - preallocate or deallocate space to a file
+infotocap - convert a terminfo description into a termcap description
+cmp - compare two files byte by byte
+getconf - Query system configuration variables
+expand - convert tabs to spaces
+sensible-editor - launch sensibly chosen text editor
+cat - concatenate files and print on the standard output
+chage - change user password expiry information
+setterm - set terminal attributes
+su - run a command with substitute user and group ID
+pwdx - report current working directory of a process
+sensible-terminal - sensible terminal emulator
+mkdir - make directories
+dmesg - print or control the kernel ring buffer
+dpkg-statoverride - override ownership and mode of files
+update-alternatives - maintain symbolic links determining default commands
+skill, snice - send a signal or report process status
+kill - send a signal to a process
+passwd - change user password
+apt-get - APT package handling utility -- command-line interface
+watch - execute a program periodically, showing output fullscreen
+ld.so, ld-linux.so - dynamic linker/loader
+nl - number lines of files
+debconf - run a debconf-using program
+dpkg-divert - override a package's version of a file
+fmt - simple optimal text formatter
+ionice - set or get process I/O scheduling class and priority
+taskset - set or retrieve a process's CPU affinity
+lastlog - reports the most recent login of all users or of a given user
+tabs - set terminal tab stops
+infocmp - compare or print out terminfo descriptions
+stty - change and print terminal line settings
+bashbug - report a bug in bash
+users - print the user names of users currently logged in to the current host
+printenv - print all or part of environment
+getopt - parse command options (enhanced)
+rmdir - remove empty directories
+ptx - produce a permuted index of file contents
+mcookie - generate magic cookies for xauth
+truncate - shrink or extend the size of a file to the specified size
+iconv - convert text from one character encoding to another
+date - print or set the system date and time
+md5sum - compute and check MD5 message digest
+xargs - build and execute command lines from standard input
+clear_console - clear the console
+whereis - locate the binary, source, and manual page files for a command
+mesg - display (or do not display) messages from other users
+echo - display a line of text
+free - Display amount of free and used memory in the system
+sha512sum - compute and check SHA512 message digest
+dpkg-maintscript-helper - works around known dpkg limitations in maintainer scripts
+ldd - print shared object dependencies
+apt-cdrom - APT CD-ROM management utility
+chattr - change file attributes on a Linux file system
+setpriv - run a program with different Linux privilege settings
+tzselect - view timezones
+tty - print the file name of the terminal connected to standard input
+rbash - restricted bash, see bash(1)
+tail - output the last part of files
+uname - print system information
+sort - sort lines of text files
+gpgv - Verify OpenPGP signatures
+tic - compile terminal descriptions for terminfo or termcap
+dirname - strip last component from file name
+id - print real and effective user and group IDs
+savelog - save a log file
+tput, init, reset - initialize a terminal, exercise its capabilities, or query terminfo database
+newgrp - log in to a new group
+ln - make links between files
+gzip, gunzip, zcat - compress or expand files
+link - call the link function to create a link to a file
+ipcs - show information on IPC facilities
+arch - print machine hardware name (same as uname -m)
+uptime - Tell how long the system has been running.
+nohup - run a command immune to hangups, with output to a non-tty
+deb-systemd-helper - subset of systemctl for machines not running systemd
+scriptreplay - play back typescripts, using timing information
+lslogins - display information about known users in the system
+zgrep - search possibly compressed files for a regular expression
+logname - print user's login name
+w - Show who is logged on and what they are doing
+sha256sum - compute and check SHA256 message digest
+join - join lines of two files on a common field
+uniq - report or omit repeated lines
+zgrep - search possibly compressed files for a regular expression
+unlink - call the unlink function to remove the specified file
+locale - get locale-specific information
+perl - The Perl 5 language interpreter
+dpkg-deb - Debian package archive (.deb) manipulation tool
+test - check file types and compare values
+pwd - print name of current/working directory
+expiry - check and enforce password expiration policy
+chcon - change file security context
+choom - display and adjust OOM-killer score
+ls - list directory contents
+unshare - run program in new namespaces
+lsmem - list the ranges of available memory with their online status
+tset, reset - initialize or reset terminal state
+comm - compare two sorted files line by line
+true - do nothing, successfully
+run-parts - run scripts or programs in a directory
+dd - convert and copy a file
+zless - file perusal filter for crt viewing of compressed text
+csplit - split a file into sections determined by context lines
+realpath - print the resolved path
+sensible-pager - sensible paging
+debconf-apt-progress - install packages using debconf to display a progress bar
+tr - translate or delete characters
+dpkg-realpath - print the resolved pathname with DPKG_ROOT support
+debconf-set-selections - insert new values into the debconf database
+yes - output a string repeatedly until killed
+sha1sum - compute and check SHA1 message digest
+printf - format and print data
+setarch - change reported architecture in new program environment and/or set personality flags
+pmap - report memory map of a process
+nice - run a program with modified scheduling priority
+find - search for files in a directory hierarchy
+script - make typescript of terminal session
+false - do nothing, unsuccessfully
+lsns - list namespaces
+sg - execute command as different group ID
+mawk - pattern scanning and text processing language
+shred - overwrite a file to hide its contents, and optionally delete it
+install - copy files and set attributes
+ipcmk - make various IPC resources
+base32 - base32 encode/decode data and print to standard output
+numfmt - Convert numbers from/to human-readable strings
+tsort - perform topological sort
+tset, reset - initialize or reset terminal state
+chgrp - change group ownership
+sum - checksum and count the blocks in a file
+du - estimate file space usage
+top - display Linux processes
+clear - clear the terminal screen
+dpkg-query - a tool to query the dpkg database
+tac - concatenate and print files in reverse
+rev - reverse lines characterwise
+lsattr - list file attributes on a Linux second extended file system
+logger - enter messages into the system log
+wc - print newline, word, and byte counts for each file
+deb-systemd-invoke - wrapper around systemctl, respecting policy-rc.d
+apt-mark - show, set and unset various settings for a package
+rename - rename files
+shuf - generate random permutations
+cut - remove sections from each line of files
+hardlink - link multiple copies of a file
+pidof - find the process ID of a running program
+findmnt - find a filesystem
+groups - print the groups a user is in
+zforce - force a '.gz' extension on all gzip files
+chfn - change real user name and information
+split - split a file into pieces
+b2sum - compute and check BLAKE2 message digest
+dpkg-split - Debian package archive split/join tool
+renice - alter priority of running processes
+dpkg-trigger - a package trigger utility
+od - dump files in octal and other formats
+znew -   recompress .Z files to .gz files
+zcmp, zdiff - compare compressed files
+sync - Synchronize cached writes to persistent storage
+setsid - run a program in a new session
+factor - factor numbers
+ischroot - detect if running in a chroot
+lslocks - list local system locks
+chmod - change file mode bits
+tload - graphic representation of system load average
+unexpand - convert spaces to tabs
+libnetcfg - configure libnet
+cpan - easily interact with CPAN from the command line
+neqn - format equations for character-cell terminal output
+nslookup - query Internet name servers interactively
+diagnostics, splain - produce verbose warning diagnostics
+ptar - a tar-like program written in perl
+piconv -- iconv(1), reinvented in perl
+streamzip - create a zip file from stdin
+mdig - DNS pipelined lookup utility
+prove - Run tests through a TAP harness
+enc2xs -- Perl Encode Module Generator
+tbl - prepare tables for groff documents
+delv - DNS lookup and validation utility
+eqn - format mathematics (equations) for groff or MathML
+rsync-ssl - a helper script for connecting to an ssl rsync daemon
+hexdump - display file contents in hexadecimal, decimal, octal, or ascii
+apropos - search the manual page names and descriptions
+pod2man - Convert POD data to formatted *roff input
+mandb - create or update the manual page index caches
+colcrt - filter nroff output for CRT previewing
+colrm - remove columns from a file
+json_pp - JSON::PP command utility
+netstat - Print network connections, routing tables, interface statistics, masquerade connections, and multicast
+       memberships
+ip - show / manipulate routing, network devices, interfaces and tunnels
+col - filter reverse line feeds from input	   
+routel - list routes with pretty output format
+install-info - update info/dir entries
+xsubpp - compiler to convert Perl XS code into C code
+zipcloak - encrypt entries in a zipfile
+unzip - list, test and extract compressed files in a ZIP archive
+pslog - report current logs path of a process
+sudo, sudoedit -- execute a command as another user
+lsof - list open files
+man-recode - convert manual pages to another encoding
+host - DNS lookup utility
+peekfd - peek at file descriptors of running processes
+perlivp - Perl Installation Verification Procedure
+column - columnate lists
+catman - create or update the pre-formatted manual pages
+nc -- arbitrary TCP and UDP connections and listens
+htop, pcp-htop - interactive process viewer
+ptardiff - program that diffs an extracted archive against an unextracted one
+curl - transfer a URL
+zipnote - write the comments in zipfile to stdout, edit comments and rename files in zipfile
+lexgrog - parse header information in man pages
+xxd - make a hex dump or do the reverse.
+perlbug - how to submit bug reports on Perl
+whatis - display one-line manual page descriptions
+h2ph - convert .h C header files to .ph Perl header files
+pydoc3.12 - the Python documentation tool
+instmodsh - A shell to examine installed modules
+lnstat - unified linux network statistics
+encguess - guess character encodings of files
+ul - do underlining
+lesskey - specify key bindings for less
+troff - GNU roff typesetter and document formatter
+manpath - determine search path for manual pages
+perl - The Perl 5 language interpreter
+activate-global-python-argcomplete - argcomplete utility script
+rrsync - a script to setup restricted rsync users via ssh logins
+pstree - display a tree of processes
+zipsplit - split a zipfile into smaller zipfiles
+jq - Command-line JSON processor
+nsupdate - dynamic DNS update utility
+lessecho - expand metacharacters
+dbus-update-activation-environment - update environment used for D-Bus session services
+update-mime-database - a program to build the Shared MIME-Info database cache
+networkctl - Query or modify the status of network links
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+man systemd-sysext; man systemd-firstboot; man pdb3; man openssl; man dbus-update-activation-environment; man update-mime-database; man networkctl; man ssh-import-id-gh; man systemd-stdio-bridge; man systemd-creds; man ssh; man systemd-analyze; man xdg-user-dirs-update; man pygettext3; man ssh-copy-id; man systemd-sysusers; man systemd-cryptsetup; man wget; man systemd-id128; man dbus-cleanup-sockets; man timedatectl; man systemd-confext; man dbus-monitor; man xauth; man lcf; man systemd-ac-power; man python3; man kernel-install; man ssh-import-id; man xdg-user-dir; man ssh-argv0; man systemd-detect-virt; man localectl; man dbus-daemon; man dbus-uuidgen; man systemd-machine-id-setup; man py3compile; man ssh-add; man ucfr; man ucf; man journalctl; man systemd-mount; man systemd-delta; man ssh-agent; man loginctl; man py3clean; man sftp; man systemd-cgls; man networkd-dispatcher; man systemd-cat; man systemd-escape; man toe; man basenc; man debconf-communicate; man apt-config; man mv; man lastb; man zdump; man zcat; man pkill; man pldd; man apt-key; man tee; man tar; man seq; man pr; man delpart; man resizepart; man cksum; man captoinfo; man ipcrm; man expr; man scriptlive; man dir; man pathchk; man uclampset; man apt-cache; man zcmp; man flock; man dash; man lsblk; man linux32; man perl5.38.2; man nproc; man diff3; man zmore; man sdiff; man debconf-copydb; man mount; man apt; man mktemp; man slabtop; man stdbuf; man chown; man sha224sum; man getent; man which; man hostid; man addpart; man ps; man utmpdump; man gpasswd; man mountpoint; man debconf-escape; man vmstat; man chrt; man login; man fold; man rm; man hostname; man runcon; man touch; man lscpu; man stat; man env; man prlimit; man select-editor; man dnsdomainname; man nsenter; man i386; man basename; man pager; man mknod; man cp; man fgrep; man chsh; man egrep; man localedef; man faillog; man partx; man lsipc; man diff; man who; man dircolors; man namei; man df; man bash; man locale-check; man man; man more; man md5sum.textutils; man sed; man timeout; man wdctl; man readlink; man vdir; man paste; man gunzip; man sensible-browser; man snice; man whoami; man wall; man which.debianutils; man pidwait; man base64; man mkfifo; man debconf-show; man head; man gzexe; man sha384sum; man pinky; man umount; man dpkg; man tempfile; man fallocate; man infotocap; man cmp; man getconf; man expand; man sensible-editor; man cat; man chage; man setterm; man su; man setarch; man pwdx; man sensible-terminal; man mkdir; man dmesg; man dpkg-statoverride; man update-alternatives; man skill; man kill; man passwd; man apt-get; man watch; man ld.so; man nl; man debconf; man dpkg-divert; man fmt; man ionice; man taskset; man lastlog; man tabs; man infocmp; man stty; man bashbug; man users; man printenv; man sh; man getopt; man rmdir; man ptx; man mcookie; man truncate; man iconv; man date; man md5sum; man xargs; man clear_console; man whereis; man mesg; man domainname; man echo; man free; man sha512sum; man dpkg-maintscript-helper; man ldd; man apt-cdrom; man chattr; man setpriv; man tzselect; man tty; man rbash; man tail; man uname; man sort; man gpgv; man tic; man dirname; man id; man savelog; man tput; man newgrp; man ln; man gzip; man link; man ipcs; man arch; man uptime; man nohup; man deb-systemd-helper; man scriptreplay; man lslogins; man zegrep; man logname; man w; man sha256sum; man grep; man pgrep; man last; man join; man uniq; man zgrep; man nisdomainname; man unlink; man locale; man perl; man dpkg-deb; man test; man pwd; man expiry; man ypdomainname; man chcon; man choom; man ls; man unshare; man lsmem; man tset; man comm; man true; man run-parts; man dd; man zless; man csplit; man realpath; man sensible-pager; man debconf-apt-progress; man tr; man dpkg-realpath; man uncompress; man debconf-set-selections; man yes; man sha1sum; man printf; man linux64; man pmap; man nice; man find; man rgrep; man script; man false; man lsns; man sg; man nawk; man shred; man install; man ipcmk; man base32; man numfmt; man tsort; man reset; man chgrp; man sum; man du; man top; man clear; man zfgrep; man sleep; man dpkg-query; man x86_64; man tac; man rev; man lsattr; man logger; man wc; man deb-systemd-invoke; man apt-mark; man rename.ul; man shuf; man cut; man hardlink; man pidof; man findmnt; man groups; man zforce; man chfn; man split; man b2sum; man dpkg-split; man renice; man dpkg-trigger; man od; man znew; man zdiff; man sync; man setsid; man factor; man ischroot; man lslocks; man chmod; man tload; man mawk; man awk; man unexpand; man libnetcfg; man python3.12; man cpan; man pdb3.12; man neqn; man nslookup; man splain; man ptar; man vi; man piconv; man streamzip; man mdig; man prove; man filan; man enc2xs; man gtbl; man delv; man geqn; man rsync-ssl; man hexdump; man traceroute; man apropos; man pod2man; man mandb; man colcrt; man colrm; man ex; man tbl; man json_pp; man netstat; man ip; man col; man routel; man ginstall-info; man xsubpp; man zipcloak; man unzip; man pslog; man sudo; man lsof; man man-recode; man hd; man rvim; man view; man nano; man host; man peekfd; man yq; man vim; man tomlq; man pico; man perlivp; man socat-mux.sh; man column; man catman; man nc; man rview; man htop; man ptardiff; man socat-broker.sh; man curl; man traceroute.db; man zipnote; man lexgrog; man xxd; man perlbug; man nc.openbsd; man whatis; man h2ph; man pydoc3.12; man instmodsh; man ctstat; man encguess; man ul; man lnstat; man pic; man lesskey; man troff; man perlthanks; man manpath; man traceroute-nanog; man perl5.38-x86_64-linux-gnu; man socat; man activate-global-python-argcomplete; man rrsync; man pstree; man zipsplit; man procan; man jq; man nsupdate; man eqn; man lessecho; man zipdetails; man corelist; man vimdiff; man socat1; man pod2usage; man prtstat; man groff; man fuser; man ptargrep; man pstree.x11; man killall; man traceroute6.db; man register-python-argcomplete; man sudoedit; man pod2html; man cvtsudoers; man funzip; man shasum; man tree; man nroff; man h2xs; man soelim; man rtstat; man grotty; man busybox; man editor; man netcat; man zip; man pl2pm; man ping4; man grog; man rnano; man zipgrep; man grops; man lft.db; man unzipsfx; man ping6; man look; man gpic; man infobrowser; man install-info; man perldoc; man cpan5.38-x86_64-linux-gnu; man zipinfo; man write; man helpztags; man lft; man socat-chain.sh; man ssh-keyscan; man systemctl; man dbus-send; man systemd-path; man busctl; man pdb3; man openssl; man dbus-update-activation-environment; man update-mime-database; man networkctl; man ssh-import-id-gh; man systemd-stdio-bridge; man systemd-creds; man ssh; man systemd-analyze; man xdg-user-dirs-update; man pygettext3; man ssh-copy-id; man systemd-sysusers; man systemd-cryptsetup; man wget; man systemd-id128; man dbus-cleanup-sockets; man timedatectl; man systemd-confext; man dbus-monitor; man xauth; man lcf; man systemd-ac-power; man python3; man kernel-install; man ssh-import-id; man xdg-user-dir; man ssh-argv0; man systemd-detect-virt; man localectl; man dbus-daemon; man dbus-uuidgen; man systemd-machine-id-setup; man py3compile; man ssh-add; man ucfr; man ucf; man journalctl; man systemd-mount; man systemd-delta; man ssh-agent; man loginctl; man py3clean; man sftp; man systemd-cgls; man networkd-dispatcher; man systemd-cat; man systemd-escape; man sulogin; man pam-auth-update; man chmem; man debugfs; man cpgr; man iconvconfig; man pwhistory_helper; man e2mmpstatus; man cppw; man rmt-tar; man fsfreeze; man losetup; man rtcwake; man filefrag; man grpck; man initctl; man swapon; man e2undo; man groupadd; man installkernel; man grpconv; man mklost+found; man agetty; man ldattach; man faillock; man e2label; man killall5; man blockdev; man isosize; man unix_chkpwd; man groupmems; man policy-rc.d; man grpunconv; man runuser; man update-shells; man resize2fs; man e2scrub_all; man usermod; man e4defrag; man pwunconv; man useradd; man ldconfig.real; man fsck.cramfs; man mkfs.bfs; man findfs; man groupdel; man vipw; man pivot_root; man pam_extrausers_chkpwd; man blkzone; man pam_extrausers_update; man newusers; man chcpu; man ctrlaltdel; man fsck; man readprofile; man zramctl; man invoke-rc.d; man ldconfig; man remove-shell; man dumpe2fs; man chgpasswd; man pam_getenv; man mkfs.ext3; man mkfs.minix; man mkfs.ext4; man e4crypt; man e2image; man e2freefrag; man userdel; man tarcat; man swaplabel; man mkfs.cramfs; man fsck.ext4; man mkfs.ext2; man getty; man chroot; man chpasswd; man badblocks; man pam_timestamp_check; man mkfs; man e2fsck; man fsck.minix; man wipefs; man blkdiscard; man vigr; man nologin; man service; man fsck.ext2; man mkhomedir_helper; man e2scrub; man sysctl; man logsave; man update-passwd; man dpkg-reconfigure; man mke2fs; man start-stop-daemon; man blkid; man unix_update; man update-rc.d; man zic; man pwck; man groupmod; man fstrim; man shadowconfig; man add-shell; man switch_root; man pam_namespace_helper; man rmt; man tune2fs; man swapoff; man fsck.ext3; man dpkg-preconfigure; man mkswap; man fstab-decode; man pwconv; man tcptraceroute.db; man sudo_logsrvd; man iptunnel; man rtmon; man traceroute; man ip; man tipc; man slattach; man visudo; man arp; man dcb; man arpd; man rarp; man devlink; man mii-tool; man tc; man rtacct; man locale-gen; man genl; man update-info-dir; man validlocale; man setcap; man vdpa; man tcptraceroute; man ipmaddr; man getcap; man bridge; man update-locale; man ifconfig; man route; man nameif; man sudo_sendlog; man getpcaps; man plipconfig; man accessdb; man capsh; man sshd; man poweroff; man addgroup; man blkdeactivate; man runlevel; man delgroup; man adduser; man halt; man dmsetup; man resolvconf; man init; man update-ca-certificates; man reboot; man shutdown; man telinit; man deluser; man dmstats; man sulogin; man pam-auth-update; man chmem; man debugfs; man cpgr; man iconvconfig; man pwhistory_helper; man e2mmpstatus; man cppw; man rmt-tar; man fsfreeze; man losetup; man rtcwake; man filefrag; man grpck; man initctl; man swapon; man e2undo; man groupadd; man installkernel; man grpconv; man mklost+found; man agetty; man ldattach; man faillock; man e2label; man killall5; man blockdev; man isosize; man unix_chkpwd; man groupmems; man policy-rc.d; man grpunconv; man runuser; man update-shells; man resize2fs; man e2scrub_all; man usermod; man e4defrag; man pwunconv; man useradd; man ldconfig.real; man fsck.cramfs; man mkfs.bfs; man findfs; man groupdel; man vipw; man pivot_root; man pam_extrausers_chkpwd; man blkzone; man pam_extrausers_update; man newusers; man chcpu; man ctrlaltdel; man readprofile; man zramctl; man invoke-rc.d; man ldconfig; man remove-shell; man dumpe2fs; man chgpasswd; man pam_getenv; man mkfs.ext3; man mkfs.minix; man mkfs.ext4; man e4crypt; man e2image; man e2freefrag; man userdel; man tarcat; man swaplabel; man mkfs.cramfs; man fsck.ext4; man mkfs.ext2; man getty; man chroot; man chpasswd; man badblocks; man pam_timestamp_check; man mkfs; man e2fsck; man fsck.minix; man wipefs; man blkdiscard; man vigr; man nologin; man service; man fsck.ext2; man mkhomedir_helper; man e2scrub; man sysctl; man logsave; man update-passwd; man dpkg-reconfigure; man mke2fs; man start-stop-daemon; man blkid; man unix_update; man update-rc.d; man zic; man pwck; man groupmod; man fstrim; man shadowconfig; man add-shell; man switch_root; man pam_namespace_helper; man rmt; man tune2fs; man swapoff; man fsck.ext3; man dpkg-preconfigure; man mkswap; man fstab-decode; man pwconv; man tcptraceroute.db; man sudo_logsrvd; man iptunnel; man rtmon; man traceroute; man ip; man tipc; man slattach; man visudo; man arp; man dcb; man arpd; man rarp; man devlink; man mii-tool; man tc; man rtacct; man locale-gen; man genl; man update-info-dir; man validlocale; man setcap; man vdpa; man tcptraceroute; man ipmaddr; man getcap; man bridge; man update-locale; man ifconfig; man route; man nameif; man sudo_sendlog; man getpcaps; man plipconfig; man accessdb; man capsh; man sshd; man poweroff; man addgroup; man blkdeactivate; man runlevel; man delgroup; man adduser; man halt; man dmsetup; man resolvconf; man init; man update-ca-certificates; man reboot; man shutdown; man telinit; man deluser; man dmstats; man startup.sh
